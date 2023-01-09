@@ -22,13 +22,19 @@
 
 
 	<script>
+	console.log("A secret message only you can see!");
 
-	console.log("A secret message only devs will see!");
-
+	// this will generate an error because foo has not been declared
+	foo = "hello";
 	</script>
 
-
 	<script src="assets/js/main.js"></script>
+
+	<script>
+	console.log("Javascript allows you to write different types of messages,");
+	console.warn("including warnings, ");
+	console.error("and even errors, to the console.");
+	</script>
 
 
 </body>
