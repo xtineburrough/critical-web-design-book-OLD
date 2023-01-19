@@ -4,7 +4,7 @@
 <head>
 
 	<meta charset="utf-8">
-	<title>Concrete Poetry</title>
+	<title>Poem</title>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,8 +17,9 @@
 			color: #fff;
 			background-color: #111;
 		}
+
 		.quote span {
-			display:inline-block
+			display: inline-block
 		}
 
 	</style>
@@ -27,30 +28,25 @@
 
 <body>
 
-
-
 	<div class="quote">Both everyday and exotic, public and private, autonomous and commercial, the internet is a chaotic, diverse and crowded form of contemporary public space. —Rachel Greene, Internet Art<div>
 
-
 	<script>
+		let quoteEle = document.querySelector(".quote");
+		let quoteStr = quoteEle.innerText;
 
-		function updateText(){
-			let quoteEle = document.querySelector(".quote");
-			let quoteStr = quoteEle.innerText;
+		function updateText() {
 
 			let newStr = "";
-			for(let i=0; i<quoteStr.length; i++){
+			for (let i = 0; i < quoteStr.length; i++) {
 				newStr += `<span style="margin-left:${10*Math.random()}rem">${quoteStr[i]}</span>`;
 			}
 			quoteEle.innerHTML = newStr;
 		}
-		setInterval(function(){
+		setInterval(function() {
 			updateText();
 		}, 250);
 
-
 	</script>
-
 
 
 </body>
