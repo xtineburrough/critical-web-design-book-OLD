@@ -1,0 +1,21 @@
+
+
+img {
+  width: 300px;
+}
+
+
+.bgImgDefault {
+  width: 300px;
+  aspect-ratio: 1/1; /* https://caniuse.com/mdn-css_properties_aspect-ratio */
+  background-size: cover;
+}
+
+.cssBackgroundImg {
+  background-image: url(../img/cat-01.jpg);
+}
+.cssBackgroundImg:hover {
+  background-image: url(../img/cat-02.jpg);
+  cursor:crosshair;
+}
+
