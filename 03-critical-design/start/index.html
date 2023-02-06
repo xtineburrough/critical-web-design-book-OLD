@@ -2,8 +2,8 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Javascript / jQuery Cat Image Swapper</title>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+  <title>Logo Swapper</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'><link rel="stylesheet" href="./assets/css/style.css">
 
 </head>
 <body>
@@ -12,7 +12,7 @@
   <div class="row">
     <div class="col text-center">
       <h3>Swap Images</h3>
-      <p>Change images using CSS, Javascript, or jquery</p>
+      <p>Change images using CSS and Javascript</p>
     </div>
   </div>
 </div>
@@ -21,7 +21,7 @@
 
   <div class="row">
     <div class="col py-2 text-center c0">
-      <b>CSS :hover</b><br>
+      <h1>CSS :hover</h1>
       Change image with CSS only
     </div>
   </div>
@@ -52,7 +52,7 @@
 
   <div class="row">
     <div class="col py-2 text-center c2">
-      <b>Javascript > Listeners</b><br>
+      <h1>Javascript > Listeners</h1>
       Change img <b>src</b> attribute using different event listeners
     </div>
   </div>
@@ -60,19 +60,19 @@
   <div class="row">
 
     <div class="col-3 pt-3 c3">
-      <img id="ele2" src="https://omundy.github.io/sample-node-express-cat-api/public/assets/img/cat-01.jpg">
+      <img id="ele2" src="./assets/img/cat-01.jpg">
       <p>2. Change img.src with <b>click</b> listener added to id with <b>.getElementById()</b></p>
     </div>
     <div class="col-3 pt-3 c4">
-      <img id="ele3" src="https://omundy.github.io/sample-node-express-cat-api/public/assets/img/cat-03.jpg">
+      <img id="ele3" src="./assets/img/cat-02.jpg">
       <p>3. Change img.src with <b>click</b> listener added to id with <b>.querySelector()</b></p>
     </div>
     <div class="col-3 pt-3 c5">
-      <img id="ele4" src="https://omundy.github.io/sample-node-express-cat-api/public/assets/img/cat-05.jpg">
+      <img id="ele4" src="./assets/img/cat-01.jpg">
       <p>4. Change img.src with <b>mouseover</b>/ <b>mouseout</b> listener added to id using <b>.querySelector()</b></p>
     </div>
     <div class="col-3 pt-3 c6">
-      <div id="ele5" class="bgImgDefault" style="background-image: url(https://omundy.github.io/sample-node-express-cat-api/public/assets/img/cat-07.jpg)"></div>
+      <div id="ele5" class="bgImgDefault" style="background-image: url(./assets/img/cat-02.jpg)"></div>
       <p>5. Change <b>background-image</b> with <b>click</b> listener added to id with <b>.querySelector()</b></p>
     </div>
 
@@ -82,7 +82,7 @@
 
 
 
-
+<!--remove jquery
 <div class="container-fluid">
 
   <div class="row">
@@ -133,10 +133,11 @@
   </div>
 
 </div>
+-->
 <!-- partial -->
   <script src='https://code.jquery.com/jquery-3.2.1.slim.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'></script>
-<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script><script  src="./script.js"></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script><script  src="./assets/js/script.js"></script>
 
 </body>
 </html>
