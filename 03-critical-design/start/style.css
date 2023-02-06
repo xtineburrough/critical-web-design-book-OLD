@@ -1,0 +1,86 @@
+/* This template uses CSS --vars and a palette from coolers.co:  
+https://coolors.co/f94144-f3722c-f8961e-f9844a-f9c74f-90be6d-43aa8b-4d908e-577590-277da1
+*/
+:root {
+  --red-salsa: #f94144ff;
+  --orange-red: #f3722cff;
+  --yellow-orange-color-wheel: #f8961eff;
+  --mango-tango: #f9844aff;
+  --maize-crayola: #f9c74fff;
+  --pistachio: #90be6dff;
+  --zomp: #43aa8bff;
+  --cadet-blue: #4d908eff;
+  --queen-blue: #577590ff;
+  --cg-blue: #277da1ff;
+}
+.c0 {
+  background-color: var(--red-salsa);
+}
+.c1 {
+  background-color: var(--orange-red);
+}
+.c2 {
+  background-color: var(--yellow-orange-color-wheel);
+}
+.c3 {
+  background-color: var(--mango-tango);
+}
+.c4 {
+  background-color: var(--maize-crayola);
+}
+.c5 {
+  background-color: var(--pistachio);
+}
+.c6 {
+  background-color: var(--zomp);
+}
+.c7 {
+  background-color: var(--cadet-blue);
+}
+.c8 {
+  background-color: var(--queen-blue);
+}
+.c9 {
+  background-color: var(--cg-blue);
+}
+
+img {
+  width: 100%;
+}
+
+
+
+
+.bgImgDefault {
+  width:100%;
+  aspect-ratio: 1/1; /* https://caniuse.com/mdn-css_properties_aspect-ratio */
+  background-size: cover;
+}
+
+
+.cssBackgroundImg {
+  background-image: url(https://omundy.github.io/sample-node-express-cat-api/public/assets/img/cat-00.jpg);
+}
+.cssBackgroundImg:hover {
+  background-image: url(https://omundy.github.io/sample-node-express-cat-api/public/assets/img/cat-01.jpg);
+  cursor:crosshair;
+}
+
+
+
+
+
+
+.changeBgImg {
+  width:100%;
+  aspect-ratio: 1/1;
+  background-image: url(https://omundy.github.io/sample-node-express-cat-api/public/assets/img/cat-06.jpg);
+  background-size: cover;
+}
+.changeBgImgBtn {
+  width:100%;
+  aspect-ratio: 1/1;
+  border:none;
+  background-image: url(https://omundy.github.io/sample-node-express-cat-api/public/assets/img/cat-06.jpg);
+  background-size: cover;
+}
