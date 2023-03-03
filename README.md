@@ -25,3 +25,5 @@ Chapter 4 - On the Grid
 <img height="150" src="figures/ch4/ch4-outcome-lg.png"> <img height="150" src="figures/ch4/ch4-outcome-md.png"> <img height="150" src="figures/ch4/ch4-outcome-xs.png"> 
 
 
+Chapter 5 - Usability & Interactions
+
