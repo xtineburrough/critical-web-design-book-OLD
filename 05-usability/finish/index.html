@@ -124,14 +124,16 @@
                 <div class="col-12 col-lg-6 col-xl-5">
 
                     <h2 class="sky-border-bottom">SUS Score</h2>
+
                     <div class="my-2 mb-4">
                         <small>On a scale of 1-5 where 1 is strongly disagree and 5 is strongly agree.</small>
                     </div>
+
                     <form action="#" id="susForm">
 
                         <div class="my-2 row">
                             <div class="col-2">
-                                <input type="number" value="4" class="form-control" id="q1" min="1" max="5">
+                                <input type="number" value="4" class="form-control" name="q1" id="q1" min="1" max="5" required>
                             </div>
                             <div class="col-10">
                                 <label for="q1" class="form-label">I think that I would like to use this system
@@ -141,7 +143,7 @@
 
                         <div class="my-2 row">
                             <div class="col-2">
-                                <input type="number" value="1" class="form-control" id="q2" min="1" max="5">
+                                <input type="number" value="1" class="form-control" name="q2" id="q2" min="1" max="5" required>
                             </div>
                             <div class="col-10">
                                 <label for="q2" class="form-label">I found the system unnecessarily complex.</label>
@@ -150,7 +152,7 @@
 
                         <div class="my-2 row">
                             <div class="col-2">
-                                <input type="number" value="4" class="form-control" id="q3" min="1" max="5">
+                                <input type="number" value="4" class="form-control" name="q3" id="q3" min="1" max="5" required>
                             </div>
                             <div class="col-10">
                                 <label for="q3" class="form-label">I thought the system was easy to use.</label>
@@ -159,7 +161,7 @@
 
                         <div class="my-2 row">
                             <div class="col-2">
-                                <input type="number" value="1" value="1" class="form-control" id="q4" min="1" max="5">
+                                <input type="number" value="1" class="form-control" name="q4" id="q4" min="1" max="5" required>
                             </div>
                             <div class="col-10">
                                 <label for="q4" class="form-label">I think that I would need the support of a technical person to be able to use this system.</label>
@@ -168,7 +170,7 @@
 
                         <div class="my-2 row">
                             <div class="col-2">
-                                <input type="number" value="4" class="form-control" id="q5" min="1" max="5">
+                                <input type="number" value="4" class="form-control" name="q5" id="q5" min="1" max="5" required>
                             </div>
                             <div class="col-10">
                                 <label for="q5" class="form-label">I found the various functions in this system were well
@@ -178,7 +180,7 @@
 
                         <div class="my-2 row">
                             <div class="col-2">
-                                <input type="number" value="2" class="form-control" id="q6" min="1" max="5">
+                                <input type="number" value="2" class="form-control" name="q6" id="q6" min="1" max="5" required>
                             </div>
                             <div class="col-10">
                                 <label for="q6" class="form-label">I thought there was too much inconsistency in this
@@ -188,7 +190,7 @@
 
                         <div class="my-2 row">
                             <div class="col-2">
-                                <input type="number" value="5" class="form-control" id="q7" min="1" max="5">
+                                <input type="number" value="5" class="form-control" name="q7" id="q7" min="1" max="5" required>
                             </div>
                             <div class="col-10">
                                 <label for="q7" class="form-label">I would imagine that most people would learn to use this
@@ -198,7 +200,7 @@
 
                         <div class="my-2 row">
                             <div class="col-2">
-                                <input type="number" value="1" class="form-control" id="q8" min="1" max="5">
+                                <input type="number" value="1" class="form-control" name="q8" id="q8" min="1" max="5" required>
                             </div>
                             <div class="col-10">
                                 <label for="q8" class="form-label">I found the system very cumbersome to use.</label>
@@ -207,7 +209,7 @@
 
                         <div class="my-2 row">
                             <div class="col-2">
-                                <input type="number" value="4" class="form-control" id="q9" min="1" max="5">
+                                <input type="number" value="4" class="form-control" name="q9" id="q9" min="1" max="5" required>
                             </div>
                             <div class="col-10">
                                 <label for="q9" class="form-label">I felt very confident using the system.</label>
@@ -216,7 +218,7 @@
 
                         <div class="my-2 row">
                             <div class="col-2">
-                                <input type="number" value="1" class="form-control" id="q10" min="1" max="5">
+                                <input type="number" value="1" class="form-control" name="q10" id="q10" min="1" max="5" required>
                             </div>
                             <div class="col-10">
                                 <label for="q10" class="form-label">I needed to learn a lot of things before I could get
@@ -226,7 +228,7 @@
 
                         <div class="my-2 row sky-border-top">
                             <div class="col-3">
-                                <input type="number" class="form-control" id="answer">
+                                <input type="number" step="any" class="form-control" id="answer">
                             </div>
                             <div class="col-9">
                                 <button type="submit" class="btn btn-custom">Update Score</button>
