@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Critical Web Design</title>
+        <title>Self-Portrait</title>
 
         <style>
             html,
@@ -10,7 +10,7 @@
                 margin: 0;
                 padding: 0;
                 overflow: hidden;
-                background-color: violet;
+                background-color: black;
             }
 
             svg {
@@ -25,36 +25,36 @@
     </head>
     <body>
 
-        <svg version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- background -->
-            <rect width="100%" height="100%" fill="violet" />
-            <!-- corners -->
-            <!-- <rect x="0" y="0" width="1" height="1" fill="purple" />
-            <rect x="99" y="0" width="1" height="1" fill="purple" />
-            <rect x="0" y="99" width="1" height="1" fill="purple" />
-            <rect x="99" y="99" width="1" height="1" fill="purple" />
-            <circle cx="50" cy="50" r="2" fill="white" /> -->
-            <!-- text -->
-            <text x="50" y="50" font-size="8" text-anchor="middle" fill="white">SVG</text>
+        <svg version="1.1" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidyMid slice" fill="violet">
+            <g fill="none" fill-rule="evenodd">
+                <!-- background -->
+                <rect width="100%" height="100%" fill="violet" />
+                <!-- corners -->
+                <!-- <rect x="0" y="0" width="1" height="1" fill="purple" />
+                <rect x="99" y="0" width="1" height="1" fill="purple" />
+                <rect x="0" y="99" width="1" height="1" fill="purple" />
+                <rect x="99" y="99" width="1" height="1" fill="purple" />
+                <circle cx="50" cy="50" r="2" fill="white" /> -->
+                <!-- text -->
+                <text x="50%" y="50%" font-size="8" text-anchor="middle" fill="white">SVG</text>
+            </g>
         </svg>
 
 
         <script>
 
-            let elementsAdded = 0;
-            let increase = true;
-            
-            let maxWidth = 30;
-            let maxHeight = 30;
-
             const svg = document.querySelector("svg");
             const svgns = "http://www.w3.org/2000/svg";
 
+            // simply add elements and stop
             // let numElements = randomInt(20, 100);
             // for (let i = 0; i < numElements; i++) {
             //     svg.appendChild(createRect());
             // }
 
+            // add elements then remove
+            let elementsAdded = 0;
+            let increase = true;
             setInterval(function () {
                 // console.log(elementsAdded);
                 if (elementsAdded > 1000) increase = false;
@@ -71,16 +71,17 @@
             }, 1)
 
             function createRect() {
+                let min = 10;
+                let max = 30;
                 let newRect = document.createElementNS(svgns, "rect");
-                newRect.setAttribute("width", randomInt(20, maxWidth));
-                newRect.setAttribute("height", randomInt(20, maxHeight));
-                newRect.setAttribute("x", randomInt(-10, 110) - newRect.getAttribute("width"));
+                newRect.setAttribute("width", randomInt(min, max));
+                newRect.setAttribute("height", randomInt(min, max));
+                newRect.setAttribute("x", randomInt(-10, 210) - newRect.getAttribute("width"));
                 newRect.setAttribute("y", randomInt(-10, 110) - newRect.getAttribute("height"));
                 newRect.setAttribute("transform", `rotate(${randomInt(0, 360)} ${randomInt(0, 360)} ${randomInt(0, 360)})`);
                 newRect.setAttribute("fill", `rgba(${randomInt(100, 255)},${randomInt(100, 255)},${randomInt(100, 255)})`);
                 return newRect;
             }
-
 
             /**
              *  Return a random integer between min (inclusive) and max (inclusive)
