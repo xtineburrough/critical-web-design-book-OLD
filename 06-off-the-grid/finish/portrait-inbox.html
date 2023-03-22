@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Critical Web Design</title>
+
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: violet;
+            }
+
+            svg {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: auto;
+                height: 100%;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <svg version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- background -->
+            <rect width="100%" height="100%" fill="violet" />
+            <!-- corners -->
+            <!-- <rect x="0" y="0" width="1" height="1" fill="purple" />
+            <rect x="99" y="0" width="1" height="1" fill="purple" />
+            <rect x="0" y="99" width="1" height="1" fill="purple" />
+            <rect x="99" y="99" width="1" height="1" fill="purple" />
+            <circle cx="50" cy="50" r="2" fill="white" /> -->
+            <!-- text -->
+            <text x="50" y="50" font-size="8" text-anchor="middle" fill="white">SVG</text>
+        </svg>
+
+
+        <script>
+
+            let elementsAdded = 0;
+            let increase = true;
+            
+            let maxWidth = 30;
+            let maxHeight = 30;
+
+            const svg = document.querySelector("svg");
+            const svgns = "http://www.w3.org/2000/svg";
+
+            // let numElements = randomInt(20, 100);
+            // for (let i = 0; i < numElements; i++) {
+            //     svg.appendChild(createRect());
+            // }
+
+            setInterval(function () {
+                // console.log(elementsAdded);
+                if (elementsAdded > 1000) increase = false;
+                else if (elementsAdded < 1) increase = true;
+
+                if (increase) {
+                    elementsAdded++;
+                    svg.appendChild(createRect());
+                }
+                else {
+                    elementsAdded--;
+                    svg.lastElementChild.remove();
+                }
+            }, 1)
+
+            function createRect() {
+                let newRect = document.createElementNS(svgns, "rect");
+                newRect.setAttribute("width", randomInt(20, maxWidth));
+                newRect.setAttribute("height", randomInt(20, maxHeight));
+                newRect.setAttribute("x", randomInt(-10, 110) - newRect.getAttribute("width"));
+                newRect.setAttribute("y", randomInt(-10, 110) - newRect.getAttribute("height"));
+                newRect.setAttribute("transform", `rotate(${randomInt(0, 360)} ${randomInt(0, 360)} ${randomInt(0, 360)})`);
+                newRect.setAttribute("fill", `rgba(${randomInt(100, 255)},${randomInt(100, 255)},${randomInt(100, 255)})`);
+                return newRect;
+            }
+
+
+            /**
+             *  Return a random integer between min (inclusive) and max (inclusive)
+             */
+            function randomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+        </script>
+
+    </body>
+</html>
