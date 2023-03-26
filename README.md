@@ -8,11 +8,11 @@ A collection of examples and exercises to accompany *Critical Web Design* by xti
 
 Chapter 1 - Networks
 
-<img height="150" src="figures/ch1/Figure 1.0.3 - Network.png"> 
+<img height="150" src="figures/ch1/1.0.3 Network.png"> 
 
 Chapter 2 - View Source
 
-<img height="150" src="figures/ch2/Figure 2.3.4-Poem-Think.png"> <img height="150" src="figures/ch2/Figure 2.3.x-Poem-Shake-640w.gif">  <img height="150" src="figures/ch2/Figure 2.3.x-Poem-Click.png">  <img height="150" src="figures/ch2/Figure 2.3.4-Poem-Random-640w.gif">
+<img height="150" src="figures/ch2/2.3.4 Poem-Think.png"> <img height="150" src="figures/ch2/2.3.x Poem-Shake-640w.gif">  <img height="150" src="figures/ch2/2.3.x Poem-Click.png">  <img height="150" src="figures/ch2/2.3.4 Poem-Random-640w.gif">
 
 
 Chapter 3 - Critical Design
@@ -24,4 +24,8 @@ Chapter 4 - On the Grid
 
 <img height="150" src="figures/ch4/ch4-outcome-lg.png"> <img height="150" src="figures/ch4/ch4-outcome-md.png"> <img height="150" src="figures/ch4/ch4-outcome-xs.png"> 
 
+
+Chapter 5 - Usability & Interactions
+
+<img height="150" src="figures/ch5/5.3.x Usability form prototype.png"> <img height="150" src="figures/ch5/5.3.x Usability results.png"> 
 
