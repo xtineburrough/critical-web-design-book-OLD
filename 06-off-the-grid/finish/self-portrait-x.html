@@ -8,13 +8,32 @@
   </head>
   <body>
     <div class="flex-container">
+      
       <div>
-        A radiant young woman</div>
+        A radiant</div> 
         <div>
-          to light the darkest</div>
+          young woman</div>
+        <div>
+          to light </div>
+        <div>
+          the darkest</div>
        <div>
-        corners of winter</div>
+        corners</div>
+        <div>
+          of winter</div>
+      
       </div>
+      <div><hr class="baseline"></div>
 
+      <script>
+        function randomize(){
+let elements = document.querySelectorAll("body *");
+elements.forEach(function(ele){
+    ele.style.transform = "rotate("+ Math.random()*360 +"deg)";
+})
+}
+document.addEventListener("click", randomize);
+
+      </script>
   </body>
 </html>
