@@ -9,14 +9,17 @@
         <link href="https://fonts.googleapis.com/css2?family=Anuphan&display=swap" rel="stylesheet">
 
         <style>
-            html,body {
+            html,
+            body {
                 margin: 0;
                 padding: 0;
-                /* gradient credit: https://codepen.io/billyysea/pen/nLroLY */
-                background: #82addb;
-                background: linear-gradient(to bottom, #82addb 0%,#ebb2b1 100%);
                 width: 100%;
                 height: 100%;
+                background-color: whitesmoke;
+                /* @@@ v2 @@@ uncomment code with these for a variation */
+                /* background: #82addb;
+                background: linear-gradient(to bottom, #82addb 0%,#ebb2b1 100%); */
+                /* gradient credit: https://codepen.io/billyysea/pen/nLroLY */
             }
 
             .text {
@@ -102,21 +105,29 @@
                     if (!word[i] || word[i] == "") continue;
 
                     // random
-                    // x = randomFloat(w * .2, w - (w * .2));
-                    // step across width of page
-                    x = randomFloat(w * (i / word.length), w * ((i + 1) / word.length));
-                    y = randomFloat(h * .3, h * .7);
+                    x = randomFloat(w * .25, w - (w * .25));
+                    y = randomFloat(h * .25, h * .75);
 
-                    // add char from string
+                    // add char from string 
                     str += `<span style="z-index: ${++z}; 
                         color: rgba(${randomInt(100, 255)},${randomInt(100, 255)},${randomInt(100, 255)},${randomFloat(0, 1)});
                         transform:                             
-                            translate(${x}px,${y}px) 
-                            rotate(${randomFloat(-50, 50)}deg) 
-                            scale(${randomFloat(2.5, 35)});">${word[i]}</span>`;
+                            translate(${x}px,${y}px)                             
+                            rotate(${randomFloat(0, 360)}deg) 
+                            scale(${randomFloat(2, 35)});">${word[i]}</span>`;
 
-                    // 50% of the time add a branch
-                    if (i > word.length * .4 || i < word.length * .6) {
+                    /* @@@ v2 @@@ uncomment code with these for a variation */
+                    // variation that adds letters across the width of the page
+                    // x = randomFloat(w * (i / word.length), w * ((i + 1) / word.length));
+                    // str += `<span style="z-index: ${++z}; 
+                    //     color: rgba(${randomInt(100, 255)},${randomInt(100, 255)},${randomInt(100, 255)},${randomFloat(0, 1)});
+                    //     transform:                             
+                    //         translate(${x}px,${y}px)                             
+                    //         rotate(${randomFloat(-50, 50)}deg) 
+                    //         scale(${randomFloat(2.5, 35)});">${word[i]}</span>`;
+
+                    // 15% of the time add a branch
+                    if (i > word.length * .85 || i < word.length * .6) {
                         str += `<span style="z-index: ${++z}; transform:                  
                                 translate(${x}px,${randomFloat(h * .2, h * .6)}px)
                                 rotate(${randomFloat(0, 360)}deg) 
