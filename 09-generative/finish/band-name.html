@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Critical Web Design</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Signika+Negative:wght@500&display=swap" rel="stylesheet">
+
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .album {
+                position: relative;
+                width: 600px;
+                height: 600px;
+                margin: auto;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+                color: white;
+            }
+            .bandName {
+                position: absolute;
+                padding: 1rem 1.5rem;
+                font-size: 2rem;   
+                font-family: 'Bungee Shade', cursive;
+            }
+            .albumBottom {
+                bottom: 0;
+            }
+            .albumRight {
+                right: 0;
+            }
+            .albumLeft {
+                left: 0;
+            }
+            .albumName {
+                margin: auto;
+                padding: 1rem 1.5rem;
+                font-size: 5rem;                
+                font-family: 'Signika Negative', sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="album">
+                <div class="albumBottom"></div>
+            </div>
+        </div>
+
+
+
+
+
+        <script type="module">
+
+            // import faker https://fakerjs.dev/api/
+            import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
+            // const randomName = faker.name.fullName();
+            // const randomEmail = faker.internet.email();
+
+
+            let albumEle = document.querySelector(".album");
+            // let animal = 
+            // 
+
+            let themes = [
+                "science",
+                "rock",
+                "ambient",
+                "random"
+            ]
+
+            // using an object also allows easier debugging
+            let band = {
+                name: faker.commerce.productMaterial() + " " + faker.vehicle.model(),
+                genre: faker.music.genre(),
+                album: {
+                    cover: faker.image.technics(), //faker.image.nightlife(),
+                    name: faker.science.chemicalElement().name,
+                    year: new Date(faker.date.between('1970', '2023')).getFullYear(),
+                    songs: [],
+                },
+                email: "",
+                website: "",
+                // band: "",
+                members: [],
+            }
+            band.website = band.name.replace(" ", "-").toLowerCase() + "." + faker.internet.domainSuffix();
+            band.email = "hello@" + band.website;
+            for (let i = 0; i < 10; i++) {
+                band.album.songs.push(faker.music.songName());
+            }
+            for (let i = 0; i < 4; i++) {
+                band.members.push(faker.name.fullName());
+            }
+
+
+console.log(band);
+
+            // albumEle.innerHTML = JSON.stringify(band)
+            albumEle.innerHTML = `
+            
+            <div class="albumName">${band.album.name}</div>
+            <div class="bandName albumBottom albumRight">${band.name}</div>
+            
+            `;
+
+            albumEle.style.backgroundImage = `url(${band.album.cover})`
+
+
+        </script>
+    </body>
+</html>
