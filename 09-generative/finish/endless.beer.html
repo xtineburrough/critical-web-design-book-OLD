@@ -30,7 +30,7 @@
             .bubbleWrapper {
                 position:relative;
                 z-index: 10;
-                background-color: rgba(0, 0, 0, .1);
+                /* background-color: rgba(0, 0, 0, .1); */
                 margin: 0 auto;
                 top:0;
                 width: 420px;
@@ -99,7 +99,7 @@
             }
             let addBubbleInterval = setInterval(function () {
                 addBubble();
-                if (bubbleCount > 100) clearInterval(addBubbleInterval);
+                if (bubbleCount > 200) clearInterval(addBubbleInterval);
             }, 500)
 
             /**
