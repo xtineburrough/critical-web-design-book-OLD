@@ -6,53 +6,116 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Signika+Negative:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Roboto&family=Signika+Negative:wght@500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/styles.css">
 
-        <style>
-            html,
-            body {
-                margin: 0;
-                padding: 0;
-            }
-
-            .album {
-                position: relative;
-                width: 600px;
-                height: 600px;
-                margin: auto;
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-position: center center;
-                color: white;
-            }
-            .bandName {
-                position: absolute;
-                padding: 1rem 1.5rem;
-                font-size: 2rem;   
-                font-family: 'Bungee Shade', cursive;
-            }
-            .albumBottom {
-                bottom: 0;
-            }
-            .albumRight {
-                right: 0;
-            }
-            .albumLeft {
-                left: 0;
-            }
-            .albumName {
-                margin: auto;
-                padding: 1rem 1.5rem;
-                font-size: 5rem;                
-                font-family: 'Signika Negative', sans-serif;
-            }
-        </style>
     </head>
     <body>
 
-        <div class="container">
-            <div class="album">
-                <div class="albumBottom"></div>
+
+        <div class="flex-container">
+            <form action="">
+                <div class="row">
+
+                    <label for="members" class="center-vertical">Band members</label>
+                    <input type="number" name="members" id="members" min="1" max="99" placeholder="?">
+
+                    <label for="location" class="center-vertical">Where we play</label>
+                    <select name="location" id="location">
+                        <option value="">?</option>
+                        <option value="youtube">youtube</option>
+                        <option value="garage">garage</option>
+                        <option value="basement">basement</option>
+                        <option value="park">park</option>
+                        <option value="parking-garage">parking garage</option>
+                        <option value="night-club">night club</option>
+                        <option value="arenas">arenas</option>
+                    </select>
+
+                    <label for="genre" class="center-vertical">Genre</label>
+                    <select name="genre" id="genre">
+                        <option value="">?</option>
+                        <option value="rock">Rock</option>
+                        <option value="metal">Metal</option>
+                        <option value="pop">Pop</option>
+                        <option value="electronic">Electronic</option>
+                        <option value="folk">Folk</option>
+                        <option value="world">World</option>
+                        <option value="country">Country</option>
+                        <option value="jazz">Jazz</option>
+                        <option value="funk">Funk</option>
+                        <option value="soul">Soul</option>
+                        <option value="hip-hop">Hip Hop</option>
+                        <option value="classical">Classical</option>
+                        <option value="latin">Latin</option>
+                        <option value="reggae">Reggae</option>
+                        <option value="stage">Stage And Screen</option>
+                        <option value="blues">Blues</option>
+                        <option value="non-music">Non Music</option>
+                        <option value="rap">Rap</option>
+
+                    </select>
+
+                    <button>Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="flex-container">
+
+            <div class="flex-column album albumFront">
+                <div class="albumName center-vertical">Album Name</div>
+
+                <div class="stickerWrapper">
+                    <div class="sticker">
+                        <div class="price">$9.99</div>
+                        <div class="genre">Easy Listening</div>
+                    </div>
+                </div>
+                <div class="bandName center-vertical">Band Name</div>
+            </div>
+
+            <div class="flex-column album albumBack">
+                <div class="albumBackOverlay">
+
+                    <div class='row songList'>
+                        <div class='column'>
+                            <div class="song">A Song</div>
+                            <div class="songCredits">Member 1, Member 2, Member 3</div>
+
+                            <div class="song">Another Song</div>
+                            <div class="songCredits">Member 1, Member 2, Member 3</div>
+
+                            <div class="song">Another Song (pt.2)</div>
+                            <div class="songCredits">Member 1, Member 2, Member 3</div>
+
+                            <div class="song">A Song (Redux)</div>
+                            <div class="songCredits">Member 1, Member 2, Member 3</div>
+                        </div>
+                        <div class='column'>
+                            <div class="song">Filler Song</div>
+                            <div class="songCredits">Member 1, Member 2, Member 3</div>
+
+                            <div class="song">Really Short Song</div>
+                            <div class="songCredits">Member 1, Member 2, Member 3</div>
+
+                            <div class="song">This is not a love song</div>
+                            <div class="songCredits">Member 1, Member 2, Member 3</div>
+                        </div>
+                    </div>
+
+                    <div class="promo">
+                        <div class="website">bandwebsite.com</div>
+                        <div class="email">mail@bandwebsite.com</div>
+                    </div>
+                    <div class='credits'>
+                        <div class="designer">Album Designer: A. Designer</div>
+                        <div class="producer">Producer: Sr. Producer</div>
+                        <div class="madeIn">Produced in Studio C, Paris France</div>
+                        <div class="copyright">&copy; 2323 Catnip Records</div>
+                    </div>
+
+                </div>
             </div>
         </div>
 
@@ -64,57 +127,59 @@
 
             // import faker https://fakerjs.dev/api/
             import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
-            // const randomName = faker.name.fullName();
-            // const randomEmail = faker.internet.email();
 
-
-            let albumEle = document.querySelector(".album");
-            // let animal = 
-            // 
-
-            let themes = [
-                "science",
-                "rock",
-                "ambient",
-                "random"
-            ]
-
-            // using an object also allows easier debugging
+            // create object (easier debugging)
             let band = {
-                name: faker.commerce.productMaterial() + " " + faker.vehicle.model(),
-                genre: faker.music.genre(),
-                album: {
-                    cover: faker.image.technics(), //faker.image.nightlife(),
-                    name: faker.science.chemicalElement().name,
-                    year: new Date(faker.date.between('1970', '2023')).getFullYear(),
-                    songs: [],
-                },
+                name: "Band Name", //faker.commerce.productMaterial() + " " + faker.vehicle.model(),
+                genre: "Genre", //faker.music.genre(),
                 email: "",
                 website: "",
-                // band: "",
                 members: [],
+                album: {
+                    cover: "", //faker.image.technics(), //faker.image.nightlife(),
+                    back: "",
+                    name: "Album Name", //faker.science.chemicalElement().name,
+                    year: 2323, //fnew Date(faker.date.between('1970', '2023')).getFullYear(),
+                    songs: [],
+                    credits: "",
+                },
             }
-            band.website = band.name.replace(" ", "-").toLowerCase() + "." + faker.internet.domainSuffix();
-            band.email = "hello@" + band.website;
-            for (let i = 0; i < 10; i++) {
-                band.album.songs.push(faker.music.songName());
-            }
-            for (let i = 0; i < 4; i++) {
-                band.members.push(faker.name.fullName());
-            }
+            band.website = band.name.replace(" ", "-").toLowerCase() + "." + "com", //faker.internet.domainSuffix();
+                band.email = "hello@" + band.website;
+            // for (let i = 0; i < 10; i++) {
+            //     band.album.songs.push(faker.music.songName());
+            // }
+            // for (let i = 0; i < 4; i++) {
+            //     band.members.push(faker.name.fullName());
+            // }
 
 
-console.log(band);
+
+            // $articles=array ('the','that','the','the','the','the','that','the','the','them','the','that','the','the','the');
+
+            // //where-article
+            // // if members > 1 then add "the" or "them" or "that"
+            // $where=$_GET ["members"];
+            // $word3=rand(0,14);
+            // if ($where > 1 )
+            // $name .= $articles[$word3] ." ";
+
+
+
+
+
+            console.log(band);
 
             // albumEle.innerHTML = JSON.stringify(band)
-            albumEle.innerHTML = `
-            
-            <div class="albumName">${band.album.name}</div>
-            <div class="bandName albumBottom albumRight">${band.name}</div>
-            
-            `;
 
-            albumEle.style.backgroundImage = `url(${band.album.cover})`
+            // document.querySelector(".albumFront").style.backgroundImage = `url(${band.album.cover})`;
+            // document.querySelector(".albumBack").style.backgroundImage = `url(${band.album.back})`;
+
+            // document.querySelector(".albumName").innerHTML = band.album.name;
+            // document.querySelector(".bandName").innerHTML = band.name;
+
+
+
 
 
         </script>
