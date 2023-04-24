@@ -6,7 +6,8 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Roboto&family=Signika+Negative:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Castoro+Titling&family=Roboto&display=swap" rel="stylesheet">
+
         <link rel="stylesheet" href="assets/css/styles.css">
 
     </head>
@@ -14,14 +15,14 @@
 
 
         <div class="flex-container">
-            <form action="">
+            <form action="" id="bandNameForm">
                 <div class="row">
 
-                    <label for="members" class="center-vertical">Band members</label>
-                    <input type="number" name="members" id="members" min="1" max="99" placeholder="?">
+                    <label for="membersInput" class="center-vertical">Band members</label>
+                    <input type="number" name="membersInput" id="membersInput" min="1" max="99" placeholder="?">
 
-                    <label for="location" class="center-vertical">Where we play</label>
-                    <select name="location" id="location">
+                    <label for="locationSelect" class="center-vertical">Where we play</label>
+                    <select name="locationSelect" id="locationSelect">
                         <option value="">?</option>
                         <option value="youtube">youtube</option>
                         <option value="garage">garage</option>
@@ -32,8 +33,8 @@
                         <option value="arenas">arenas</option>
                     </select>
 
-                    <label for="genre" class="center-vertical">Genre</label>
-                    <select name="genre" id="genre">
+                    <label for="genreSelect" class="center-vertical">Genre</label>
+                    <select name="genreSelect" id="genreSelect">
                         <option value="">?</option>
                         <option value="rock">Rock</option>
                         <option value="metal">Metal</option>
@@ -53,15 +54,14 @@
                         <option value="blues">Blues</option>
                         <option value="non-music">Non Music</option>
                         <option value="rap">Rap</option>
-
                     </select>
 
-                    <button>Submit</button>
+                    <button type="submit" id="submit">Submit</button>
                 </div>
             </form>
         </div>
 
-        <div class="flex-container">
+        <div class="flex-container" id="albumWrapper" style="display: none;">
 
             <div class="flex-column album albumFront">
                 <div class="albumName center-vertical">Album Name</div>
@@ -79,46 +79,70 @@
                 <div class="albumBackOverlay">
 
                     <div class='row songList'>
-                        <div class='column'>
-                            <div class="song">A Song</div>
-                            <div class="songCredits">Member 1, Member 2, Member 3</div>
+                        <div class='column songListInner'>
 
-                            <div class="song">Another Song</div>
-                            <div class="songCredits">Member 1, Member 2, Member 3</div>
+                            <div class="song">
+                                <span class="songTitle">A Song</span>
+                                <span class="songLength">4:21</span>
+                                <span class="songCredits">Member 1, Member 2, Member 3</span>
+                            </div>
 
-                            <div class="song">Another Song (pt.2)</div>
-                            <div class="songCredits">Member 1, Member 2, Member 3</div>
+                            <div class="song">
+                                <span class="songTitle">Another Song</span>
+                                <span class="songLength">4:21</span>
+                                <span class="songCredits">Member 1, Member 2, Member 3</span>
+                            </div>
 
-                            <div class="song">A Song (Redux)</div>
-                            <div class="songCredits">Member 1, Member 2, Member 3</div>
-                        </div>
-                        <div class='column'>
-                            <div class="song">Filler Song</div>
-                            <div class="songCredits">Member 1, Member 2, Member 3</div>
+                            <div class="song">
+                                <span class="songTitle">Another Song (pt.2)</span>
+                                <span class="songLength">4:21</span>
+                                <span class="songCredits">Member 1, Member 2, Member 3</span>
+                            </div>
 
-                            <div class="song">Really Short Song</div>
-                            <div class="songCredits">Member 1, Member 2, Member 3</div>
+                            <div class="song">
+                                <span class="songTitle">A Song (Redux)</span>
+                                <span class="songLength">4:21</span>
+                                <span class="songCredits">Member 1, Member 2, Member 3</span>
+                            </div>
 
-                            <div class="song">This is not a love song</div>
-                            <div class="songCredits">Member 1, Member 2, Member 3</div>
+                            <div class="song">
+                                <span class="songTitle">Short Song</span>
+                                <span class="songLength">4:21</span>
+                                <span class="songCredits">Member 1, Member 2, Member 3</span>
+                            </div>
+
+                            <div class="song">
+                                <span class="songTitle">Really Short Song</span>
+                                <span class="songLength">4:21</span>
+                                <span class="songCredits">Member 1, Member 2, Member 3</span>
+                            </div>
+
+                            <div class="song">
+                                <span class="songTitle">This is not a love song</span>
+                                <span class="songLength">4:21</span>
+                                <span class="songCredits">Member 1, Member 2, Member 3</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="promo">
-                        <div class="website">bandwebsite.com</div>
-                        <div class="email">mail@bandwebsite.com</div>
-                    </div>
                     <div class='credits'>
                         <div class="designer">Album Designer: A. Designer</div>
                         <div class="producer">Producer: Sr. Producer</div>
-                        <div class="madeIn">Produced in Studio C, Paris France</div>
+                        <div class="location">Location</div>
                         <div class="copyright">&copy; 2323 Catnip Records</div>
+                        <div class="promo">
+                            <span class="website">bandwebsite.com</span> /
+                            <span class="email">mail@bandwebsite.com</span>
+                        </div>
                     </div>
 
                 </div>
             </div>
         </div>
 
+        <div class="flex-container">
+            <pre class="debug"></pre>
+        </div>
 
 
 
@@ -128,60 +152,187 @@
             // import faker https://fakerjs.dev/api/
             import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
 
-            // create object (easier debugging)
-            let band = {
-                name: "Band Name", //faker.commerce.productMaterial() + " " + faker.vehicle.model(),
-                genre: "Genre", //faker.music.genre(),
-                email: "",
-                website: "",
-                members: [],
-                album: {
-                    cover: "", //faker.image.technics(), //faker.image.nightlife(),
-                    back: "",
-                    name: "Album Name", //faker.science.chemicalElement().name,
-                    year: 2323, //fnew Date(faker.date.between('1970', '2023')).getFullYear(),
-                    songs: [],
-                    credits: "",
-                },
+            // the band object is globally accessible, and easier to debug
+            let band = {};
+
+            // main function for the program, a convention used in other languages
+            function main() {
+
+                // update band object
+                band = {
+                    name: faker.commerce.productMaterial() + " " + faker.vehicle.model(),
+                    email: "",
+                    website: "",
+                    members: [],
+                    album: {
+                        name: faker.science.chemicalElement().name,
+                        cover: faker.image.abstract(800, 800),
+                        back: faker.image.animals(800, 800),
+                        songs: [],
+                        genre: faker.music.genre(),
+                        price: "$" + randomInt(5, 9) + ".99",
+                        stickerColor: `rgb(${randomInt(50, 255)},${randomInt(0, 55)},${randomInt(50, 255)})`,
+                        designer: faker.name.fullName(),
+                        producer: faker.name.fullName(),
+                        location: `${faker.address.streetAddress()}, ${faker.address.city()}, ${faker.address.stateAbbr()}`,
+                        year: new Date(faker.date.between('1970', '2023')).getFullYear(),
+                    },
+                }
+
+                // update specific properties of band object 
+
+
+
+                // PROMO
+
+                band.website = band.name.replace(" ", "-").toLowerCase() + "." + faker.internet.domainSuffix();
+                band.email = "band@" + band.website;
+
+
+
+                // MEMBERS 
+
+                // default to random
+                let memberCount = randomInt(3, 10);
+                // if form element is set then use it
+                let membersInput = document.querySelector("#membersInput");
+                if (membersInput && membersInput.value != "") {
+                    memberCount = membersInput.value;
+                }
+                band.members = faker.helpers.uniqueArray(faker.name.fullName, memberCount);
+
+                // if more than one member, add a "The" 50% of the time 
+                if (memberCount > 1 && randomFloat(0, 10) > 5) {
+                    band.name = "The " + band.name;
+                }
+
+
+                // SONGS
+
+                // choose random 
+                let songCount = randomInt(3, 10);
+                // loop and add the number chosen 
+                for (let i = 0; i < songCount; i++) {
+
+                    // number of words in the title
+                    let wordsInTitle = randomInt(1, 4);
+                    // variable to hold the words
+                    let songTitle = "";
+                    // loop and words
+                    for (let j = 0; j < wordsInTitle; j++) {
+                        // add space between words
+                        if (j > 0) songTitle += " ";
+                        // add word, capitalized
+                        songTitle += capitalizeFirstLetter(faker.random.word().trim());
+                    }
+
+                    // random number to determine additions to song names
+                    let r = randomInt(0, 100);
+                    if (r <= 10)
+                        songTitle = "A " + songTitle;
+                    else if (r <= 30)
+                        songTitle = "The " + songTitle;
+
+                    if (r > 90)
+                        songTitle = songTitle + " in Love";
+                    else if (r > 80 && r < 90)
+                        songTitle = songTitle + " (pt.2)";
+
+                    // push song to array
+                    band.album.songs.push(songTitle);
+                }
+
+                // GENRE 
+
+                // add "Select" so we don't overlap with display of data later
+                let genreSelect = document.querySelector("#genreSelect");
+                // if form element is set, otherwise use random
+                if (genreSelect && genreSelect.selectedIndex > 0) {
+                    band.album.genre = genreSelect.options[genreSelect.selectedIndex].value;
+                }
+
+                // DEBUG
+
+                // debug => show on page
+                document.querySelector(".debug").innerHTML = JSON.stringify(band, null, '\t');
+                // debug => show in console
+                console.log(band);
+
+
+
+
+                // images
+                document.querySelector(".albumFront").style.backgroundImage = `url(${band.album.cover})`;
+                document.querySelector(".albumBack").style.backgroundImage = `url(${band.album.back})`;
+                // front
+                document.querySelector(".albumName").innerHTML = band.album.name;
+                document.querySelector(".bandName").innerHTML = band.name;
+                // sticker
+                document.querySelector(".genre").innerHTML = band.album.genre;
+                document.querySelector(".price").innerHTML = band.album.price;
+                document.querySelector(".sticker").style.backgroundColor = band.album.stickerColor;
+                document.querySelector(".sticker").style.transform = `scale(.8) rotate(${randomInt(-25, 25)}deg)`;
+                // credits 
+                document.querySelector(".website").innerHTML = band.website;
+                document.querySelector(".email").innerHTML = band.email;
+                document.querySelector(".designer").innerHTML = `Album design by ${band.album.designer}`;
+                document.querySelector(".producer").innerHTML = `Produced by ${band.album.producer}`;
+                document.querySelector(".location").innerHTML = `Produced in Studio C, ${band.album.location}`;
+                // songs
+                let songStr = "";
+                for (let i = 0; i < band.album.songs.length; i++) {
+                    songStr += `
+                        <div class="song">
+                            <span class="songTitle">${band.album.songs[i]}</span>
+                            <span class="songLength">(4:21)</span>
+                            <span class="songCredits">${band.members[randomInt(0, band.members.length - 1)]}</span>
+                        </div>
+                     `;
+                }
+
+                document.querySelector(".songListInner").innerHTML = songStr;
+
+
+                // Wrapper is set to display: none by default to avoid flash of non-style elements.
+                // This will enable display of albums now that data has been added to page 
+                document.querySelector("#albumWrapper").style.display = "flex";
             }
-            band.website = band.name.replace(" ", "-").toLowerCase() + "." + "com", //faker.internet.domainSuffix();
-                band.email = "hello@" + band.website;
-            // for (let i = 0; i < 10; i++) {
-            //     band.album.songs.push(faker.music.songName());
-            // }
-            // for (let i = 0; i < 4; i++) {
-            //     band.members.push(faker.name.fullName());
-            // }
-
-
-
-            // $articles=array ('the','that','the','the','the','the','that','the','the','them','the','that','the','the','the');
-
-            // //where-article
-            // // if members > 1 then add "the" or "them" or "that"
-            // $where=$_GET ["members"];
-            // $word3=rand(0,14);
-            // if ($where > 1 )
-            // $name .= $articles[$word3] ." ";
+            main();
 
 
 
 
 
-            console.log(band);
+            // LISTENERS
 
-            // albumEle.innerHTML = JSON.stringify(band)
-
-            // document.querySelector(".albumFront").style.backgroundImage = `url(${band.album.cover})`;
-            // document.querySelector(".albumBack").style.backgroundImage = `url(${band.album.back})`;
-
-            // document.querySelector(".albumName").innerHTML = band.album.name;
-            // document.querySelector(".bandName").innerHTML = band.name;
+            document.querySelector("#bandNameForm").addEventListener("submit", function (e) {
+                e.preventDefault();
+                main();
+            })
 
 
 
 
+            // FUNCTIONS
 
+            /**
+             *  Return a random floating point value between min (inclusive) and max (inclusive)
+             */
+            function randomFloat(min, max) {
+                return Math.random() * (max - min + 1) + min;
+            }
+            /**
+             *  Return a random integer between min (inclusive) and max (inclusive)
+             */
+            function randomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            /**
+             *  Capitalize first letter of string. Credit: https://stackoverflow.com/a/1026087/441878
+             */
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
         </script>
     </body>
 </html>
