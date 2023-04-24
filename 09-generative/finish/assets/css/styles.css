@@ -90,7 +90,7 @@ ALIGN = Cross-axis item alignment
 .album {
     width: 600px;
     height: 600px;
-    background-size: cover;
+    background-size: 120% 120%;
     background-repeat: no-repeat;
     background-position: center center;
     color: white;

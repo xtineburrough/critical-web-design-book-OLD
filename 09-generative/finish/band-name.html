@@ -21,8 +21,8 @@
                     <label for="membersInput" class="center-vertical">Band members</label>
                     <input type="number" name="membersInput" id="membersInput" min="1" max="99" placeholder="?">
 
-                    <label for="locationSelect" class="center-vertical">Where we play</label>
-                    <select name="locationSelect" id="locationSelect">
+                    <label for="venueSelect" class="center-vertical">Perform at</label>
+                    <select name="venueSelect" id="venueSelect">
                         <option value="">?</option>
                         <option value="youtube">youtube</option>
                         <option value="garage">garage</option>
@@ -30,7 +30,8 @@
                         <option value="park">park</option>
                         <option value="parking-garage">parking garage</option>
                         <option value="night-club">night club</option>
-                        <option value="arenas">arenas</option>
+                        <option value="night-club">inaugurations</option>
+                        <option value="arenas">sold-out arenas</option>
                     </select>
 
                     <label for="genreSelect" class="center-vertical">Genre</label>
@@ -66,7 +67,7 @@
             <div class="flex-column album albumFront">
                 <div class="albumName center-vertical">Album Name</div>
 
-                <div class="stickerWrapper">
+                <div class="stickerWrapper" style="display: none;">
                     <div class="sticker">
                         <div class="price">$9.99</div>
                         <div class="genre">Easy Listening</div>
@@ -140,10 +141,9 @@
             </div>
         </div>
 
-        <div class="flex-container">
+        <div class="flex-container" style="display:flex">
             <pre class="debug"></pre>
         </div>
-
 
 
 
@@ -156,21 +156,22 @@
             let band = {};
 
             // main function for the program, a convention used in other languages
-            function main() {
+            function generate() {
 
                 // update band object
                 band = {
-                    name: faker.commerce.productMaterial() + " " + faker.vehicle.model(),
+                    name: "",
                     email: "",
                     website: "",
+                    venue: "",
                     members: [],
                     album: {
-                        name: faker.science.chemicalElement().name,
+                        name: "",
                         cover: faker.image.abstract(800, 800),
                         back: faker.image.animals(800, 800),
                         songs: [],
                         genre: faker.music.genre(),
-                        price: "$" + randomInt(5, 9) + ".99",
+                        price: "",
                         stickerColor: `rgb(${randomInt(50, 255)},${randomInt(0, 55)},${randomInt(50, 255)})`,
                         designer: faker.name.fullName(),
                         producer: faker.name.fullName(),
@@ -178,16 +179,85 @@
                         year: new Date(faker.date.between('1970', '2023')).getFullYear(),
                     },
                 }
-
-                // update specific properties of band object 
-
+                // ... then update specific properties of band object 
 
 
-                // PROMO
+                // GENRE 
+
+                // get reference
+                // add "Select" so we don't overlap with display of data later
+                let genreSelect = document.querySelector("#genreSelect");
+                // if form element is set, otherwise use random
+                if (genreSelect && genreSelect.selectedIndex > 0) {
+                    band.album.genre = genreSelect.options[genreSelect.selectedIndex].value;
+                } else {
+                    let randomGenreIndex = randomInt(1, genreSelect.options.length - 1);
+                    // set random
+                    genreSelect.options[randomGenreIndex].selected = true;
+                    // store for generating band name
+                    band.album.genre = genreSelect.options[randomGenreIndex].value;
+                }
+
+                // genre determines band name
+                if (band.album.genre == "rock" || band.album.genre == "pop") {
+                    band.album.name = faker.science.chemicalElement().name
+                    band.name = faker.commerce.productMaterial() + " " + faker.vehicle.model();
+                } else if (band.album.genre == "metal") {
+                    band.name = faker.commerce.productMaterial();
+                    band.album.name = faker.company.bs();
+                } else if (band.album.genre == "rap" || band.album.genre == "hip-hop") {
+                    band.album.name = faker.company.bs();
+                    band.name = faker.word.adjective() + " " + faker.finance.creditCardIssuer();
+                } else if (band.album.genre == "country" || band.album.genre == "folk" || band.album.genre == "blues") {
+                    band.album.name = "We " + faker.word.verb(8);
+                    band.name = faker.name.fullName() + " and the " + faker.address.state() + " " + faker.vehicle.manufacturer();
+                } else if (band.album.genre == "electronic") {
+                    band.album.name = faker.company.bs();
+                    band.name = "DJ " + faker.hacker.abbreviation();
+                } else if (band.album.genre == "reggae") {
+                    band.album.name = "Ja " + faker.word.noun(8);
+                    band.name = faker.word.interjection() + " " + faker.animal.type();
+                } else if (band.album.genre == "non-music") {
+                    band.album.name = faker.company.bs();
+                    band.name = faker.name.fullName();
+                } else if (band.album.genre == "jazz" || band.album.genre == "funk" || band.album.genre == "soul") {
+                    band.album.name = faker.word.verb(100);
+                    band.name = faker.vehicle.fuel();
+                } else if (band.album.genre == "world") {
+                    band.album.name = faker.word.verb(100);
+                    band.name = faker.company.bsBuzz();
+                } else if (band.album.genre == "classical" || band.album.genre == "stage" || band.album.genre == "latin") {
+                    band.album.name = faker.word.noun(100);
+                    band.name = faker.name.fullName();
+                }
+
+
+                // VENUE 
+
+                // get reference
+                let venueSelect = document.querySelector("#venueSelect");
+                // if form element is set, otherwise use random
+                if (venueSelect && venueSelect.selectedIndex > 0) {
+                    band.venue = venueSelect.options[venueSelect.selectedIndex].value;
+                } else {
+                    let randomVenueIndex = randomInt(1, venueSelect.options.length - 1);
+                    // set random
+                    venueSelect.options[randomVenueIndex].selected = true;
+                    // store for generating album name
+                    band.venue = venueSelect.options[randomVenueIndex].value;
+                }
+                if (band.venue == "youtube")
+                    band.album.price = "$2.99"
+                else if (band.venue == "garage" || band.venue == "basement" || band.venue == "park")
+                    band.album.price = "$3.99"
+                else
+                    band.album.price = "$" + randomInt(5, 9) + ".99"
+
+
+                // INTERNET
 
                 band.website = band.name.replace(" ", "-").toLowerCase() + "." + faker.internet.domainSuffix();
                 band.email = "band@" + band.website;
-
 
 
                 // MEMBERS 
@@ -198,6 +268,9 @@
                 let membersInput = document.querySelector("#membersInput");
                 if (membersInput && membersInput.value != "") {
                     memberCount = membersInput.value;
+                } else {
+                    // if not, then display default random variable
+                    membersInput.value = memberCount;
                 }
                 band.members = faker.helpers.uniqueArray(faker.name.fullName, memberCount);
 
@@ -209,8 +282,8 @@
 
                 // SONGS
 
-                // choose random 
-                let songCount = randomInt(3, 10);
+                // choose random number of songs
+                let songCount = randomInt(4, 11);
                 // loop and add the number chosen 
                 for (let i = 0; i < songCount; i++) {
 
@@ -233,23 +306,19 @@
                     else if (r <= 30)
                         songTitle = "The " + songTitle;
 
-                    if (r > 90)
+                    if (r >= 95)
                         songTitle = songTitle + " in Love";
-                    else if (r > 80 && r < 90)
+                    else if (r >= 90 && r < 93)
+                        songTitle = songTitle + ` (ft. ${faker.name.fullName()})`;
+                    else if (r >= 85 && r < 90)
+                        songTitle = songTitle + " (pt.1)";
+                    else if (r >= 80 && r < 85)
                         songTitle = songTitle + " (pt.2)";
 
                     // push song to array
                     band.album.songs.push(songTitle);
                 }
 
-                // GENRE 
-
-                // add "Select" so we don't overlap with display of data later
-                let genreSelect = document.querySelector("#genreSelect");
-                // if form element is set, otherwise use random
-                if (genreSelect && genreSelect.selectedIndex > 0) {
-                    band.album.genre = genreSelect.options[genreSelect.selectedIndex].value;
-                }
 
                 // DEBUG
 
@@ -258,9 +327,12 @@
                 // debug => show in console
                 console.log(band);
 
+                display();
+            }
+            generate();
 
 
-
+            function display(){
                 // images
                 document.querySelector(".albumFront").style.backgroundImage = `url(${band.album.cover})`;
                 document.querySelector(".albumBack").style.backgroundImage = `url(${band.album.back})`;
@@ -279,17 +351,17 @@
                 document.querySelector(".producer").innerHTML = `Produced by ${band.album.producer}`;
                 document.querySelector(".location").innerHTML = `Produced in Studio C, ${band.album.location}`;
                 // songs
+                // document.querySelector(".albumBackOverlay").style.backgroundColor = faker.color.rgb();
                 let songStr = "";
                 for (let i = 0; i < band.album.songs.length; i++) {
                     songStr += `
                         <div class="song">
                             <span class="songTitle">${band.album.songs[i]}</span>
-                            <span class="songLength">(4:21)</span>
+                            <span class="songLength">(${randomInt(1, 9)}:${randomInt(0, 5)}${randomInt(0, 9)})</span>
                             <span class="songCredits">${band.members[randomInt(0, band.members.length - 1)]}</span>
                         </div>
-                     `;
+                    `;
                 }
-
                 document.querySelector(".songListInner").innerHTML = songStr;
 
 
@@ -297,8 +369,6 @@
                 // This will enable display of albums now that data has been added to page 
                 document.querySelector("#albumWrapper").style.display = "flex";
             }
-            main();
-
 
 
 
@@ -307,7 +377,7 @@
 
             document.querySelector("#bandNameForm").addEventListener("submit", function (e) {
                 e.preventDefault();
-                main();
+                generate();
             })
 
 
