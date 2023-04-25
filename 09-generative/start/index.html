@@ -62,12 +62,13 @@
             </form>
         </div>
 
-        <div class="flex-container" id="albumWrapper" style="display: none;">
+        <!-- style="display: none;" -->
+        <div class="flex-container" id="albumWrapper">
 
             <div class="flex-column album albumFront">
                 <div class="albumName center-vertical">Album Name</div>
 
-                <div class="stickerWrapper">
+                <div class="stickerWrapper" style="display: none;">
                     <div class="sticker">
                         <div class="price">$9.99</div>
                         <div class="genre">Easy Listening</div>
@@ -146,8 +147,31 @@
         </div>
 
 
-        
+        <script type="module">
 
-       
+            // 1. import faker
+            import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
+
+            // 2. test music genre
+            let genre = faker.music.genre();
+            console.log(genre);
+
+            // 3. get a band name
+            let name = faker.word.noun() + " " + faker.word.noun();
+  
+            // 4. update name
+            if (genre == "Rock") {
+                name = faker.commerce.productMaterial() + " " + faker.vehicle.model();
+            } else if (genre == "Electronic") {
+                name = "DJ " + faker.hacker.abbreviation();
+            }
+            console.log(name);
+
+            // 5. update the page
+            document.querySelector(".bandName").innerHTML = name;
+
+        </script>
+
+
     </body>
 </html>
