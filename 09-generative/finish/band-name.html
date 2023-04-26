@@ -169,6 +169,7 @@
                         name: "",
                         cover: faker.image.abstract(800, 800),
                         back: faker.image.animals(800, 800),
+                        overlayColor: "",
                         songs: [],
                         genre: faker.music.genre(),
                         price: "",
@@ -201,6 +202,7 @@
                 // genre determines band name
                 if (band.album.genre == "rock" || band.album.genre == "pop") {
                     band.album.name = faker.science.chemicalElement().name
+                    band.album.overlayColor = 
                     band.name = faker.commerce.productMaterial() + " " + faker.vehicle.model();
                 } else if (band.album.genre == "metal") {
                     band.name = faker.commerce.productMaterial();
@@ -351,7 +353,7 @@
                 document.querySelector(".producer").innerHTML = `Produced by ${band.album.producer}`;
                 document.querySelector(".location").innerHTML = `Produced in Studio C, ${band.album.location}`;
                 // songs
-                // document.querySelector(".albumBackOverlay").style.backgroundColor = faker.color.rgb();
+                document.querySelector(".albumBackOverlay").style.backgroundColor = faker.color.rgb();
                 let songStr = "";
                 for (let i = 0; i < band.album.songs.length; i++) {
                     songStr += `
