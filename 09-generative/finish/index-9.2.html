@@ -167,19 +167,13 @@
                     name = "DJ " + faker.hacker.abbreviation();
                 }
 
-                // 3. 
-
-
-
-
-
-                //add songs
+                // 4. add songs
                 let songs = [];
                 let songCount = randomInt(4, 11);
                 for (let i = 0; i < songCount; i++) {
-                    let wordCount = randomInt(1, 4);
                     let songTitle = "";
-                    for (let j = 0; j < wordCount; j++) {
+                    let wordCount = randomInt(1, 4);
+                    while (--wordCount >= 0) {
                         songTitle += upperCaseFirst(faker.random.word()) + " ";
                     }
                     songs.push(songTitle);
@@ -201,10 +195,19 @@
                 document.querySelector(".producer").innerHTML = "Produced by " + faker.name.fullName();
 
 
+                let songStr = "";
+                for (let i = 0; i < songs.length; i++) {
+                    songStr += `
+                        <div class="song">
+                            <span class="songTitle">${songs[i]}</span>
+                        </div>
+                    `;
+                }
+                document.querySelector(".songListInner").innerHTML = songStr;
+
+
+                // display album
                 document.querySelector("#albumWrapper").style.display = "flex";
-
-
-                console.log(name, genre);
             }
             // 2. call function
             generate();
