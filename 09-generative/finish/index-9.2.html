@@ -62,7 +62,6 @@
             </form>
         </div>
 
-        <!-- style="display: none;" -->
         <div class="flex-container" id="albumWrapper">
 
             <div class="flex-column album albumFront">
@@ -146,14 +145,18 @@
             <pre class="debug"></pre>
         </div>
 
+        <!-- helper functions for this module -->
+        <script src="assets/js/functions.js"></script>
 
         <script type="module">
 
-            // 1 import faker
+            // import faker
             import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
 
-            // 2
+            // 1. wrap code in function
             function generate() {
+
+                ///// GENERATE INITIAL DATA //////
 
                 let name = faker.word.noun() + " " + faker.word.noun();
                 let genre = faker.music.genre();
@@ -164,26 +167,46 @@
                     name = "DJ " + faker.hacker.abbreviation();
                 }
 
+                // 3. 
 
+
+
+
+
+                //add songs
                 let songs = [];
                 let songCount = randomInt(4, 11);
                 for (let i = 0; i < songCount; i++) {
-                    songs = ""
+                    let wordCount = randomInt(1, 4);
+                    let songTitle = "";
+                    for (let j = 0; j < wordCount; j++) {
+                        songTitle += upperCaseFirst(faker.random.word()) + " ";
+                    }
+                    songs.push(songTitle);
                 }
+                console.log(songs);
 
 
+                ///// INSERT DATA INTO PAGE //////
 
                 // update the page
                 document.querySelector(".bandName").innerHTML = name;
+
+                // 4. add images
+                document.querySelector(".albumFront").style.backgroundImage = `url(${faker.image.abstract(800, 800)})`;
+                document.querySelector(".albumBack").style.backgroundImage = `url(${faker.image.animals(800, 800)})`;
 
                 // back
                 document.querySelector(".designer").innerHTML = "Album design by " + faker.name.fullName();
                 document.querySelector(".producer").innerHTML = "Produced by " + faker.name.fullName();
 
 
+                document.querySelector("#albumWrapper").style.display = "flex";
+
 
                 console.log(name, genre);
             }
+            // 2. call function
             generate();
 
 

@@ -146,6 +146,8 @@
         </div>
 
 
+        <!-- helper functions for this module -->
+        <script src="assets/js/functions.js"></script>
 
         <script type="module">
 
@@ -298,7 +300,7 @@
                         // add space between words
                         if (j > 0) songTitle += " ";
                         // add word, capitalized
-                        songTitle += capitalizeFirstLetter(faker.random.word().trim());
+                        songTitle += upperCaseFirst(faker.random.word().trim());
                     }
 
                     // random number to determine additions to song names
@@ -383,28 +385,6 @@
             })
 
 
-
-
-            // FUNCTIONS
-
-            /**
-             *  Return a random floating point value between min (inclusive) and max (inclusive)
-             */
-            function randomFloat(min, max) {
-                return Math.random() * (max - min + 1) + min;
-            }
-            /**
-             *  Return a random integer between min (inclusive) and max (inclusive)
-             */
-            function randomInt(min, max) {
-                return Math.floor(Math.random() * (max - min + 1)) + min;
-            }
-            /**
-             *  Capitalize first letter of string. Credit: https://stackoverflow.com/a/1026087/441878
-             */
-            function capitalizeFirstLetter(string) {
-                return string.charAt(0).toUpperCase() + string.slice(1);
-            }
         </script>
     </body>
 </html>
