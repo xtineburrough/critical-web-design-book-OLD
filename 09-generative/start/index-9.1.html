@@ -147,6 +147,31 @@
         </div>
 
 
+        <script type="module">
+
+            // 1. import faker
+            import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
+
+            // 2. test music genre
+            let genre = faker.music.genre();
+            console.log(genre);
+
+            // 3. get a band name
+            let name = faker.word.noun() + " " + faker.word.noun();
+  
+            // 4. update name
+            if (genre == "Rock") {
+                name = faker.commerce.productMaterial() + " " + faker.vehicle.model();
+            } else if (genre == "Electronic") {
+                name = "DJ " + faker.hacker.abbreviation();
+            }
+            console.log(name);
+
+            // 5. update the page
+            document.querySelector(".bandName").innerHTML = name;
+
+        </script>
+
 
     </body>
 </html>

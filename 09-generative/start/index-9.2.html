@@ -147,6 +147,53 @@
         </div>
 
 
+        <script type="module">
+
+            // 1. import faker
+            import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
+
+            // 1
+            let name, genre, albumName, songs;
+
+            // 2
+            function generate() {
+
+                name = faker.word.noun() + " " + faker.word.noun();
+                genre = faker.music.genre();
+
+                if (genre == "Rock") {
+                    name = faker.commerce.productMaterial() + " " + faker.vehicle.model();
+                } else if (genre == "Electronic") {
+                    name = "DJ " + faker.hacker.abbreviation();
+                }
+
+
+
+                let songCount = randomInt(4, 11);
+                for (let i = 0; i < songCount; i++) {
+                    songs = ""
+                }
+
+
+
+                // update the page
+                document.querySelector(".bandName").innerHTML = name;
+
+                // back
+                document.querySelector(".designer").innerHTML = "Album design by " + faker.name.fullName();
+                document.querySelector(".producer").innerHTML = "Produced by " + faker.name.fullName();
+
+
+
+                console.log(name, genre);
+            }
+            generate();
+
+
+
+
+        </script>
+
 
     </body>
 </html>
