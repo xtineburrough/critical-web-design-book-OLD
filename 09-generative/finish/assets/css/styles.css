@@ -56,7 +56,6 @@ ALIGN = Cross-axis item alignment
     justify-content: center;
     /* cross-axis item alignment  */
     align-items: center;
-
 }
 
 /* a flex item, and flex column */
@@ -94,7 +93,7 @@ ALIGN = Cross-axis item alignment
     background-repeat: no-repeat;
     background-position: center center;
     color: white;
-    text-shadow: 2px 2px rgba(0,0,0,.2);
+    text-shadow: 2px 2px rgba(0, 0, 0, .2);
     background-color: midnightblue;
 }
 
@@ -139,6 +138,7 @@ ALIGN = Cross-axis item alignment
     display: flex;
     align-items: center;
 }
+
 .genre {
     flex-grow: 1;
 }
@@ -181,16 +181,21 @@ ALIGN = Cross-axis item alignment
 .song {
     margin: .5rem 0;
 }
+
 .songTitle {
     margin: 0 .2rem 0 0;
 }
-.songLength, .songCredits {
+
+.songLength,
+.songCredits {
     font-size: .9rem;
     opacity: .4;
 }
+
 .songLength {
     margin: 0 .2rem 0 0;
 }
+
 .credits {
     justify-self: end;
     display: flex;
@@ -231,4 +236,28 @@ button {
     margin-left: .8rem;
     border-radius: .5rem;
     background-color: aquamarine;
+}
+
+
+.lyrics {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.lyricWrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 2rem;
+    color: cadetblue
+}
+
+.lyricTitle {
+    margin: 2rem 0 .5rem 0;
+}
+
+.lyricVerse {
+    margin: .5rem 0 0;
 }
