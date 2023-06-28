@@ -5,132 +5,99 @@
         <title>Critical Web Design</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-
-
         <style>
-            .card-img {
-                width: 100%;
-                height: 180px;
-                background-repeat: no-repeat;
-                background-position: center center;
-                background-size: cover;
+            .card-img-top {
+                max-height: 200px;
+                min-height: 150px;
+                object-fit: cover;
             }
 
             a {
                 text-decoration: none !important;
-            }         
-            .card-img {
-                border-radius: 0%;
             }
-          
+
+            button img {
+                width: 2rem;
+            }
         </style>
 
     </head>
     <body>
 
+        <div class="container">
+            <button class="btn btn-light star"><img src="../../assets/img/sample-img-star-icon.svg" alt=""></button>
+        </div>
+
 
         <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
-
-                <div class="col py-3">
-                    <a href="#">
-                        <div class="card h-100">
-                            <div class="card-img" style="background-image: url('../../assets/img/sample-img-circle.svg')"></div>
-                            <div class="card-body">
-                                <h5 class="card-title">Lorem ipsum dolor sit amet</h5>
-                                <p class="card-text">Consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col py-3">
-                    <div class="card h-100">
-                        <div class="card-img" style="background-image: url('../../assets/img/sample-img-triangle.svg')"></div>
-                        <div class="card-body">
-                            <h5 class="card-title">Cum sociis natoque penatibus</h5>
-                            <p class="card-text">Magnis dis parturient montes, nascetur ridiculus mus.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col py-3">
-                    <div class="card h-100">
-                        <div class="card-img" style="background-image: url('../../assets/img/sample-img-square.svg')"></div>
-                        <div class="card-body">
-                            <h5 class="card-title">Nulla consequat massa quis enim</h5>
-                            <p class="card-text">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col py-3">
-                    <div class="card h-100">
-                        <div class="card-img" style="background-image: url('../../assets/img/sample-img-rhombus.svg')"></div>
-                        <div class="card-body">
-                            <h5 class="card-title">Nullam dictum felis</h5>
-                            <p class="card-text">In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col py-3">
-                    <div class="card h-100">
-                        <div class="card-img" style="background-image: url('../../assets/img/sample-img-pentagon.svg')"></div>
-                        <div class="card-body">
-                            <h5 class="card-title">Integer tincidunt</h5>
-                            <p class="card-text">Cras dapibus.Vivamus elementum semper nisi.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col py-3">
-                    <div class="card h-100">
-                        <div class="card-img" style="background-image: url('../../assets/img/sample-img-hexagon.svg')"></div>
-                        <div class="card-body">
-                            <h5 class="card-title">Aenean vulputate eleifend tellus</h5>
-                            <p class="card-text">Aenean leo ligula, porttitor eu, consequat vitae, eleifend.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col py-3">
-                    <div class="card h-100">
-                        <div class="card-img" style="background-image: url('../../assets/img/sample-img-cross.svg')"></div>
-                        <div class="card-body">
-                            <h5 class="card-title">Aliquam lorem ante</h5>
-                            <p class="card-text">Dapibus in, viverra quis, feugiat a, tellus.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col py-3">
-                    <div class="card h-100">
-                        <div class="card-img" style="background-image: url('../../assets/img/sample-img-star.svg')"></div>
-                        <div class="card-body">
-                            <h5 class="card-title">Phasellus viverra nulla</h5>
-                            <p class="card-text">Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.</p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- 
-                
-                " ut metus varius laoreet.Curabitur ullamcorper ultricies nisi. " +
-                "Nam eget dui.Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.Maecenas nec odio et ante tincidunt tempus.Donec vitae sapien ut libero venenatis faucibus.Nullam quis ante.Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. " +
-                "Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus.Nullam accumsan lorem in dui.Cras ultricies mi eu turpis hendrerit fringilla.Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. " +
-                "Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris.Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris.Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc.Nunc nonummy metus.Vestibulum volutpat pretium libero. Cras id dui.Aenean ut eros et nisl sagittis vestibulum.Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede.Sed lectus. Donec mollis hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. " +
-                "Etiam imperdiet imperdiet orci. Nunc nec neque.Phasellus leo dolor, tempus non, auctor et, hendrerit quis, nisi.Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo.Maecenas malesuada. Praesent nan. The end of this of this long block of text."; -->
-
-
-
-
-
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 dynamic">
             </div>
         </div>
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <script src="assets/js/functions.js"></script>
+        <script type="module">
+            import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
+
+            let shapes = [
+                "circle",
+                "cross",
+                "hexagon",
+                "pentagon",
+                "rhombus",
+                "square",
+                "star",
+                "triangle",
+            ];
+
+            function getCard() {
+                let shapeNum = Math.floor(Math.random() * shapes.length);
+                let r1 = randomInt(0, 255),
+                    g1 = randomInt(0, 205),
+                    b1 = randomInt(0, 255),
+                    r2 = randomInt(50, 255),
+                    g2 = randomInt(0, 205),
+                    b2 = randomInt(50, 255);
+
+                let str = `
+                    <div class="col py-3">
+                        <div class="card h-100">
+                            
+                            <svg class="card-img-top" width="100%" height="200px">
+                                <defs>
+                                    <linearGradient id="grad${r1}" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:rgb(${r1},${g1},${b1});stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:rgb(${r2},${g2},${b2});stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <rect x="0" y="0" width="100%" height="200px" fill="url(#grad${r1})" />
+                            </svg>
+
+                            <!--
+                            <img class="card-img-top" src="../../assets/img/sample-img-${shapes[shapeNum]}.svg">-->
+                            <div class="card-body">
+                                <h5 class="card-title">${faker.company.name()}</h5>
+                                <p class="card-text">${faker.company.catchPhrase()}</p>
+                            </div>
+                        </div>     
+                    </div>                    
+               `;
+                return str;
+            }
+
+            let count = Math.floor(Math.random() * 12) + 2;
+            let str = "";
+
+            for (let i = 0; i < count; i++) {
+                str += getCard();
+            }
+            document.querySelector(".dynamic").innerHTML = str;
+
+
+
+
+        </script>
+
     </body>
 </html>
