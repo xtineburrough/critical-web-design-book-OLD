@@ -1,15 +1,19 @@
-// FUNCTIONS
+/**
+ *  Helper functions to accompany Critical Web Design (the book)
+ *  2023 Owen Mundy & xtine burrough
+ *  See license in repository
+ */
 
 /**
  *  Return a random floating point value between min (inclusive) and max (inclusive)
  */
-function randomFloat(min, max) {
+function randomFloat(min = 0, max = 1) {
 	return Math.random() * (max - min + 1) + min;
 }
 /**
  *  Return a random integer between min (inclusive) and max (inclusive)
  */
-function randomInt(min, max) {
+function randomInt(min = 0, max = 1) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 /**

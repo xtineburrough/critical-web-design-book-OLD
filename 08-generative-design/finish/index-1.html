@@ -62,6 +62,7 @@
             </form>
         </div>
 
+        <!-- style="display: none;" -->
         <div class="flex-container" id="albumWrapper">
 
             <div class="flex-column album albumFront">
@@ -148,97 +149,30 @@
         </div>
 
         <!-- helper functions for this module -->
-        <script src="assets/js/functions.js"></script>
-        <script src="assets/js/lyrics.js"></script>
+        <script src="../../assets/js/functions.js"></script>
 
         <script type="module">
 
-            // import faker
+            // 1. import faker
             import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
 
-            // 1. wrap code in function
-            function generate() {
+            // 2. test music genre
+            let genre = faker.music.genre();
+            console.log(genre);
 
-                ///// GENERATE INITIAL DATA //////
-
-                let name = faker.word.noun() + " " + faker.word.noun();
-                let genre = faker.music.genre();
-
-                if (genre == "Rock") {
-                    name = faker.commerce.productMaterial() + " " + faker.vehicle.model();
-                } else if (genre == "Electronic") {
-                    name = "DJ " + faker.hacker.abbreviation();
-                }
-
-                // 4. add songs
-                let songs = [];
-                let songCount = randomInt(4, 11);
-                for (let i = 0; i < songCount; i++) {
-                    let songTitle = "";
-                    let wordCount = randomInt(1, 4);
-                    while (--wordCount >= 0) {
-                        songTitle += upperCaseFirst(faker.random.word()) + " ";
-                    }
-                    songs.push(songTitle);
-                }
-                // console.log(songs);
-
-
-                ///// INSERT DATA INTO PAGE //////
-
-                // update the page
-                document.querySelector(".bandName").innerHTML = name;
-
-                // 4. add images
-                document.querySelector(".albumFront").style.backgroundImage = `url(${faker.image.abstract(800, 800)})`;
-                document.querySelector(".albumBack").style.backgroundImage = `url(${faker.image.animals(800, 800)})`;
-
-                // back
-                document.querySelector(".designer").innerHTML = "Album design by " + faker.name.fullName();
-                document.querySelector(".producer").innerHTML = "Produced by " + faker.name.fullName();
-
-
-                let songStr = "";
-                for (let i = 0; i < songs.length; i++) {
-                    songStr += `
-                        <div class="song">
-                            <span class="songTitle">${songs[i]}</span>
-                        </div>`;
-                }
-                document.querySelector(".songListInner").innerHTML = songStr;
-
-
-                // generate lyrics
-                let lyricsStr = "";
-                for (let i = 0; i < songs.length; i++) {
-                    lyricsStr += `<div class="lyricWrapper">
-                                    <h2 class="lyricTitle">${songs[i]}</h2>`;
-
-                    let lyricLines = randomInt(5, 10);
-                    for (let j = 0; j < lyricLines; j++) {
-
-                        let randomLyric = randomInt(0, lyrics.length - 1);
-                        lyricsStr +=
-                            `<div class="lyricVerse">${lyrics[randomLyric].line1}</div>
-                            <div>${lyrics[randomLyric].line2}</div>`;
-                        // 10% of the time add the title as a chorus
-                        if (Math.random() < .3) {
-                            lyricsStr += `<div class="lyricVerse">${songs[i]}...</div>`;
-                        }
-                    }
-                    lyricsStr += `</div>`;
-                }
-                document.querySelector(".lyrics").innerHTML = lyricsStr;
-
-
-                // display album
-                document.querySelector("#albumWrapper").style.display = "flex";
+            // 3. get a band name
+            let name = faker.word.noun() + " " + faker.word.noun();
+  
+            // 4. update name
+            if (genre == "Rock") {
+                name = faker.commerce.productMaterial() + " " + faker.vehicle.model();
+            } else if (genre == "Electronic") {
+                name = "DJ " + faker.hacker.abbreviation();
             }
-            // 2. call function
-            generate();
+            console.log(name);
 
-
-
+            // 5. update the page
+            document.querySelector(".bandName").innerHTML = name;
 
         </script>
 

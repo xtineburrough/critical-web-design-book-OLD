@@ -136,8 +136,6 @@
                             <span class="email">mail@bandwebsite.com</span>
                         </div>
                     </div>
-                    
-                    <div class="lyrics"></div>
 
                 </div>
             </div>
@@ -150,7 +148,8 @@
         </div>
 
         <!-- helper functions for this module -->
-        <script src="assets/js/functions.js"></script>
+        <script src="../../assets/js/functions.js"></script>
+        <script src="assets/js/lyrics.js"></script>
 
         <script type="module">
 
@@ -182,7 +181,7 @@
                     }
                     songs.push(songTitle);
                 }
-                console.log(songs);
+                // console.log(songs);
 
 
                 ///// INSERT DATA INTO PAGE //////
@@ -207,6 +206,29 @@
                         </div>`;
                 }
                 document.querySelector(".songListInner").innerHTML = songStr;
+
+
+                // generate lyrics
+                let lyricsStr = "";
+                for (let i = 0; i < songs.length; i++) {
+                    lyricsStr += `<div class="lyricWrapper">
+                                    <h2 class="lyricTitle">${songs[i]}</h2>`;
+
+                    let lyricLines = randomInt(5, 10);
+                    for (let j = 0; j < lyricLines; j++) {
+
+                        let randomLyric = randomInt(0, lyrics.length - 1);
+                        lyricsStr +=
+                            `<div class="lyricVerse">${lyrics[randomLyric].line1}</div>
+                            <div>${lyrics[randomLyric].line2}</div>`;
+                        // 10% of the time add the title as a chorus
+                        if (Math.random() < .3) {
+                            lyricsStr += `<div class="lyricVerse">${songs[i]}...</div>`;
+                        }
+                    }
+                    lyricsStr += `</div>`;
+                }
+                document.querySelector(".lyrics").innerHTML = lyricsStr;
 
 
                 // display album
