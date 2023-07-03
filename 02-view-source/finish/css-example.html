@@ -7,26 +7,40 @@
         h1 {
             color: green;
             font-weight: bold;
-            display: block;
         }
 
-        .intro {
+        .myClass {
             font-style: italic;
             color: purple;
+        }
+
+        #uniqueId {
+            color: brown;
         }
     </style>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 
-    <h1>Cite and Response</h1>
-    <h1>Cite and Response</h1>
-    <h1>Cite and Response</h1>
+    <h1 style="color:red">Hello, World!</h1>
+
+    <p>A paragraph</p>
+    <p class="myClass">A paragraph</p>
+    <p class="myClass" id="myId">A paragraph</p>
 
     <p class="intro">Both everyday and exotic, public and private, autonomous and commercial, the internet is a chaotic, diverse and crowded form of contemporary public space. —Rachel Greene, Internet Art</p>
 
+
+    <div class="myClass">We can reuse classes...</div>
+    <div class="myClass">We can reuse classes... again...</div>
+    <div class="myClass">We can reuse classes... again... and again...</div>
+
+    <div id="uniqueId">But there can only be one element with this id</div>
+    <div id="uniqueId">This will not validate!</div>
+
+
     <script>
-        alert("Hello, World!");
+        // alert("Hello, World!");
     </script>
 
     <script src="assets/js/main.js"></script>
