@@ -1,24 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
-
     <meta charset="utf-8">
-    <title>A page with errors</title>
+    <title>View Source</title>
 
-    <link rel="stylesheet" href="assets/css/styless.css">
+    <!-- this will create a 404 error in the console -->
+    <link rel="stylesheet" href="this-file-does-not-exist.css">
 
 </head>
 <body>
 
     <h1>A page with errors</h1>
-
     <p>Open the Console to explore the errors on this page</p>
-
 
 
     <!-- this will create a 404 error in the console -->
     <img src="this-file-does-not-exist.png">
-
 
 
     <script>
@@ -31,16 +28,18 @@
     <script src="assets/js/main.js"></script>
 
     <script>
-        console.log("Javascript allows you to write different types of messages,");
+        console.log("Javascript allows you to write ");
+        console.log("different types of messages, ");
         console.warn("including warnings, ");
-        console.error("and even errors, to the console.");
+        console.error("and even errors, ");
+        console.info("to the console.");
     </script>
 
 
     <script>
-		// uncomment to see issue with dumb quotes
-		// alert("Hello, World!");
-		// alert(“Hello, World!”);		
+        // alert("Hello, World!");
+        // uncomment to see errors caused by smart quotes
+        // alert(“Hello, World!”);		
     </script>
 
 

@@ -6,7 +6,7 @@ A collection of examples and exercises to accompany _Critical Web Design_ by xti
 
 Publish your first web page: By the end of the modules in this chapter you will create and publish your first web page. Starting with the next exercise, you will create your Sites folder in your home directory and use the command line to navigate your hard drive in Terminal or Git Bash.
 
-<img height="190" src="figures/ch1/1.0-network-types.png">
+<img height="190" src="figures/ch1/1.0-network-types.png"> <img height="190" src="figures/ch1/1.2-git-branches.png">
 
 **Chapter 2 - View Source**
 

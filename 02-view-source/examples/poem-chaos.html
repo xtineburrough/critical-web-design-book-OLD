@@ -1,19 +1,8 @@
 <!doctype html>
 <html lang="en">
-
-<!--  
-
-Title: Concrete Poem (Greene quote, random margins)
-Author: Owen Mundy
-Date: 2023
-License: This file is in the public domain
-
--->
-
 <head>
-
     <meta charset="utf-8">
-    <title>Poem</title>
+    <title>Crowded Chaos</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,16 +28,22 @@ License: This file is in the public domain
     <div class="quote">Both everyday and exotic, public and private, autonomous and commercial, the internet is a chaotic, diverse and crowded form of contemporary public space. —Rachel Greene, Internet Art<div>
 
             <script>
+                /**
+                 *  Title: Concrete Chaos (Greene quote, random margins)
+                 *  Author: Owen Mundy
+                 *  Date: 2023
+                 *  License: MIT
+                 */
+
                 let quoteEle = document.querySelector(".quote");
                 let quoteStr = quoteEle.innerText;
 
                 function updateText() {
-
-                    let newStr = "";
+                    let str = "";
                     for (let i = 0; i < quoteStr.length; i++) {
-                        newStr += `<span style="margin-left:${10 * Math.random()}rem">${quoteStr[i]}</span>`;
+                        str += `<span style="margin-left:${10 * Math.random()}rem">${quoteStr[i]}</span>`;
                     }
-                    quoteEle.innerHTML = newStr;
+                    quoteEle.innerHTML = str;
                 }
                 setInterval(function () {
                     updateText();
