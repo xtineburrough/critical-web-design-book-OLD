@@ -31,6 +31,7 @@ body {
         font-family: "Futura Press";
         src: url(FUTURAPR.woff) format("WOFF");
 }
+/* Downloaded Futura Press for free from https://www.wfonts.com/font/futura-press#google_vignette and changed it from TTF to WOFF with an online converter */
 h1 {
     color: black;
     font-family: Helvetica, Arial, sans-serif;;
