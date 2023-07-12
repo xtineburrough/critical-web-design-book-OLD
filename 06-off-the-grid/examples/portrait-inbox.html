@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Self-Portrait</title>
+
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: black;
+            }
+
+            svg {
+                position: absolute;
+                top: 0;
+                margin: 0 auto;
+                height: 100%;                
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <svg version="1.1" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" fill="violet">
+            <g fill="none" fill-rule="evenodd">
+                <!-- background -->
+                <rect width="100%" height="100%" fill="violet" />
+                <!-- corners and center reference -->
+                <!-- 
+                    <rect x="0" y="0" width="1" height="1" fill="purple" />
+                    <rect x="99" y="0" width="1" height="1" fill="purple" />
+                    <rect x="0" y="99" width="1" height="1" fill="purple" />
+                    <rect x="99" y="99" width="1" height="1" fill="purple" />
+                    <circle cx="50" cy="50" r="2" fill="white" />
+                -->
+                <!-- text -->
+                <text x="100" y="50%" font-size="8" text-anchor="middle" fill="white" id="svgText"></text>
+            </g>
+        </svg>
+
+
+        <script>
+
+let word = 0;
+            let words = `
+Maintenance is a drag; it takes all the fucking time (lit.)
+The mind boggles and chafes at the boredom.
+The culture confers lousy status on maintenance jobs =
+minimum wages, housewives = no pay.
+
+clean you desk, wash the dishes, clean the floor,
+wash your clothes, wash your toes, change the baby’s
+diaper, finish the report, correct the typos, mend the
+fence, keep the customer happy, throw out the stinking
+garbage, watch out don’t put things in your nose, what
+shall I wear, I have no sox, pay your bills, don’t
+litter, save string, wash your hair, change the sheets,
+go to the store, I’m out of perfume, say it again—
+he doesn’t understand, seal it again—it leaks, go to
+work, this art is dusty, clear the table, call him again,
+flush the toilet, stay young.
+    `.split(/[,.;]+/);
+
+            const svg = document.querySelector("svg");
+            const svgns = "http://www.w3.org/2000/svg";
+
+            const svgText = document.querySelector("#svgText");
+
+            // simply add elements and stop
+            // let numElements = randomInt(20, 100);
+            // for (let i = 0; i < numElements; i++) {
+            //     svg.appendChild(createRect());
+            // }
+
+            // add elements then remove
+            let elementsAdded = 0;
+            let increase = true;
+            setInterval(function () {
+                // console.log(elementsAdded);
+                if (elementsAdded > 150) increase = false;
+                else if (elementsAdded < 1) increase = true;
+
+
+                if (increase) {
+                    for (let i = 0; i < 3; i++) {
+                        elementsAdded++;
+                        if (mousePos.x < window.innerWidth / 2)
+                            svg.appendChild(createRect());
+                        else
+                            svg.appendChild(createCircle());
+                    }
+                }
+                else {
+                    for (let i = 0; i < 5; i++) {
+                        elementsAdded--;
+                        svg.lastElementChild.remove();
+                        if (elementsAdded <= 0) {
+                            console.log(words[word].trim())
+                            svgText.innerHTML = words[word++].trim();
+                            if (word > words.length-1) word = 0;
+                            break;
+                        }
+                    }
+                }
+            }, 1)
+
+            // add a listener to store the mouse position 
+            let mousePos = { x: undefined, y: undefined };
+            window.addEventListener('mousemove', (event) => {
+                mousePos = { x: event.clientX, y: event.clientY };
+                // console.log(mousePos, window.innerWidth)
+            });
+
+            // Create an SVG rect node
+            // e.g. <rect x="0" y="0" width="10" height="10" fill="purple" />
+            function createRect() {
+                let min = 10, max = 30;
+                let newShape = document.createElementNS(svgns, "rect");
+                newShape.setAttribute("width", randomInt(min, max));
+                newShape.setAttribute("height", randomInt(min, max));
+                newShape.setAttribute("x", randomInt(-10, 210) - (newShape.getAttribute("width") / 2));
+                newShape.setAttribute("y", randomInt(-10, 110) - (newShape.getAttribute("width") / 2));
+                newShape.setAttribute("transform", `rotate(${randomInt(0, 360)} ${randomInt(0, 360)} ${randomInt(0, 360)})`);
+                newShape.setAttribute("fill", `rgba(${randomInt(100, 255)},${randomInt(100, 255)},${randomInt(100, 255)},${randomFloat(0, 1)})`);
+                return newShape;
+            }
+            // Create an SVG circle node
+            // e.g. <circle cx="50" cy="50" r="5" fill="purple" />
+            function createCircle() {
+                let minR = 4, maxR = 15;
+                let newShape = document.createElementNS(svgns, "circle");
+                newShape.setAttribute("r", randomInt(minR, maxR));
+                newShape.setAttribute("cx", randomInt(-10, 210) - (newShape.getAttribute("r") / 2));
+                newShape.setAttribute("cy", randomInt(-10, 110) - (newShape.getAttribute("r") / 2));
+                newShape.setAttribute("fill", `rgba(${randomInt(100, 255)},${randomInt(100, 255)},${randomInt(100, 255)},${randomFloat(0, 1)})`);
+                return newShape;
+            }
+
+            /**
+             *  Return a random integer between min (inclusive) and max (inclusive)
+             */
+            function randomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            /**
+             *  Return a random floating point value between min (inclusive) and max (inclusive)
+             */
+            function randomFloat(min, max) {
+                return Math.random() * (max - min + 1) + min;
+            }
+        </script>
+
+    </body>
+</html>
