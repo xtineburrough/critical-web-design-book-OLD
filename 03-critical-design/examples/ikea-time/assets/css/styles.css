@@ -5,11 +5,12 @@
 
 body {
   background-color: #e6ce55;
+  font-family: Helvetica, Arial, sans-serif;
 }
+
 .bgImgDefault {
   width: 400px;
-  aspect-ratio: 1/1; /* https://caniuse.com/mdn-css_properties_aspect-ratio */
-  /*background-size: cover;*/
+  aspect-ratio: 1/1; 
   display: block;
   margin: 4rem auto;
 }
@@ -27,7 +28,7 @@ body {
   display: block;
   width: 50%;
   margin: 6rem auto;
-  /* border-color: black; border-style: solid; */
+  /* border: 1px solid black; */
   /* turn borders off and on to see the borders of the display area */
 }
 
@@ -35,11 +36,9 @@ body {
   font-family: "Futura Press";
   src: url(FUTURAPR.woff) format("WOFF");
 }
-/* Downloaded Futura Press for free from https://www.wfonts.com/font/futura-press#google_vignette and changed it from TTF to WOFF with an online converter */
 
 h1 {
   color: black;
-  font-family: Helvetica, Arial, sans-serif;
   font-size: 3rem;
   text-align: center;
 }
