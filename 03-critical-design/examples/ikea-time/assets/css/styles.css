@@ -34,7 +34,8 @@ body {
 
 @font-face {
   font-family: "Futura Press";
-  src: url(FUTURAPR.woff) format("WOFF");
+  src: url(FUTURAPR.woff) format("woff"),
+       url(FUTURAPR.ttf)  format("truetype");
 }
 
 h1 {
@@ -44,7 +45,7 @@ h1 {
 }
 
 h2 {
-  font-family: "Futura Press", Helvetica, sans-serif;
+  font-family: "Futura Press", Helvetica, Arial, sans-serif;
   color: dodgerblue;
   font-size: 2.5rem;
   text-align: left;
