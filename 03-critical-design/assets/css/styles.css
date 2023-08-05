@@ -7,13 +7,6 @@ body {
   background-color: #e6ce55;
   font-family: Helvetica, Arial, sans-serif;
 }
-.bgImgDefault {
-  width: 400px;
-  aspect-ratio: 1/1; /* https://caniuse.com/mdn-css_properties_aspect-ratio */
-  /*background-size: cover;*/
-  display: block;
-  margin: 4rem auto;
-}
 
 .text {
   display: block;
