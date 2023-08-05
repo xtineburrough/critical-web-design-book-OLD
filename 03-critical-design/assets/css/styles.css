@@ -8,13 +8,6 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.bgImgDefault {
-  width: 400px;
-  aspect-ratio: 1/1; 
-  display: block;
-  margin: 4rem auto;
-}
-
 .text {
   display: block;
   width: 50%;

@@ -8,15 +8,12 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.bgImgDefault {
-  width: 400px;
-  aspect-ratio: 1/1; 
-  display: block;
-  margin: 4rem auto;
-}
-
 .cssBackgroundImg {
   background-image: url(../img/wrench.png);
+  width: 400px;
+  aspect-ratio: 1/1; /* https://caniuse.com/mdn-css_properties_aspect-ratio */
+  display: block;
+  margin: 4rem auto;
 }
 
 .cssBackgroundImg:hover {
