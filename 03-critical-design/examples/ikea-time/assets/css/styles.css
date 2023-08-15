@@ -11,8 +11,7 @@ body {
 .cssBackgroundImg {
   background-image: url(../img/wrench.png);
   width: 400px;
-  aspect-ratio: 1/1; /* https://caniuse.com/mdn-css_properties_aspect-ratio */
-  display: block;
+  height: 400px;
   margin: 4rem auto;
 }
 
