@@ -24,13 +24,13 @@ Create a work of critical web design: Throughout the modules in this chapter you
 
 Design a responsive multi-column layout for a fake newspaper web page. Use lorem ipsum placeholder text throughout your design. Code the page using the Bootstrap framework.
 
-<img height="190" src="figures/ch4/ch4-outcome-lg.png"> <img height="190" src="figures/ch4/ch4-outcome-md.png"> <img height="190" src="figures/ch4/ch4-outcome-xs.png">
+<img height="240" src="figures/ch4/ch4-outcome-lg.png"> <img height="240" src="figures/ch4/ch4-outcome-md.png"> <img height="240" src="figures/ch4/ch4-outcome-xs.png">
 
 ## Chapter 5 - Usability & Interactions
 
 Create and implement a usability test, then design a responsive web page to reflect on findings. Evaluate your design using the "less is more" critique. Code the design using bootstrap, including a working web form to output the score from the System Usability Scale (SUS) survey.
 
-<img height="190" src="figures/ch5/5.3.x Usability form prototype.png"> <img height="190" src="figures/ch5/5.3.x Usability results.png">
+<img height="220" src="figures/ch5/5.3.x Usability form prototype.png"> <img height="220" src="figures/ch5/5.3.x Usability results.png">
 
 ## Chapter 6 - Off the Grid
 
