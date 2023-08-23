@@ -38,7 +38,7 @@ Create and implement a usability test, then design a responsive web page to refl
 
 ## Chapter 7 - Ethical Design
 
-<img height="190" src="figures/ch7/ch7-outcome-venue-xxl-2.png"> <img height="190" src="figures/ch7/ch7-outcome-venue-xl-1.png"> <img height="190" src="figures/ch7/ch7-outcome-venue-md-1.png"> <img height="190" src="figures/ch7/ch7-outcome-venue-sm-1.png">
+<img height="190" src="figures/ch7/ch7-outcome-venue-xxl-2.png"> <img height="190" src="figures/ch7/ch7-outcome-venue-xl-1.png"> <img height="190" src="figures/ch7/ch7-outcome-venue-md-1.png"> <img height="190" src="figures/ch7/ch7-outcome-venue-sm-1.png"> <img height="190" src="figures/ch7/ch7-outcome-venue-xs-1.png">
 
 ## Chapter 8 - Generative Design
 
