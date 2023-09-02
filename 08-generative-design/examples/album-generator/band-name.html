@@ -149,7 +149,7 @@
 
 
         <!-- helper functions for this module -->
-        <script src="../../assets/js/functions.js"></script>
+        <script src="../../../assets/js/functions.js"></script>
         <script src="assets/js/lyrics.js"></script>
 
         <script type="module">
@@ -181,7 +181,7 @@
                         stickerColor: `rgb(${randomInt(50, 255)},${randomInt(0, 55)},${randomInt(50, 255)})`,
                         designer: faker.name.fullName(),
                         producer: faker.name.fullName(),
-                        location: `${faker.address.streetAddress()}, ${faker.address.city()}, ${faker.address.stateAbbr()}`,
+                        location: `${faker.location.streetAddress()}, ${faker.location.city()}, ${faker.location.stateAbbr()}`,
                         year: new Date(faker.date.between('1970', '2023')).getFullYear(),
                     },
                 }
@@ -217,7 +217,7 @@
                     band.name = faker.word.adjective() + " " + faker.finance.creditCardIssuer();
                 } else if (band.album.genre == "country" || band.album.genre == "folk" || band.album.genre == "blues") {
                     band.album.name = "We " + faker.word.verb(8);
-                    band.name = faker.name.fullName() + " and the " + faker.address.state() + " " + faker.vehicle.manufacturer();
+                    band.name = faker.name.fullName() + " and the " + faker.location.state() + " " + faker.vehicle.manufacturer();
                 } else if (band.album.genre == "electronic") {
                     band.album.name = faker.company.bs();
                     band.name = "DJ " + faker.hacker.abbreviation();

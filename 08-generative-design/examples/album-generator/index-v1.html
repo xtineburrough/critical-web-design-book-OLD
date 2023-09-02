@@ -8,7 +8,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Castoro+Titling&family=Roboto&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="../finish/assets/css/styles.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
 
     </head>
     <body>
@@ -62,6 +62,7 @@
             </form>
         </div>
 
+        <!-- style="display: none;" -->
         <div class="flex-container" id="albumWrapper">
 
             <div class="flex-column album albumFront">
@@ -143,82 +144,12 @@
             </div>
         </div>
 
-        <div class="lyrics"></div>
-
         <div class="flex-container" style="display:flex">
             <pre class="debug"></pre>
         </div>
 
         <!-- helper functions for this module -->
-        <script src="../../assets/js/functions.js"></script>
-
-        <script type="module">
-
-            // import faker
-            import { faker } from 'https://cdn.skypack.dev/@faker-js/faker';
-
-            // 1. wrap code in function
-            function generate() {
-
-                ///// GENERATE INITIAL DATA //////
-
-                let name = faker.word.noun() + " " + faker.word.noun();
-                let genre = faker.music.genre();
-
-                if (genre == "Rock") {
-                    name = faker.commerce.productMaterial() + " " + faker.vehicle.model();
-                } else if (genre == "Electronic") {
-                    name = "DJ " + faker.hacker.abbreviation();
-                }
-
-                // 4. add songs
-                let songs = [];
-                let songCount = randomInt(4, 11);
-                for (let i = 0; i < songCount; i++) {
-                    let songTitle = "";
-                    let wordCount = randomInt(1, 4);
-                    while (--wordCount >= 0) {
-                        songTitle += upperCaseFirst(faker.random.word()) + " ";
-                    }
-                    songs.push(songTitle);
-                }
-                console.log(songs);
-
-
-                ///// INSERT DATA INTO PAGE //////
-
-                // update the page
-                document.querySelector(".bandName").innerHTML = name;
-
-                // 4. add images
-                document.querySelector(".albumFront").style.backgroundImage = `url(${faker.image.abstract(800, 800)})`;
-                document.querySelector(".albumBack").style.backgroundImage = `url(${faker.image.animals(800, 800)})`;
-
-                // back
-                document.querySelector(".designer").innerHTML = "Album design by " + faker.name.fullName();
-                document.querySelector(".producer").innerHTML = "Produced by " + faker.name.fullName();
-
-
-                let songStr = "";
-                for (let i = 0; i < songs.length; i++) {
-                    songStr += `
-                        <div class="song">
-                            <span class="songTitle">${songs[i]}</span>
-                        </div>`;
-                }
-                document.querySelector(".songListInner").innerHTML = songStr;
-
-
-                // display album
-                document.querySelector("#albumWrapper").style.display = "flex";
-            }
-            // 2. call function
-            generate();
-
-
-
-
-        </script>
+        <script src="../../../assets/js/functions.js"></script>
 
 
     </body>
