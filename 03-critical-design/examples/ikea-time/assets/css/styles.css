@@ -11,9 +11,8 @@ body {
 .cssBackgroundImg {
   background-image: url(../img/wrench.png);
   width: 400px;
-  aspect-ratio: 1/1; /* https://caniuse.com/mdn-css_properties_aspect-ratio */
-  display: block;
-  margin: 4rem auto;
+  height: 400px;
+  margin: 64px auto;
 }
 
 .cssBackgroundImg:hover {
@@ -24,7 +23,7 @@ body {
 .text {
   display: block;
   width: 50%;
-  margin: 6rem auto;
+  margin: 96px auto;
   /* border: 1px solid black; */
   /* turn borders off and on to see the borders of the display area */
 }
