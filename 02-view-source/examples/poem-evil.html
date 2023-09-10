@@ -82,25 +82,19 @@
         let quoteEle = document.querySelector(".quote");
         let quoteArr = ["DON$T", "BE", "EVIL", "*DEPRE¢IATED"];
         let outputArr = [];
+        let currency = ["$", "€", "£", "¥"]
         let colors = [
-            "pumpkin", 
-            // "sunglow", 
-            "olivine", "zomp",
-    
-            // 'chocolate-cosmos',
+            "pumpkin",
+            "olivine",
+            "zomp",
             'rosewood',
             'penn-red',
             'engineering-orange',
             'sinopia',
-            'persimmon',
-            // 'princeton-orange',
-            // 'orange-web',
-            // 'selective-yellow'
-    
-    ]
+            'persimmon'
+        ]
 
 
-        // populate an array with a string
         function populateArr(str, count) {
             var sizedArray = Array.apply(null, Array(count));
             return sizedArray.map(function (o) {
@@ -108,15 +102,14 @@
             });
         }
 
-        function randomCurrency(){
-            let c = ["$","€","£","¥"]
-            return c[Math.floor(Math.random()*c.length)]
+        function randomInt(min = 0, max = 1) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
         }
-        function getRandomColor() {
-            return colors[Math.floor(Math.random() * colors.length)];
+        function randomFromArray(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
         }
         function wrapString(str) {
-            return `<span style="color:var(--${getRandomColor()})">${str}</span>`;
+            return `<span style="color:var(--${randomFromArray(colors)})">${str}</span>`;
         }
         function zeroPad(num) {
             return ("0" + num).slice(-2);
@@ -128,13 +121,13 @@
 
         function updateText() {
 
-            // let chars = populateArr("$", Math.ceil(Math.random() * 5) + 4);
+            // start with a set number so everything lines up
             let chars = populateArr("$", 40);
-
+            // start the div.line
             let str = "<div class='line'>";
-            str += wrapString(chars.splice(0, Math.floor(Math.random() * 2) + 1).join(""));
+            str += wrapString(chars.splice(0, randomInt(1, 3)).join(""));
             str += `${wrapString(new Date("September 4, 1998").toISOString().split("T")[0])}`;
-            str += wrapString(chars.splice(0, Math.floor(Math.random() * 2) + 1).join(""));
+            str += wrapString(chars.splice(0, randomInt(1, 3)).join(""));
             let sf = convertTZ(new Date(), "America/Los_Angeles");
             str += `${wrapString(zeroPad(sf.getHours()) + ":" + zeroPad(sf.getMinutes()) + ":" + zeroPad(sf.getSeconds()))}`;
 
@@ -142,8 +135,8 @@
             for (let i = 0; i < quoteArr.length; i++) {
                 str += wrapString("$");
                 // console.log(chars)
-                let before = chars.splice(0, Math.floor(Math.random() * chars.length / 3) + 2);
-                let after = chars.splice(0, Math.floor(Math.random() * chars.length / 3) + 2);
+                let before = chars.splice(0, randomInt(2, chars.length / 3));
+                let after = chars.splice(0, randomInt(2, chars.length / 3));
                 str += `${wrapString(before.join(""))}${wrapString(quoteArr[i])}${wrapString(after.join(""))}`;
             }
             str += "</div>";
