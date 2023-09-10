@@ -3,33 +3,43 @@
 <head>
     <meta charset="utf-8">
     <title>Don't Be Evil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Victor+Mono&display=swap" rel="stylesheet">
 
     <style>
-        :root {
+        :root,
+        body {
             --charcoal: rgb(16, 29, 38);
             --pumpkin: rgb(216, 108, 36);
             --sunglow: rgb(218, 176, 60);
             --olivine: rgb(123, 149, 97);
             --zomp: rgb(70, 117, 103);
 
+            --rich-black: #03071eff;
+            --chocolate-cosmos: #370617ff;
+            --rosewood: #6a040fff;
+            --penn-red: #9d0208ff;
+            --engineering-orange: #d00000ff;
+            --sinopia: #dc2f02ff;
+            --persimmon: #e85d04ff;
+            --princeton-orange: #f48c06ff;
+            --orange-web: #faa307ff;
+            --selective-yellow: #ffba08ff;
+
             width: 100%;
             height: 100%;
-        }
 
-        body {
             margin: 0;
             font-family: 'Victor Mono', monospace;
             font-size: 2vw;
-            color: var(--pumpkin);
-            background-color: var(--charcoal);
-            overflow: hidden;
+            line-height: normal;
+            color: var(--rosewood);
+            background-color: var(--rich-black);
+            overflow-x: hidden;
 
-            width: 100%;
-            height: 100%;
         }
 
         .quote {
@@ -39,10 +49,10 @@
             align-items: flex-start;
             justify-content: flex-end;
 
-            padding: 10px;
+            overflow-x: hidden;
+            padding: 0 5px;
             width: 160%;
-            height: 100%;
-            overflow: hidden;
+            height: 110%;
         }
 
         .quote .line {
@@ -50,23 +60,8 @@
         }
 
         .quote span {
-            display: inline-block
-        }
-
-        .pumpkin {
-            color: var(--pumpkin);
-        }
-
-        .sunglow {
-            color: var(--sunglow);
-        }
-
-        .olivine {
-            color: var(--olivine);
-        }
-
-        .zomp {
-            color: var(--zomp);
+            display: inline-block;
+            margin: 0 2px;
         }
     </style>
 
@@ -85,11 +80,27 @@
          */
 
         let quoteEle = document.querySelector(".quote");
-        let quoteArr = ["DON$T", "BE", "EVIL", "*DEPRECIATED"];
+        let quoteArr = ["DON$T", "BE", "EVIL", "*DEPRE¢IATED"];
         let outputArr = [];
+        let colors = [
+            "pumpkin", 
+            // "sunglow", 
+            "olivine", "zomp",
+    
+            // 'chocolate-cosmos',
+            'rosewood',
+            'penn-red',
+            'engineering-orange',
+            'sinopia',
+            'persimmon',
+            // 'princeton-orange',
+            // 'orange-web',
+            // 'selective-yellow'
+    
+    ]
 
-        let colors = ["pumpkin", "sunglow", "olivine", "zomp"]
 
+        // populate an array with a string
         function populateArr(str, count) {
             var sizedArray = Array.apply(null, Array(count));
             return sizedArray.map(function (o) {
@@ -97,44 +108,74 @@
             });
         }
 
+        function randomCurrency(){
+            let c = ["$","€","£","¥"]
+            return c[Math.floor(Math.random()*c.length)]
+        }
         function getRandomColor() {
             return colors[Math.floor(Math.random() * colors.length)];
         }
         function wrapString(str) {
-            return `<span class="${getRandomColor()}">${str}</span>`;
+            return `<span style="color:var(--${getRandomColor()})">${str}</span>`;
+        }
+        function zeroPad(num) {
+            return ("0" + num).slice(-2);
+        }
+
+        function convertTZ(date, tzString) {
+            return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", { timeZone: tzString }));
         }
 
         function updateText() {
+
+            // let chars = populateArr("$", Math.ceil(Math.random() * 5) + 4);
+            let chars = populateArr("$", 40);
+
             let str = "<div class='line'>";
+            str += wrapString(chars.splice(0, Math.floor(Math.random() * 2) + 1).join(""));
             str += `${wrapString(new Date("September 4, 1998").toISOString().split("T")[0])}`;
-            str += `${wrapString(new Date().toISOString().split("T")[1].slice(0, -1))}`;
+            str += wrapString(chars.splice(0, Math.floor(Math.random() * 2) + 1).join(""));
+            let sf = convertTZ(new Date(), "America/Los_Angeles");
+            str += `${wrapString(zeroPad(sf.getHours()) + ":" + zeroPad(sf.getMinutes()) + ":" + zeroPad(sf.getSeconds()))}`;
 
+            // for each word
             for (let i = 0; i < quoteArr.length; i++) {
-
                 str += wrapString("$");
-
-
-                let chars = populateArr("$", Math.ceil(Math.random() * 5) + 4);
                 // console.log(chars)
-                let before = chars.slice(0, Math.floor(Math.random() * chars.length) + 2);
-                let after = chars.slice(0, Math.floor(Math.random() * chars.length) + 2);
-
-                str += `${wrapString(before.join(""))}<span class="">${wrapString(quoteArr[i])}</span>${wrapString(after.join(""))}`;
+                let before = chars.splice(0, Math.floor(Math.random() * chars.length / 3) + 2);
+                let after = chars.splice(0, Math.floor(Math.random() * chars.length / 3) + 2);
+                str += `${wrapString(before.join(""))}${wrapString(quoteArr[i])}${wrapString(after.join(""))}`;
             }
             str += "</div>";
             outputArr.push(str);
-                if (outputArr.length > 30) {
-                    outputArr.splice(0, 1);
-                }
             quoteEle.innerHTML = outputArr.join(" ");
-            const scrollingElement = (document.scrollingElement || document.body);
-            quoteEle.scrollTop = scrollingElement.scrollHeight;
+
+            // trim
+            let firstEle = document.querySelector(".quote > div")
+            if (firstEle.offsetTop < 22 || outputArr.length > 80) {
+                outputArr.splice(0, 1);
+            }
+            // console.log(firstEle.offsetTop)
         }
 
-        setInterval(function () {
-            // updateText();
-            requestAnimationFrame(updateText)
-        }, 125);
+
+
+        const FPS = 5;
+        let prevTick = 0;
+        let now = 0;
+        // let test = 0;
+        function render() {
+            requestAnimationFrame(render);
+
+            // clamp to fixed framerate
+            now = Math.round(FPS * Date.now() / 1000);
+            if (now == prevTick) return;
+            prevTick = now;
+            // if (++test > 10) return;
+            // otherwise, do your stuff ...
+            updateText();
+        }
+        render();
 
     </script>
 
