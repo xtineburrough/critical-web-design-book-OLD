@@ -10,14 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Victor+Mono&display=swap" rel="stylesheet">
 
     <style>
+        /* https://coolors.co/palette/03071e-370617-6a040f-9d0208-d00000-dc2f02-e85d04-f48c06-faa307-ffba08 */
         :root,
         body {
-            --charcoal: rgb(16, 29, 38);
-            --pumpkin: rgb(216, 108, 36);
-            --sunglow: rgb(218, 176, 60);
-            --olivine: rgb(123, 149, 97);
-            --zomp: rgb(70, 117, 103);
-
             --rich-black: #03071eff;
             --chocolate-cosmos: #370617ff;
             --rosewood: #6a040fff;
@@ -39,7 +34,6 @@
             color: var(--rosewood);
             background-color: var(--rich-black);
             overflow-x: hidden;
-
         }
 
         .quote {
@@ -83,15 +77,39 @@
         let quoteArr = ["DON$T", "BE", "EVIL", "*DEPRE¢IATED"];
         let outputArr = [];
         let currency = ["$", "€", "£", "¥"]
-        let colors = [
-            "pumpkin",
-            "olivine",
-            "zomp",
+
+        let colorsDark = [
+            'rich-black',
+            'chocolate-cosmos',
+            'rosewood',
+
+            'rich-black',
+            'chocolate-cosmos',
+            'rosewood',
+            
+            'engineering-orange',
+
+        ]
+        let colorsMedium = [         
             'rosewood',
             'penn-red',
             'engineering-orange',
             'sinopia',
-            'persimmon'
+                  
+            'rosewood',
+            'penn-red',
+            'engineering-orange',
+            'sinopia',
+
+            'persimmon',
+        ]
+        let colorsLight = [
+            'engineering-orange',
+            'sinopia',
+            'persimmon',
+            'princeton-orange',
+            'orange-web',
+            'selective-yellow'
         ]
 
 
@@ -108,8 +126,8 @@
         function randomFromArray(arr) {
             return arr[Math.floor(Math.random() * arr.length)];
         }
-        function wrapString(str) {
-            return `<span style="color:var(--${randomFromArray(colors)})">${str}</span>`;
+        function wrapString(str, colorArr) {
+            return `<span style="color:var(--${randomFromArray(colorArr)})">${str}</span>`;
         }
         function zeroPad(num) {
             return ("0" + num).slice(-2);
@@ -119,33 +137,64 @@
             return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", { timeZone: tzString }));
         }
 
-        function updateText() {
-
+        function getLineContent() {
             // start with a set number so everything lines up
             let chars = populateArr("$", 40);
-            // start the div.line
-            let str = "<div class='line'>";
-            str += wrapString(chars.splice(0, randomInt(1, 3)).join(""));
-            str += `${wrapString(new Date("September 4, 1998").toISOString().split("T")[0])}`;
-            str += wrapString(chars.splice(0, randomInt(1, 3)).join(""));
             let sf = convertTZ(new Date(), "America/Los_Angeles");
-            str += `${wrapString(zeroPad(sf.getHours()) + ":" + zeroPad(sf.getMinutes()) + ":" + zeroPad(sf.getSeconds()))}`;
+            return [
+                chars.splice(0, randomInt(1, 3)).join(""),
+                new Date("September 4, 1998").toISOString().split("T")[0],
+                chars.splice(0, randomInt(1, 3)).join(""),
+                zeroPad(sf.getHours()) + ":" + zeroPad(sf.getMinutes()) + ":" + zeroPad(sf.getSeconds()),
+                chars.splice(0, randomInt(2, chars.length / 3)).join(""),
+                chars.splice(0, randomInt(2, chars.length / 3)).join(""),
+            ]
+        }
 
-            // for each word
-            for (let i = 0; i < quoteArr.length; i++) {
-                str += wrapString("$");
-                // console.log(chars)
-                let before = chars.splice(0, randomInt(2, chars.length / 3));
-                let after = chars.splice(0, randomInt(2, chars.length / 3));
-                str += `${wrapString(before.join(""))}${wrapString(quoteArr[i])}${wrapString(after.join(""))}`;
+
+        function updateText() {
+
+            // writing a new line
+            outputArr.push(getLineContent());
+
+            let outputStr = "";
+
+
+            // loop through all content and convert to HTML
+            for (let i = 0; i < outputArr.length; i++) {
+
+                // colors to use to render this line
+                let colors = colorsLight;
+                if (i < outputArr.length / 5) {
+                    colors = colorsDark;
+                } else  if (i < outputArr.length / 2) {
+                    colors = colorsMedium;
+                }
+
+                // start the div.line
+                outputStr += "<div class='line'>";
+                // add date
+                outputStr += wrapString(outputArr[i][0], colors) +
+                    wrapString(outputArr[i][1], colors) +
+                    wrapString(outputArr[i][2], colors) +
+                    wrapString(outputArr[i][3], colors);
+                // for each word
+                for (let j = 0; j < quoteArr.length; j++) {
+                    outputStr += wrapString("$", colors) +
+                        wrapString(outputArr[i][4], colors) +
+                        quoteArr[j] +
+                        wrapString(outputArr[i][5], colors);
+                }
+                outputStr += "</div>";
             }
-            str += "</div>";
-            outputArr.push(str);
-            quoteEle.innerHTML = outputArr.join(" ");
+            // add html to page
+            quoteEle.innerHTML = outputStr;
+            // console.log(outputArr)
+
 
             // trim
             let firstEle = document.querySelector(".quote > div")
-            if (firstEle.offsetTop < 22 || outputArr.length > 80) {
+            if (firstEle.offsetTop < 22 || outputArr.length > 40) {
                 outputArr.splice(0, 1);
             }
             // console.log(firstEle.offsetTop)
