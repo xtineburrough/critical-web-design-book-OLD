@@ -46,7 +46,7 @@
             overflow-x: hidden;
             padding: 0 5px;
             width: 160%;
-            height: 110%;
+            height: 100%;
         }
 
         .quote .line {
@@ -194,7 +194,7 @@
 
             // trim
             let firstEle = document.querySelector(".quote > div")
-            if (firstEle.offsetTop < 22 || outputArr.length > 40) {
+            if (firstEle.offsetTop < 60 || outputArr.length > 25) {
                 outputArr.splice(0, 1);
             }
             // console.log(firstEle.offsetTop)
