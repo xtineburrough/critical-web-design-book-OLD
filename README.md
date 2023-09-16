@@ -12,7 +12,7 @@ Publish your first web page: By the end of the modules in this chapter you will 
 
 Design a concrete poem: Throughout the modules in this chapter you will create a concrete poem that you pre-visualize and design in your favorite GUI (graphical user interface) and then code for the web browser using HTML, CSS, and Javascript. Start by choosing a single word or important phrase from one of the texts at designmanifestos.org. Select a phrase that speaks to you. You may want to preview the examples we created at the end of the chapter.
 
-<img height="190" src="figures/ch2/ch2-Poem-Think.png"> <img height="190" src="figures/ch2/ch2-Poem-Shake-640w.gif"> <img height="190" src="figures/ch2/ch2-Poem-Click.png"> <img height="190" src="figures/ch2/ch2-Poem-Random-640w.gif">
+<img height="190" src="figures/ch2/ch2-Poem-Think.png"> <img height="190" src="figures/ch2/ch2-Poem-Shake-640w.gif"> <img height="190" src="figures/ch2/ch2-Poem-Click.png"> <img height="190" src="figures/ch2/ch2-Poem-Random-640w.gif"> <img height="190" src="figures/ch2/ch2-dont-be-evil.gif"> <img height="190" src="figures/ch2/ch2-after-ruhm.png">
 
 ## Chapter 3 - Critical Design
 
