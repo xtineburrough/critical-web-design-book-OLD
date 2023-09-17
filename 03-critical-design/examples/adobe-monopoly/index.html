@@ -2,18 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Monopoly</title>
+
+    <!-- 
+    Title: Monopoly
+    Author: Owen Mundy
+    Date: 2023
+    License: MIT
+    -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
 
-
     <style>
         html,
         body {
             margin: 0;
-            font: 16px / 22px "Open Sans", sans-serif;
+            font: 16px / 22px "Roboto", sans-serif;
         }
 
         header {
@@ -352,19 +359,12 @@
             </tr>
         </table>
 
-
-
-        <footer>
-            <!-- table conversion https://wtools.io/convert-tsv-to-html-table -->
-            Source: <a href="https://en.wikipedia.org/wiki/List_of_acquisitions_by_Adobe" target="_blank">Wikipedia</a>
-        </footer>
     </main>
 
-
-
-
-
-
+    <footer>
+        <!-- table conversion https://wtools.io/convert-tsv-to-html-table -->
+        Source: <a href="https://en.wikipedia.org/wiki/List_of_acquisitions_by_Adobe" target="_blank">Wikipedia</a>
+    </footer>
 
     <script>
         let logo = document.querySelector(".logo");
@@ -377,14 +377,15 @@
             tagline.innerText = "Acquisitions since 1990";
             main.style.transition = '1s';
             main.style.opacity = 1;
-        })
+        });
+
         logo.addEventListener("mouseout", function () {
             this.src = "assets/img/brand.svg";
             this.style.cursor = "pointer"
             tagline.innerText = "Expand your universe";
-            main.style.transition = '3s';
+            main.style.transition = '10s';
             main.style.opacity = 0;
-        })
+        });
     </script>
 </body>
 </html>

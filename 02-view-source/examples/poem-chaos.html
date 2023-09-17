@@ -2,7 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Crowded Chaos</title>
+
+    <!-- 
+    Title: Concrete Chaos (Greene quote, random margins)
+    Author: Owen Mundy
+    Date: 2023
+    License: MIT
+    -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,31 +33,27 @@
 
 <body>
 
-    <div class="quote">Both everyday and exotic, public and private, autonomous and commercial, the internet is a chaotic, diverse and crowded form of contemporary public space. —Rachel Greene, Internet Art<div>
+    <div class="quote">
+        Both everyday and exotic, public and private, autonomous and commercial, the internet is a chaotic, diverse and crowded form of contemporary public space. —Rachel Greene, Internet Art
+    </div>
 
-            <script>
-                /**
-                 *  Title: Concrete Chaos (Greene quote, random margins)
-                 *  Author: Owen Mundy
-                 *  Date: 2023
-                 *  License: MIT
-                 */
+    <script>
 
-                let quoteEle = document.querySelector(".quote");
-                let quoteStr = quoteEle.innerText;
+        let quoteEle = document.querySelector(".quote");
+        let quoteStr = quoteEle.innerText;
 
-                function updateText() {
-                    let str = "";
-                    for (let i = 0; i < quoteStr.length; i++) {
-                        str += `<span style="margin-left:${10 * Math.random()}rem">${quoteStr[i]}</span>`;
-                    }
-                    quoteEle.innerHTML = str;
-                }
-                setInterval(function () {
-                    updateText();
-                }, 250);
+        function updateText() {
+            let str = "";
+            for (let i = 0; i < quoteStr.length; i++) {
+                str += `<span style="margin-left:${10 * Math.random()}rem">${quoteStr[i]}</span>`;
+            }
+            quoteEle.innerHTML = str;
+        }
+        setInterval(function () {
+            updateText();
+        }, 250);
 
-            </script>
+    </script>
 
 
 </body>
