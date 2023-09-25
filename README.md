@@ -38,7 +38,7 @@ Create and implement a usability test, then design a responsive web page to refl
 
 Examples: [AIGA usability test](https://omundy.github.io/critical-web-design-book/05-usability/examples/usability-aiga/)
 
-<img height="190" src="figures/ch6/ch6-haiku-x.png"> <img height="190" src="figures/ch6/6-nyt-explode.png"> <img height="190" src="figures/ch6/ch6-haiku-o-1.png"> <img height="190" src="figures/ch6/ch6-haiku-o-2.png"> <img height="190" src="figures/ch6ch6-haiku-o-3.png">
+<img height="190" src="figures/ch6/ch6-haiku-x.png"> <img height="190" src="figures/ch6/6-nyt-explode.png"> <img height="190" src="figures/ch6/ch6-haiku-o-1.png"> <img height="190" src="figures/ch6/ch6-haiku-o-2.png"> <img height="190" src="figures/ch6/ch6-haiku-o-3.png">
 
 ## Chapter 7 - Ethical Design
 
