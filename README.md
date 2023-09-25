@@ -26,15 +26,17 @@ Create a work of critical web design: Throughout the modules in this chapter you
 
 Design a responsive multi-column web page layout for a fictional newspaper. Use lorem ipsum placeholder text throughout your design. Code the page using the Bootstrap framework. Examples: [The New York Felines](https://omundy.github.io/critical-web-design-book/04-on-the-grid/examples/the-new-york-felines/)
 
-<img height="240" src="figures/ch4/ch4-outcome-lg.png"> <img height="240" src="figures/ch4/ch4-outcome-md.png"> <img height="240" src="figures/ch4/ch4-outcome-xs.png">
+<img height="240" src="figures/ch4/ch4-outcome-lg.png"> <img height="240" src="figures/ch4/ch4-outcome-md.png">  <img height="240" src="figures/ch4/ch4-outcome-sm.png"> <img height="240" src="figures/ch4/ch4-outcome-xs.png">
 
 ## Chapter 5 - Usability & Forms
 
 Create and implement a usability test, then design a responsive web page to reflect on findings. Evaluate your design using the "less is more" critique. Code the design using bootstrap, including a working web form to output the score from the System Usability Scale (SUS) survey. Examples: [AIGA usability test](https://omundy.github.io/critical-web-design-book/05-usability/examples/usability-aiga/)
 
-<img height="220" src="figures/ch5/5.3-codepen-form-2.png"> <img height="220" src="figures/ch5/5.3-Usability-results.png">
+<img height="220" src="figures/ch5/5.3-codepen-form-2.png"> <img height="220" src="figures/ch5/ch5-outcome-lg.png"> <img height="220" src="figures/ch5/ch5-outcome-md.png"> <img height="220" src="figures/ch5/ch5-outcome-sm.png"> <img height="220" src="figures/ch5/ch5-outcome-xs.png">
 
 ## Chapter 6 - Off the Grid
+
+Examples: [AIGA usability test](https://omundy.github.io/critical-web-design-book/05-usability/examples/usability-aiga/)
 
 <img height="190" src="figures/ch6/ch6-haiku-x.png"> <img height="190" src="figures/ch6/6-nyt-explode.png"> <img height="190" src="figures/ch6/ch6-haiku-o-1.png"> <img height="190" src="figures/ch6/ch6-haiku-o-2.png"> <img height="190" src="figures/ch6ch6-haiku-o-3.png">
 
