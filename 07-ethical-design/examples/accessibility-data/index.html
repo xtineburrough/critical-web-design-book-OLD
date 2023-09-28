@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Accessibility Data | Critical Web Design</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            color: aliceblue;
+        }
+
+        a {
+            text-decoration: none !important;
+        }
+
+        .graphic {
+            display: inline-block;
+            border-radius: 50%;
+            width: 5rem;
+            height: 5rem;
+            background-size: contain;
+            margin: .1rem .3rem;
+        }
+
+        /* center the logo horizontal and vertical */
+        .logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.65);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="my-4">Accessibility</h1>
+
+                <div>
+                    <button class="btn btn-dark mx-1 percent2">2%</button>
+                    <button class="btn btn-dark mx-1 percent6">6%</button>
+                    <button class="btn btn-dark mx-1 percent12">12%</button>
+                    <button class="btn btn-dark mx-1 percent24">24%</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="text-center my-4">These people can see what you make</div>
+                <div class="yes text-start"></div>
+            </div>
+            <div class="col-6">
+                <div class="text-center my-4">These people can't</div>
+                <div class="no text-end"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="../../../assets/js/functions.js"></script>
+    <script type="module">
+
+
+
+        function main(affected) {
+            // let affected = randomInt(0, 100);
+            // create array with total people
+            let total = [];
+            for (let i = 0; i < 100; i++) {
+                total.push(i)
+            }
+            shuffleArray(total);
+            console.log(total)
+
+            document.querySelector(".no").innerHTML = displayGroup(total.splice(0, affected));
+            document.querySelector(".yes").innerHTML = displayGroup(total);
+        }
+        main(2)
+
+
+        function displayGroup(arr) {
+            let str = "";
+            for (let i = 0; i < arr.length; i++) {
+                str += `<span class="graphic" style="background-image:url(assets/img/users/${arr[i]}.jpg)"></span>`;
+            }
+            return str;
+        }
+
+
+        document.querySelector(".percent2").addEventListener("click", () => { main(2); });
+        document.querySelector(".percent6").addEventListener("click", () => { main(6); });
+        document.querySelector(".percent12").addEventListener("click", () => { main(12); });
+        document.querySelector(".percent24").addEventListener("click", () => { main(24); });
+
+
+        document
+            .querySelector("body")
+            .addEventListener("mouseover", function (event) {
+                // console.log(event.target.className);
+                if (event.target.className.includes("purchase")) {
+                    event.target.className = event.target.className.replace(
+                        "primary",
+                        "secondary"
+                    );
+                    event.target.parentElement.style.opacity = 0.5;
+                }
+            });
+
+
+    </script>
+</body>
+</html>
