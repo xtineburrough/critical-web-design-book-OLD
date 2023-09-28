@@ -37,9 +37,11 @@ Create and implement a usability test, then design a responsive web page to refl
 
 ## Chapter 6 - Off the Grid
 
-Examples: [AIGA usability test](https://omundy.github.io/critical-web-design-book/05-usability/examples/usability-aiga/)
+Create an experimental composition and then explode it!
 
-<img height="190" src="figures/ch6/ch6-haiku-x.png"> <img height="190" src="figures/ch6/6-nyt-explode.png"> <img height="190" src="figures/ch6/ch6-haiku-o-1.png"> <img height="190" src="figures/ch6/ch6-haiku-o-2.png"> <img height="190" src="figures/ch6/6.3-quote-baldwin.png">
+Examples: [Haiku (x)](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/self-portrait-x.html) | [Haiku (Birds)](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/haiku-birds.html) | [Quote (Baldwin)](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/quote-baldwin.html)
+
+<img height="190" src="figures/ch6/ch6-haiku-x.png"> <img height="190" src="figures/ch6/6-nyt-explode.png"> <img height="190" src="figures/ch6/ch6-haiku-o-1.png"> <img height="190" src="figures/ch6/ch6-haiku-o-2.png"> <img height="190" src="figures/ch6/6.3-quote-baldwin.png"> 
 
 ## Chapter 7 - Ethical Design
 
