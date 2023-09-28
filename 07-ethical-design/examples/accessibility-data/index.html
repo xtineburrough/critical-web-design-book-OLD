@@ -72,18 +72,19 @@
 
 
         function main(affected) {
-            // let affected = randomInt(0, 100);
-            // create array with total people
+            // create array with #s
             let total = [];
             for (let i = 0; i < 100; i++) {
                 total.push(i)
             }
             shuffleArray(total);
-            console.log(total)
+            // console.log(total)
 
+            // add each group to page
             document.querySelector(".no").innerHTML = displayGroup(total.splice(0, affected));
             document.querySelector(".yes").innerHTML = displayGroup(total);
         }
+        // let test = randomInt(0, 100);
         main(2)
 
 
@@ -100,20 +101,6 @@
         document.querySelector(".percent6").addEventListener("click", () => { main(6); });
         document.querySelector(".percent12").addEventListener("click", () => { main(12); });
         document.querySelector(".percent24").addEventListener("click", () => { main(24); });
-
-
-        document
-            .querySelector("body")
-            .addEventListener("mouseover", function (event) {
-                // console.log(event.target.className);
-                if (event.target.className.includes("purchase")) {
-                    event.target.className = event.target.className.replace(
-                        "primary",
-                        "secondary"
-                    );
-                    event.target.parentElement.style.opacity = 0.5;
-                }
-            });
 
 
     </script>
