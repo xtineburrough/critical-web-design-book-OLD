@@ -39,9 +39,9 @@ Create and implement a usability test, then design a responsive web page to refl
 
 Create an experimental composition and then explode it!
 
-Examples: [Haiku (x)](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/self-portrait-x.html) | [Haiku (Birds)](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/haiku-birds.html) | [Quote (Baldwin)](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/quote-baldwin.html)
+Examples: [Haiku (xtine)](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/self-portrait-x.html) | [Haiku (Birds)](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/haiku-birds.html) | [Quote (Baldwin)](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/quote-baldwin.html) | [Quote (Maintenance)](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/quote-maintenance.html)
 
-<img height="190" src="figures/ch6/ch6-haiku-x.png"> <img height="190" src="figures/ch6/6-nyt-explode.png"> <img height="190" src="figures/ch6/ch6-haiku-o-1.png"> <img height="190" src="figures/ch6/ch6-haiku-o-2.png"> <img height="190" src="figures/ch6/6.3-quote-baldwin.png"> 
+<img height="190" src="figures/ch6/ch6-haiku-x.png"> <img height="190" src="figures/ch6/6-nyt-explode.png"> <img height="190" src="figures/ch6/ch6-haiku-o-1.png"> <img height="190" src="figures/ch6/ch6-haiku-o-2.png"> <img height="190" src="figures/ch6/6.3-quote-baldwin.png">  <img height="190" src="figures/ch6/ch6-maintenance.gif"> 
 
 ## Chapter 7 - Ethical Design
 
