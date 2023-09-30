@@ -1,6 +1,6 @@
 /**
  *  Helper functions to accompany Critical Web Design (the book)
- *  2023 Owen Mundy & xtine burrough
+ *  2023 Owen Mundy
  *  See license in repository
  */
 
@@ -15,6 +15,16 @@ function randomFloat(min = 0, max = 1) {
  */
 function randomInt(min = 0, max = 1) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+/**
+ *  Return a random rgb
+ */
+function randomRgb() {
+	return {
+		r: Math.floor(Math.random() * 255),
+		g: Math.floor(Math.random() * 255),
+		b: Math.floor(Math.random() * 255),
+	};
 }
 /**
  *  Return a random index from the array
@@ -50,12 +60,22 @@ function convertTZ(date, tzString) {
 }
 
 /**
- *  Populate an array with a string
+ *  Populate an array with a value
  */
-function populateArr(str, count) {
+function populateArr(val, count) {
 	var sizedArray = Array.apply(null, Array(count));
 	return sizedArray.map(function (o) {
-		return str;
+		return val;
+	});
+}
+
+/**
+ *  Populate an array with random numbers
+ */
+function populateArrRandomInt(min, max, count) {
+	var sizedArray = Array.apply(null, Array(count));
+	return sizedArray.map(function (o) {
+		return randomInt(min, max);
 	});
 }
 
@@ -63,8 +83,14 @@ function populateArr(str, count) {
  *  Shuffle an array - credit https://stackoverflow.com/a/12646864/441878
  */
 function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
+	for (let i = array.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[array[i], array[j]] = [array[j], array[i]];
+	}
+}
+
+function sortArray(arr) {
+	return arr.sort((a, b) => {
+		return a - b;
+	});
 }
