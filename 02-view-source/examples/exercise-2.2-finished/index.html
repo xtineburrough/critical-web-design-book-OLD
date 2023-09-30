@@ -19,11 +19,6 @@
             color: aqua;
         }
 
-        /* .block {
-            display: inline-block;
-            background-color: hotpink;
-            margin: 1px 2px 3px 4px;
-        } */
         p {
             display: inline-block;
             width: 70px;
@@ -31,6 +26,12 @@
             margin: 20px 20px 0 0;
             padding: 10px;
             background-color: lavender;
+        }
+
+        .anywhere {
+            position: absolute;
+            top: 350px;
+            left: 180px;
         }
     </style>
 </head>
@@ -46,15 +47,9 @@
     <p>A paragraph</p>
     <p>A paragraph</p>
     <p>A paragraph</p>
-    <p>A paragraph</p>
+    <p class="anywhere">A paragraph</p>
 
-    <!-- 
-    <script>
-        let blocks = document.querySelectorAll(".block")
-        blocks.forEach(element => {
-            element.style.width = Math.random() * 150 + "px";
-        });
-    </script> -->
+
 
 </body>
 </html>
