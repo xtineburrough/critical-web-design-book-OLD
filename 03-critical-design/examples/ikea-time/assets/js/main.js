@@ -10,20 +10,14 @@ let targetElement = document.querySelector("h2");
 console.log(targetElement);
 
 // 4 - Add a mouseover event listener
-targetElement.addEventListener("mouseover", mouseoverHandler);
-
-// 5 - Create a handler function to run code when the event happens
-function mouseoverHandler() {
-    console.log(this.innerText);
-    this.innerText = "TIME";
-    this.style = "cursor: wait"; // 7 - Update the cursor style
-}
-
-// 6 - An event listener and handler in the same statement
-targetElement.addEventListener("mouseout", function () {
-    this.innerText = "IKEA";
-    this.style = "cursor: pointer";
+targetElement.addEventListener("mouseover", function () {
+	console.log(this.innerText);
+	this.innerText = "TIME";
+	this.style = "cursor: wait"; // 7 - Update the cursor style
 });
 
-
-
+// 6 - Add a mouseout event listener
+targetElement.addEventListener("mouseout", function () {
+	this.innerText = "IKEA";
+	this.style = "cursor: pointer";
+});
