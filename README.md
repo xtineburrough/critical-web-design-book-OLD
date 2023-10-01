@@ -41,7 +41,7 @@ Create an experimental composition and then explode it!
 
 Examples: [Haiku (xtine)](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/haiku-xtine.html) | [Haiku (Birds)](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/birds.html) | [Quote (Baldwin)](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/baldwin.html) | [Quote (Maintenance)](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/maintenance.html)
 
-<img height="190" src="figures/ch6/ch6-haiku-x.png"> <img height="190" src="figures/ch6/6-nyt-explode.png"> <img height="190" src="figures/ch6/ch6-haiku-o-1.png"> <img height="190" src="figures/ch6/ch6-haiku-o-2.png"> <img height="190" src="figures/ch6/6.3-quote-baldwin.png">  <img height="190" src="figures/ch6/ch6-maintenance.gif"> 
+<img height="190" src="figures/ch6/6-nyt-explode.png"> <img height="190" src="figures/ch6/ch6-haiku-x.png"> <img height="190" src="figures/ch6/ch6-haiku-o-2.png"> <img height="190" src="figures/ch6/6.3-quote-baldwin.png">  <img height="190" src="figures/ch6/ch6-maintenance.gif"> 
 
 ## Chapter 7 - Ethical Design
 
