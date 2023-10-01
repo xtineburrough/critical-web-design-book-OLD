@@ -5,7 +5,7 @@
     <title>Quote (Maintenance)</title>
 
     <!-- 
-    Title: Maintenance is a drag
+    Title: Maintenance is a drag (after Mierle Laderman Ukeles)
     Author: Owen Mundy
     Date: 2023
     License: MIT
@@ -22,18 +22,24 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            background-color: black;
+            background-color: white;
             font-family: 'Roboto Slab', serif;
             color: white;
             font-size: 3vw;
+            text-shadow: 2px 2px 3px rgba(250, 186, 197, .5);
         }
 
         .container {
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 100%;
             height: 100%;
             background-color: white;
+        }
+        .svg{
+            width: 100%;
+            height: 100%;
         }
 
         svg {
@@ -51,9 +57,9 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container svg">
         <div class="text"></div>
-        <div class="svg"></div>
+        <!-- <div class="svg"></div> -->
     </div>
     <script src="../../assets/js/functions.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/3.2.0/svg.min.js"></script>
@@ -98,48 +104,66 @@
             wake up,
             get caffeine,
             schedule the call,
+            take the pill,
             answer the email,
+            walk the dog,
             drive to campus,
             find my phone,
             drop off the child,
             login with Duo,
             mark it as spam,
-            do the cybersecurity training,
+            cybersecurity training,
             grade the papers,
-            unsubscribe from the list, 
+            do your taxes,
+            unsubscribe from list, 
+            hiring committee,
             read the notice,
+            write the grant,
+            annual report,
+            go to the doctor,
             click confirm on Moodle,
             learn student names,
+            recommendation letter,
+            get a vaccination,
+            hang the decorations,
             encourage class attendance,
             enter your password,
             write learning objectives,
-            attend the faculty meeting,
+            attend faculty meeting,
             file the syllabus,
             clean the desk, 
+            book the flights,
             back up the hard drive,
+            go on vacation,
             join the committee,
             install the update,
+            check the printer ink,
             finish the report, 
-            correct the typos, 
+            department meeting,
+            correct the typo, 
             what shall I wear, 
             pay the bill, 
             go to the store, 
             pick up the child,
             make dinner,
             get some exercise,
+            feed the dog,
             wash your clothes, 
             go to the opening,
-            wash the dishes, 
-            be happy,
+            flush the toilet, 
+            do the dishes, 
             wind down,
-            go to sleep
+            go to sleep,
+            be happy
         `.split(/[,.;]+/);
 
         let word = 0;
 
         SVG.on(document, 'DOMContentLoaded', function () {
             let w = 1000, h = w;
-            var draw = SVG().addTo('.svg').size(w, h)
+            var draw = SVG().addTo('.container')
+            // .size('100%', '100%')
+            .size(w,h)
             const text = document.querySelector(".text");
             setInterval(function () {
                 drawSVG()
@@ -151,48 +175,35 @@
                 // polygon.plot([[0,0], [100,50], [50,100], [150,50], [200,50]])
                 var polygon = draw.polygon('0,0').fill('none').attr({ fill: '#f06' })
 
-                let points = randomInt(3, 9)
-                let arr = [];
+                let xAxis = [.1, .2, .4, .7, .8, .8, .7, .4, .2, .1]
+                let yAxis = [.4, .7, .8, .8, .7, .4, .2, .1, .1, .2]
+
+                let points = randomInt(3, 8)
+                let plot1 = [];
+                let plot2 = [];
                 for (let i = 0; i < points; i++) {
                     let x, y
-                    if (i < points * .15) {
-                        x = randomInt(w * .1, w * .2)
-                        y = randomInt(h * .4, h * .6)
-                    } else if (i < points * .25) {
-                        x = randomInt(w * .1, w * .2)
-                        y = randomInt(h * .1, h * .2)
-                    } else if (i < points * .35) {
-                        x = randomInt(w * .4, w * .6)
-                        y = randomInt(h * .1, h * .2)
-                    } else if (i < points * .5) {
-                        x = randomInt(w * .8, w * .9)
-                        y = randomInt(h * .1, h * .2)
-                    } else if (i < points * .65) {
-                        x = randomInt(w * .8, w * .9)
-                        y = randomInt(h * .4, h * .6)
-                    } else if (i < points * .75) {
-                        x = randomInt(w * .8, w * .9)
-                        y = randomInt(h * .8, h * .9)
-                    } else if (i < points * .85) {
-                        x = randomInt(w * .4, w * .6)
-                        y = randomInt(h * .8, h * .9)
-                    } else {
-                        x = randomInt(w * .1, w * .2)
-                        y = randomInt(h * .8, h * .9)
-                    }
-                    arr.push([x, y])
+                    let index = Math.floor(i / (points * .1))
+                    // console.log(index)
+                    x = randomInt(w * xAxis[index], w * (xAxis[index] + .1))
+                    y = randomInt(h * yAxis[index], h * (yAxis[index] + .1))
+                    // console.log(x, y)                
+                    plot1.push([x, y])
+                    plot2.push([x += Math.random() * 25, y += Math.random() * 25])
                 }
-                // console.log(arr)
+                // console.log(plot1)
                 let { r, g, b } = randomRgb()
+                let rotatation = Math.random() * 360;
                 // console.log(`rgb(${r},${g},${b})`)
-                polygon.plot(arr).attr({ fill: `rgba(${r},${65},${b}, .2)` })
-                    .opacity(0).animate(1500).opacity(1)
+                polygon
+                    .plot(plot1).attr({ fill: `rgba(${r},${65},${b}, .2)` }).opacity(0)
+                    .transform({ rotate: rotatation, origin: 'center' }, true)
+                    .animate(2000).plot(plot2).opacity(1)
 
-                let rotatation = Math.random() * -5;
+                rotatation = Math.random() * -5;
                 if (Math.random() > .5) rotatation = Math.abs(rotatation);
                 polygon
-                    .animate(2500)
-                    .opacity(0)
+                    .animate(2500).opacity(0)
                     .transform({ rotate: rotatation, origin: 'center' }, true)
                     .after(function () {
                         this.element().remove()
