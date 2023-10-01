@@ -41,13 +41,45 @@
         <div class="row">
             <div class="col text-center">
                 <h1 class="my-4">Accessibility</h1>
-
-                <div>
-                    <button class="btn btn-dark mx-1 percent2">2%</button>
-                    <button class="btn btn-dark mx-1 percent6">6%</button>
-                    <button class="btn btn-dark mx-1 percent12">12%</button>
-                    <button class="btn btn-dark mx-1 percent24">24%</button>
-                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-dark mx-1 showAffected" data-affected="15">15%</button> 
+                <br>
+                of the world's population has some sort of disability
+            </div>
+            <div class="col">
+                <button class="btn btn-dark mx-1 showAffected" data-affected="26">26%</button> 
+                <br>
+                of adults in the United States have some type of disability
+            </div>
+            <div class="col">
+                <!-- According to the Web AIM Million Report researching one million websites,  -->
+                <button class="btn btn-dark mx-1 showAffected" data-affected="51">50.8%</button>
+                <br>
+                Detectable accessibility errors on average per page
+            </div>
+            <div class="col">
+                <button class="btn btn-dark mx-1 showAffected" data-affected="74">74%</button>
+                <br>
+                Disabled Americans who do not have high-speed internet, a smartphone, or a computer at home
+                <!-- Roughly a quarter of Americans with disabilities (26%) say they have high-speed internet at home, a smartphone, a desktop or laptop computer, and a tablet compared with 44% of those who report not having a disability.  -->
+            </div>
+            <div class="col">
+                <!-- (As of 2023)  -->
+               <button class="btn btn-dark mx-1 showAffected" data-affected="97">96.8%</button>
+                <br> 
+                Home pages with detectable WCAG 2 failures
+            </div>
+            <!-- <div class="col">
+                84% of home pages had low-contrast text.
+            </div> -->
+            <div class="col">
+                <button class="btn btn-dark mx-1 showAffected" data-affected="23">23%</button> 
+                <br> 
+                Images with missing alternative text 
+                <!-- and over one-third of all images analyzed had detectable accessibility issues -->
             </div>
         </div>
     </div>
@@ -71,7 +103,8 @@
 
 
 
-        function main(affected) {
+        function showAffected(el) {
+            console.log(el.target.dataset)
             // create array with #s
             let total = [];
             for (let i = 0; i < 100; i++) {
@@ -81,11 +114,11 @@
             // console.log(total)
 
             // add each group to page
-            document.querySelector(".no").innerHTML = displayGroup(total.splice(0, affected));
+            document.querySelector(".no").innerHTML = displayGroup(total.splice(0, el.target.dataset.affected));
             document.querySelector(".yes").innerHTML = displayGroup(total);
         }
         // let test = randomInt(0, 100);
-        main(2)
+        // showAffected(2)
 
 
         function displayGroup(arr) {
@@ -97,10 +130,11 @@
         }
 
 
-        document.querySelector(".percent2").addEventListener("click", () => { main(2); });
-        document.querySelector(".percent6").addEventListener("click", () => { main(6); });
-        document.querySelector(".percent12").addEventListener("click", () => { main(12); });
-        document.querySelector(".percent24").addEventListener("click", () => { main(24); });
+        let btns = document.querySelectorAll(".showAffected")
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", showAffected, false);
+        }
+
 
 
     </script>
