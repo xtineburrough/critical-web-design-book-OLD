@@ -18,12 +18,10 @@
         }
 
         .graphic {
-            display: inline-block;
+            display: block;
             border-radius: 50%;
-            width: 6rem;
-            height: 6rem;
-            background-size: contain;
-            margin: .1rem .3rem;
+            width: 100%;
+            height: 100%;
         }
 
         /* center the logo horizontal and vertical */
@@ -33,6 +31,18 @@
             left: 50%;
             transform: translate(-50%, -50%) scale(0.65);
         }
+
+        .btn {
+            border-radius: 50%;
+            width: 5rem;
+            height: 5rem;
+            text-align: center;
+        }
+
+        .btn-text {
+            margin-top: 1rem;
+            /* font-size: 90%; */
+        }
     </style>
 </head>
 <body>
@@ -40,71 +50,81 @@
     <div class="container">
         <div class="row">
             <div class="col text-center">
-                <h1 class="my-4">Accessibility</h1>
+                <h1 class="my-5">Who is affected by website accessibility?</h1>
             </div>
         </div>
-        <div class="row">
+        <div class="row text-center">
             <div class="col">
-                <button class="btn btn-dark mx-1 showAffected" data-affected="15">15%</button> 
-                <br>
-                of the world's population has some sort of disability
+                <button class="btn btn-dark mx-1 showAffected" data-affected="15">15%</button>
+                <div class="btn-text">
+                    % of world population with some sort of disability
+                </div>
             </div>
             <div class="col">
-                <button class="btn btn-dark mx-1 showAffected" data-affected="26">26%</button> 
-                <br>
-                of adults in the United States have some type of disability
+                <button class="btn btn-dark mx-1 showAffected" data-affected="26">26%</button>
+                <div class="btn-text">
+                    Adults in the United States who have a disability
+                </div>
             </div>
             <div class="col">
                 <!-- According to the Web AIM Million Report researching one million websites,  -->
                 <button class="btn btn-dark mx-1 showAffected" data-affected="51">50.8%</button>
-                <br>
-                Detectable accessibility errors on average per page
+                <div class="btn-text">
+                    Average detectable accessibility errors per web page
+                </div>
             </div>
             <div class="col">
                 <button class="btn btn-dark mx-1 showAffected" data-affected="74">74%</button>
-                <br>
-                Disabled Americans who do not have high-speed internet, a smartphone, or a computer at home
-                <!-- Roughly a quarter of Americans with disabilities (26%) say they have high-speed internet at home, a smartphone, a desktop or laptop computer, and a tablet compared with 44% of those who report not having a disability.  -->
+                <div class="btn-text">
+                    Disabled Americans with no high-speed internet, smartphone, or computer at home
+                    <!-- Roughly a quarter of Americans with disabilities (26%) say they have high-speed internet at home, a smartphone, a desktop or laptop computer, and a tablet compared with 44% of those who report not having a disability.  -->
+                </div>
             </div>
             <div class="col">
                 <!-- (As of 2023)  -->
-               <button class="btn btn-dark mx-1 showAffected" data-affected="97">96.8%</button>
-                <br> 
-                Home pages with detectable WCAG 2 failures
+                <button class="btn btn-dark mx-1 showAffected" data-affected="97">96.8%</button>
+                <div class="btn-text">
+                    Web pages with detectable WCAG 2 failures
+                </div>
             </div>
             <!-- <div class="col">
                 84% of home pages had low-contrast text.
             </div> -->
             <div class="col">
-                <button class="btn btn-dark mx-1 showAffected" data-affected="23">23%</button> 
-                <br> 
-                Images with missing alternative text 
-                <!-- and over one-third of all images analyzed had detectable accessibility issues -->
+                <button class="btn btn-dark mx-1 showAffected" data-affected="23">23%</button>
+                <div class="btn-text">
+                    Images with missing alternative text
+                    <!-- and over one-third of all images analyzed had detectable accessibility issues -->
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="container">
+    <div class="container mb-5">
         <div class="row">
-            <div class="col-6">
-                <div class="text-center my-4">These people can see what you make</div>
+            <!-- <div class="col-6">
+                <h3 class="text-center my-4">These people can see what you make</h3>
                 <div class="yes text-start"></div>
-            </div>
-            <div class="col-6">
-                <div class="text-center my-4">These people can't</div>
-                <div class="no text-center"></div>
-            </div>
+            </div> -->
+
         </div>
+        <div class="row no"></div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="../../../assets/js/functions.js"></script>
     <script type="module">
 
-
+        function preloadImage(url) {
+            var img = new Image();
+            img.src = url;
+        }
+        for (let i = 0; i <= 100; i++) {
+            preloadImage(`assets/img/users/${i}.jpg`);
+        }
 
         function showAffected(el) {
-            console.log(el.target.dataset)
+            // console.log(el.target.dataset)
             // create array with #s
             let total = [];
             for (let i = 0; i < 100; i++) {
@@ -114,27 +134,24 @@
             // console.log(total)
 
             // add each group to page
-            document.querySelector(".no").innerHTML = displayGroup(total.splice(0, el.target.dataset.affected));
-            document.querySelector(".yes").innerHTML = displayGroup(total);
+            displayGroup(total.splice(0, el.target.dataset.affected));
+            // document.querySelector(".yes").innerHTML = displayGroup(total);
         }
         // let test = randomInt(0, 100);
-        // showAffected(2)
-
 
         function displayGroup(arr) {
-            let str = "";
+            document.querySelector(".no").innerHTML = "";
             for (let i = 0; i < arr.length; i++) {
-                str += `<span class="graphic" style="background-image:url(assets/img/users/${arr[i]}.jpg)"></span>`;
+                document.querySelector(".no").innerHTML += `<div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-3"><img src="assets/img/users/${arr[i]}.jpg" class="img-fluid graphic"></div>`;
             }
-            return str;
         }
-
 
         let btns = document.querySelectorAll(".showAffected")
         for (let i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", showAffected, false);
+            btns[i].addEventListener("mouseover", showAffected, false);
         }
-
+        // trigger first button on load
+        btns[0].dispatchEvent(new Event("mouseover"));
 
 
     </script>
