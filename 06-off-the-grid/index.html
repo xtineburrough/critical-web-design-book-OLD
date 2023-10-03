@@ -56,9 +56,17 @@
     <script>
         document.addEventListener("click", randomize);
         function randomize() {
-            let elements = document.querySelectorAll("div");
+            let grid = document.querySelectorAll(".grid-container");
+            grid[0].style.transform = `rotate(${Math.random() * 360}deg)`;
+
+            let elements = document.querySelectorAll(".grid-container div");
             elements.forEach(function (ele) {
-                ele.style.transform = `translate(${Math.random() * 50}%,${Math.random() * 20}%) rotate(${Math.random() * 360}deg)`;
+                if (Math.random() > .5){
+                    ele.style.transform = `translate(${Math.random() * 80}%,${Math.random() * 80}%) rotate(${Math.random() * 360}deg)`;
+                } else {
+                    let scale =  Math.floor(Math.random() * (1.2 - .5 + 1)) + .5
+                    ele.style.transform = `scale(${scale}) translate(${Math.random() * 50}%,${Math.random() * 20}%) rotate(${Math.random() * 360}deg)`;
+                }
             })
         }
 
