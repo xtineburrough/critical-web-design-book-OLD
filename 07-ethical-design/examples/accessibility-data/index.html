@@ -89,12 +89,25 @@
             font-size: smaller;
         }
 
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: .5rem;
+        }
+
+        @media (min-width: 767.98px) {
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+                gap: .5rem;
+            }
+        }
+
         .graphic {
-            display: inline-block;
             border-radius: 50%;
-            width: 8.2rem;
-            height: 8.2rem;
-            margin: .31rem;
+            width: 100%;
+            height: 100%;
         }
 
         .affected {
@@ -119,13 +132,13 @@
             transform-origin: center;
             transition-property: transform;
             transition-duration: .15s;
-            transform: scale(1.12);
+            transform: scale(1.1);
         }
 
         .btn-text {
             margin-top: 1rem;
-            /* font-size: 90%; */
         }
+
     </style>
 </head>
 <body>
@@ -137,53 +150,52 @@
             </div>
         </div>
         <div class="row text-center">
-            <div class="col-6 col-md-4 col-lg-2 my-2">
+            <div class="col-6 col-sm-4 col-lg-2 my-2">
                 <div class="card text-center displayGroup red" data-group="0" data-percent="15">
-                    <div class="card-body h-100">
+                    <div class="card-body h-100 px-2">
                         <div class="value">15%</div>
                         <p class="card-text mt-2">% of world population with some sort of disability</p>
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-2 my-2">
+            <div class="col-6 col-sm-4 col-lg-2 my-2">
                 <div class="card text-center displayGroup yellow" data-group="1" data-percent="26">
-                    <div class="card-body h-100">
+                    <div class="card-body h-100 px-2">
                         <div class="value">26%</div>
                         <p class="card-text mt-2">Adults in the United States who have a disability</p>
-
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-2 my-2">
+            <div class="col-6 col-sm-4 col-lg-2 my-2">
                 <div class="card text-center displayGroup green" data-group="2" data-percent="23">
-                    <div class="card-body h-100">
+                    <div class="card-body h-100 px-2">
                         <div class="value">23%</div>
                         <p class="card-text mt-2">Images with missing alternative text</p>
                         <!-- and over one-third of all images analyzed had detectable accessibility issues -->
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-2 my-2">
+            <div class="col-6 col-sm-4 col-lg-2 my-2">
                 <div class="card text-center displayGroup teal" data-group="3" data-percent="51">
-                    <div class="card-body h-100">
+                    <div class="card-body h-100 px-2">
                         <div class="value">50.8%</div>
                         <p class="card-text mt-2">Average detectable accessibility errors per web page</p>
                         <!-- According to the Web AIM Million Report researching one million websites,  -->
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-2 my-2">
+            <div class="col-6 col-sm-4 col-lg-2 my-2">
                 <div class="card text-center displayGroup blue" data-group="4" data-percent="74">
-                    <div class="card-body h-100">
+                    <div class="card-body h-100 px-2">
                         <div class="value">74%</div>
                         <p class="card-text mt-2">Disabled Americans with no high-speed internet, smartphone, or computer</p>
                         <!-- Roughly a quarter of Americans with disabilities (26%) say they have high-speed internet at home, a smartphone, a desktop or laptop computer, and a tablet compared with 44% of those who report not having a disability.  -->
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-2 my-2">
+            <div class="col-6 col-sm-4 col-lg-2 my-2">
                 <div class="card text-center displayGroup purple" data-group="5" data-percent="97">
-                    <div class="card-body h-100">
+                    <div class="card-body h-100 px-2">
                         <div class="value">96.8%</div>
                         <p class="card-text mt-2">Web pages with detectable WCAG 2 failures</p>
                     </div>
@@ -193,11 +205,7 @@
     </div>
 
     <div class="container mt-4 mb-5">
-        <div class="row">
-            <div class="col">
-                <div class="users"></div>
-            </div>
-        </div>
+        <div class="users grid-container"></div>
     </div>
 
     <footer class="container text-center">
@@ -216,12 +224,13 @@
         //     preloadImage(`assets/img/users/${i}.jpg`);
         // }
 
-        let cards;
-        let displays = [32, 36]
-
-        let displayCount = 36;
-        let group = 0;
-        let users = document.querySelector(".users");
+        let viewportSize,
+            viewportUserCounts = { "xs": 8, "sm": 8, "md": 15, "lg": 18, "xl": 32, "xxl": 36 },
+            userCount = 36,
+            cardMenu,
+            groupId = 0,
+            usersEle = document.querySelector(".users"),
+            resetFlag = false;
 
         function displayGroup(e) {
             // console.log(e.currentTarget);
@@ -231,40 +240,42 @@
             // check and assign the group
             if (!e.currentTarget.dataset.group || !e.currentTarget.dataset.percent) return;
 
-            // if not already shown
-            if (group == e.currentTarget.dataset.group) return;
-            // get group
-            group = e.currentTarget.dataset.group
+            if (resetFlag == true) {
+                resetFlag = false;
+            } else {
+                // if not already shown
+                if (groupId == e.currentTarget.dataset.group) return;
+                // get group
+                groupId = e.currentTarget.dataset.group
+            }
 
             // replace hash in url
-            window.location.hash = '#' + group;
+            window.location.hash = '#' + groupId;
 
             // remove active from others
-            for (let i = 0; i < cards.length; i++) {
-                cards[i].classList.remove("active");
+            for (let i = 0; i < cardMenu.length; i++) {
+                cardMenu[i].classList.remove("active");
             }
             // show active
             e.currentTarget.classList.add("active");
 
-            let arr = returnRandomIntsArr(0, 115, displayCount);
+            let arr = returnRandomIntsArr(0, 115, userCount);
             // console.log("arr", arr);
             let str = "";
             let percent = e.currentTarget.dataset.percent;
-            let affected = Math.ceil(displayCount * percent / 100);
+            let affected = Math.ceil(userCount * percent / 100);
             for (let i = 0; i < arr.length; i++) {
                 let className = "";
                 if (i < affected) className = "affected"
+                // str += `<span class="${className}" title="${className}"><img src="assets/img/users/${arr[i]}.jpg" class="img-fluid graphic"></span>`;
                 str += `<span class="${className}" title="${className}"><img src="assets/img/users/${arr[i]}.jpg" class="img-fluid graphic"></span>`;
             }
-            users.innerHTML = str;
-            console.log("group", group, "percent", percent, "affected", affected + "/" + displayCount);
-
-            // e.stopPropagation();
-            // e.preventDefault();
+            usersEle.innerHTML = str;
+            console.log("groupId", groupId, "percent", percent, "affected", affected + "/" + userCount);
         }
 
         /**
-         * 
+         *  Return an array of intergers randomly chosen from min/max, of length 
          */
         function returnRandomIntsArr(min, max, length) {
             // create array with #s
@@ -274,29 +285,58 @@
                 arr.push(i);
             }
             shuffleArray(arr);
-            console.log(arr)
+            // console.log(arr)
             return arr.splice(0, length);
         }
 
-        document.addEventListener('DOMContentLoaded', function () {
-
-            cards = document.querySelectorAll(".displayGroup");
-            // console.log(cards);
-            for (let i = 0; i < cards.length; i++) {
-                cards[i].addEventListener("mouseover", displayGroup, false);
+        /**
+         *  Listener to detect resizing / update layout 
+         */
+        window.addEventListener('resize', function (event) {
+            // get viewport size
+            viewportSize = getViewport();
+            let newCount = viewportUserCounts[viewportSize]
+            // update number of persons in display
+            if (newCount != userCount) {
+                userCount = newCount;
+                console.log("viewportSize", viewportSize, "userCount", userCount);
+                // change groupId to override reset
+                resetFlag = true;
+                cardMenu[groupId].dispatchEvent(new Event("mouseover"));
             }
+        }, true);
 
-            // window.location.replace(('' + window.location).split('#')[0] + '#' + hash);
-            console.log(window.location.href)
-            let group = window.location.href.split("#")[1] || 0;
-            console.log(group)
+        // once page has loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // select the cardMenu, add event listenr to each
+            cardMenu = document.querySelectorAll(".displayGroup");
+            // console.log(cardMenu);
+            for (let i = 0; i < cardMenu.length; i++) {
+                cardMenu[i].addEventListener("mouseover", displayGroup, false);
+            }
+            // get groupId number or default to zero
+            let groupId = window.location.href.split("#")[1] || 0;
+            // console.log(groupId, window.location.href)
+            // trigger resize event
+            window.dispatchEvent(new Event("resize"));
             // trigger first button on load
-            cards[group].dispatchEvent(new Event("mouseover"));
-
+            cardMenu[groupId].dispatchEvent(new Event("mouseover"));
         }, false);
 
-        function getBreakpoint() {
-            return getComputedStyle(document.body).getPropertyValue('--bs-breakpoint-md');
+
+        // https://stackoverflow.com/a/55368012/441878
+        function getViewport() {
+            // https://stackoverflow.com/a/8876069
+            const width = Math.max(
+                document.documentElement.clientWidth,
+                window.innerWidth || 0
+            )
+            if (width <= 576) return 'xs'
+            if (width <= 768) return 'sm'
+            if (width <= 992) return 'md'
+            if (width <= 1200) return 'lg'
+            if (width <= 1400) return 'xl'
+            return 'xxl'
         }
 
     </script>
