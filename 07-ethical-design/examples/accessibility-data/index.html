@@ -35,48 +35,54 @@
             background-color: rgba(255, 0, 0, .05);
         }
 
-        .red:hover, .active.red {
-            background-color: rgba(255, 0, 0, .15);
+        .red:hover,
+        .active.red {
+            background-color: rgba(255, 0, 0, .2);
         }
 
         .yellow {
             background-color: rgba(255, 255, 0, .05);
         }
 
-        .yellow:hover, .active.yellow {
-            background-color: rgba(255, 255, 0, .15);
+        .yellow:hover,
+        .active.yellow {
+            background-color: rgba(255, 255, 0, .2);
         }
 
         .green {
             background-color: rgba(0, 255, 0, .05);
         }
 
-        .green:hover, .active.green {
-            background-color: rgba(0, 255, 0, .15);
+        .green:hover,
+        .active.green {
+            background-color: rgba(0, 255, 0, .2);
         }
 
         .teal {
             background-color: rgba(0, 255, 255, .05);
         }
 
-        .teal:hover, .active.teal {
-            background-color: rgba(0, 255, 255, .15);
+        .teal:hover,
+        .active.teal {
+            background-color: rgba(0, 255, 255, .2);
         }
 
         .blue {
             background-color: rgba(0, 0, 255, .05);
         }
 
-        .blue:hover, .active.blue {
-            background-color: rgba(0, 0, 255, .15);
+        .blue:hover,
+        .active.blue {
+            background-color: rgba(0, 0, 255, .2);
         }
 
         .purple {
             background-color: rgba(255, 0, 255, .05);
         }
 
-        .purple:hover, .active.purple {
-            background-color: rgba(255, 0, 255, .15);
+        .purple:hover,
+        .active.purple {
+            background-color: rgba(255, 0, 255, .2);
         }
 
         .card-text {
@@ -92,7 +98,7 @@
         }
 
         .affected {
-            filter: brightness(.3)
+            filter: brightness(.35)
         }
 
         .btn,
@@ -107,6 +113,13 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto;
+        }
+
+        .active {
+            transform-origin: center;
+            transition-property: transform;
+            transition-duration: .15s;
+            transform: scale(1.12);
         }
 
         .btn-text {
@@ -125,7 +138,7 @@
         </div>
         <div class="row text-center">
             <div class="col-6 col-md-4 col-lg-2 my-2">
-                <div class="card text-center displayGroup red" data-group="1" data-percent="15">
+                <div class="card text-center displayGroup red" data-group="0" data-percent="15">
                     <div class="card-body h-100">
                         <div class="value">15%</div>
                         <p class="card-text mt-2">% of world population with some sort of disability</p>
@@ -133,7 +146,7 @@
                 </div>
             </div>
             <div class="col-6 col-md-4 col-lg-2 my-2">
-                <div class="card text-center displayGroup yellow" data-group="2" data-percent="26">
+                <div class="card text-center displayGroup yellow" data-group="1" data-percent="26">
                     <div class="card-body h-100">
                         <div class="value">26%</div>
                         <p class="card-text mt-2">Adults in the United States who have a disability</p>
@@ -142,7 +155,7 @@
                 </div>
             </div>
             <div class="col-6 col-md-4 col-lg-2 my-2">
-                <div class="card text-center displayGroup green" data-group="3" data-percent="23">
+                <div class="card text-center displayGroup green" data-group="2" data-percent="23">
                     <div class="card-body h-100">
                         <div class="value">23%</div>
                         <p class="card-text mt-2">Images with missing alternative text</p>
@@ -151,7 +164,7 @@
                 </div>
             </div>
             <div class="col-6 col-md-4 col-lg-2 my-2">
-                <div class="card text-center displayGroup teal" data-group="4" data-percent="51">
+                <div class="card text-center displayGroup teal" data-group="3" data-percent="51">
                     <div class="card-body h-100">
                         <div class="value">50.8%</div>
                         <p class="card-text mt-2">Average detectable accessibility errors per web page</p>
@@ -160,7 +173,7 @@
                 </div>
             </div>
             <div class="col-6 col-md-4 col-lg-2 my-2">
-                <div class="card text-center displayGroup blue" data-group="5" data-percent="74">
+                <div class="card text-center displayGroup blue" data-group="4" data-percent="74">
                     <div class="card-body h-100">
                         <div class="value">74%</div>
                         <p class="card-text mt-2">Disabled Americans with no high-speed internet, smartphone, or computer</p>
@@ -169,7 +182,7 @@
                 </div>
             </div>
             <div class="col-6 col-md-4 col-lg-2 my-2">
-                <div class="card text-center displayGroup purple" data-group="6" data-percent="97">
+                <div class="card text-center displayGroup purple" data-group="5" data-percent="97">
                     <div class="card-body h-100">
                         <div class="value">96.8%</div>
                         <p class="card-text mt-2">Web pages with detectable WCAG 2 failures</p>
@@ -206,7 +219,7 @@
         let cards;
         let displays = [32, 36]
 
-        let displayCount = [36];
+        let displayCount = 36;
         let group = 0;
         let users = document.querySelector(".users");
 
@@ -214,28 +227,34 @@
             // console.log(e.currentTarget);
             console.log(e.currentTarget.dataset);
             // console.log(e.currentTarget.dataset.percent);
+
             // check and assign the group
             if (!e.currentTarget.dataset.group || !e.currentTarget.dataset.percent) return;
 
+            // if not already shown
             if (group == e.currentTarget.dataset.group) return;
+            // get group
             group = e.currentTarget.dataset.group
 
-            let percent = e.currentTarget.dataset.percent;
+            // replace hash in url
+            window.location.hash = '#' + group;
 
-    for (let i = 0; i < cards.length; i++) {
-        cards[i].classList.remove("active");
-    }
-    
-e.currentTarget.classList.add("active");
+            // remove active from others
+            for (let i = 0; i < cards.length; i++) {
+                cards[i].classList.remove("active");
+            }
+            // show active
+            e.currentTarget.classList.add("active");
 
-            let arr = returnUsersArr(displayCount);
+            let arr = returnRandomIntsArr(0, 115, displayCount);
             // console.log("arr", arr);
             let str = "";
+            let percent = e.currentTarget.dataset.percent;
             let affected = Math.ceil(displayCount * percent / 100);
             for (let i = 0; i < arr.length; i++) {
                 let className = "";
                 if (i < affected) className = "affected"
-                str += `<span class="${className}"><img src="assets/img/users/${arr[i]}.jpg" class="img-fluid graphic"></span>`;
+                str += `<span class="${className}" title="${className}"><img src="assets/img/users/${arr[i]}.jpg" class="img-fluid graphic"></span>`;
             }
             users.innerHTML = str;
             console.log("group", group, "percent", percent, "affected", affected + "/" + displayCount);
@@ -244,40 +263,35 @@ e.currentTarget.classList.add("active");
             // e.preventDefault();
         }
 
-        function returnUsersArr(count = 25) {
+        /**
+         * 
+         */
+        function returnRandomIntsArr(min, max, length) {
             // create array with #s
             let arr = [];
-            for (let i = 0; i < count; i++) {
-                arr.push(i)
+            // create array with all the numbers
+            for (let i = min; i < max; i++) {
+                arr.push(i);
             }
             shuffleArray(arr);
-            // console.log(total)
-            return arr;
+            console.log(arr)
+            return arr.splice(0, length);
         }
 
         document.addEventListener('DOMContentLoaded', function () {
 
-            // document.addEventListener('mouseover', (e) => {
-            //     let target = e.currentTarget || e.target;
-
-            //     console.log("target:", target);
-            //     console.log("target:", event.target);
-            //     console.log("currentTarget:", event.currentTarget);
-            //     // console.log(target.className, target.className.includes("displayGroup"))
-            //     // if (target.className.includes("displayGroup")) {
-            //     //     displayGroup(target)
-            //     // }
-            // })
-
-
-             cards = document.querySelectorAll(".displayGroup");
+            cards = document.querySelectorAll(".displayGroup");
             // console.log(cards);
             for (let i = 0; i < cards.length; i++) {
                 cards[i].addEventListener("mouseover", displayGroup, false);
-            }            
+            }
 
+            // window.location.replace(('' + window.location).split('#')[0] + '#' + hash);
+            console.log(window.location.href)
+            let group = window.location.href.split("#")[1] || 0;
+            console.log(group)
             // trigger first button on load
-            cards[0].dispatchEvent(new Event("mouseover"));
+            cards[group].dispatchEvent(new Event("mouseover"));
 
         }, false);
 
