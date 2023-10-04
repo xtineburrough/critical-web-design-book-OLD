@@ -1,3 +1,7 @@
+<!-- reduce the # to 10 -->
+<!-- leave @ 100 and overlay black -->
+<!-- make smaller -->
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,26 +21,92 @@
             text-decoration: none !important;
         }
 
-        .graphic {
-            display: block;
-            border-radius: 50%;
+        .displayGroup {
+            cursor: default;
             width: 100%;
             height: 100%;
         }
 
-        /* center the logo horizontal and vertical */
-        .logo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.65);
+        .displayGroup:hover {
+            cursor: pointer;
         }
 
-        .btn {
+        .red {
+            background-color: rgba(255, 0, 0, .05);
+        }
+
+        .red:hover, .active.red {
+            background-color: rgba(255, 0, 0, .15);
+        }
+
+        .yellow {
+            background-color: rgba(255, 255, 0, .05);
+        }
+
+        .yellow:hover, .active.yellow {
+            background-color: rgba(255, 255, 0, .15);
+        }
+
+        .green {
+            background-color: rgba(0, 255, 0, .05);
+        }
+
+        .green:hover, .active.green {
+            background-color: rgba(0, 255, 0, .15);
+        }
+
+        .teal {
+            background-color: rgba(0, 255, 255, .05);
+        }
+
+        .teal:hover, .active.teal {
+            background-color: rgba(0, 255, 255, .15);
+        }
+
+        .blue {
+            background-color: rgba(0, 0, 255, .05);
+        }
+
+        .blue:hover, .active.blue {
+            background-color: rgba(0, 0, 255, .15);
+        }
+
+        .purple {
+            background-color: rgba(255, 0, 255, .05);
+        }
+
+        .purple:hover, .active.purple {
+            background-color: rgba(255, 0, 255, .15);
+        }
+
+        .card-text {
+            font-size: smaller;
+        }
+
+        .graphic {
+            display: inline-block;
+            border-radius: 50%;
+            width: 8.2rem;
+            height: 8.2rem;
+            margin: .31rem;
+        }
+
+        .affected {
+            filter: brightness(.3)
+        }
+
+        .btn,
+        .value {
             border-radius: 50%;
             width: 5rem;
             height: 5rem;
             text-align: center;
+            background-color: #212529;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
         }
 
         .btn-text {
@@ -50,109 +120,170 @@
     <div class="container">
         <div class="row">
             <div class="col text-center">
-                <h1 class="my-5">Who is affected by website accessibility?</h1>
+                <h1 class="mt-5 my-4">Who is affected by website accessibility?</h1>
             </div>
         </div>
         <div class="row text-center">
-            <div class="col">
-                <button class="btn btn-dark mx-1 showAffected" data-affected="15">15%</button>
-                <div class="btn-text">
-                    % of world population with some sort of disability
+            <div class="col-6 col-md-4 col-lg-2 my-2">
+                <div class="card text-center displayGroup red" data-group="1" data-percent="15">
+                    <div class="card-body h-100">
+                        <div class="value">15%</div>
+                        <p class="card-text mt-2">% of world population with some sort of disability</p>
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <button class="btn btn-dark mx-1 showAffected" data-affected="26">26%</button>
-                <div class="btn-text">
-                    Adults in the United States who have a disability
+            <div class="col-6 col-md-4 col-lg-2 my-2">
+                <div class="card text-center displayGroup yellow" data-group="2" data-percent="26">
+                    <div class="card-body h-100">
+                        <div class="value">26%</div>
+                        <p class="card-text mt-2">Adults in the United States who have a disability</p>
+
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <!-- According to the Web AIM Million Report researching one million websites,  -->
-                <button class="btn btn-dark mx-1 showAffected" data-affected="51">50.8%</button>
-                <div class="btn-text">
-                    Average detectable accessibility errors per web page
+            <div class="col-6 col-md-4 col-lg-2 my-2">
+                <div class="card text-center displayGroup green" data-group="3" data-percent="23">
+                    <div class="card-body h-100">
+                        <div class="value">23%</div>
+                        <p class="card-text mt-2">Images with missing alternative text</p>
+                        <!-- and over one-third of all images analyzed had detectable accessibility issues -->
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <button class="btn btn-dark mx-1 showAffected" data-affected="74">74%</button>
-                <div class="btn-text">
-                    Disabled Americans with no high-speed internet, smartphone, or computer at home
-                    <!-- Roughly a quarter of Americans with disabilities (26%) say they have high-speed internet at home, a smartphone, a desktop or laptop computer, and a tablet compared with 44% of those who report not having a disability.  -->
+            <div class="col-6 col-md-4 col-lg-2 my-2">
+                <div class="card text-center displayGroup teal" data-group="4" data-percent="51">
+                    <div class="card-body h-100">
+                        <div class="value">50.8%</div>
+                        <p class="card-text mt-2">Average detectable accessibility errors per web page</p>
+                        <!-- According to the Web AIM Million Report researching one million websites,  -->
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <!-- (As of 2023)  -->
-                <button class="btn btn-dark mx-1 showAffected" data-affected="97">96.8%</button>
-                <div class="btn-text">
-                    Web pages with detectable WCAG 2 failures
+            <div class="col-6 col-md-4 col-lg-2 my-2">
+                <div class="card text-center displayGroup blue" data-group="5" data-percent="74">
+                    <div class="card-body h-100">
+                        <div class="value">74%</div>
+                        <p class="card-text mt-2">Disabled Americans with no high-speed internet, smartphone, or computer</p>
+                        <!-- Roughly a quarter of Americans with disabilities (26%) say they have high-speed internet at home, a smartphone, a desktop or laptop computer, and a tablet compared with 44% of those who report not having a disability.  -->
+                    </div>
                 </div>
             </div>
-            <!-- <div class="col">
-                84% of home pages had low-contrast text.
-            </div> -->
-            <div class="col">
-                <button class="btn btn-dark mx-1 showAffected" data-affected="23">23%</button>
-                <div class="btn-text">
-                    Images with missing alternative text
-                    <!-- and over one-third of all images analyzed had detectable accessibility issues -->
+            <div class="col-6 col-md-4 col-lg-2 my-2">
+                <div class="card text-center displayGroup purple" data-group="6" data-percent="97">
+                    <div class="card-body h-100">
+                        <div class="value">96.8%</div>
+                        <p class="card-text mt-2">Web pages with detectable WCAG 2 failures</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container mb-5">
+    <div class="container mt-4 mb-5">
         <div class="row">
-            <!-- <div class="col-6">
-                <h3 class="text-center my-4">These people can see what you make</h3>
-                <div class="yes text-start"></div>
-            </div> -->
-
+            <div class="col">
+                <div class="users"></div>
+            </div>
         </div>
-        <div class="row no"></div>
     </div>
+
+    <footer class="container text-center">
+        Source: Geoff Cudd, <a href="https://ddiy.co/web-accessibility-statistics/" target="_blank">Web Accessibility Statistics</a>, 2023
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="../../../assets/js/functions.js"></script>
     <script type="module">
 
-        function preloadImage(url) {
-            var img = new Image();
-            img.src = url;
-        }
-        for (let i = 0; i <= 100; i++) {
-            preloadImage(`assets/img/users/${i}.jpg`);
-        }
+        // function preloadImage(url) {
+        //     var img = new Image();
+        //     img.src = url;
+        // }
+        // for (let i = 0; i <= 100; i++) {
+        //     preloadImage(`assets/img/users/${i}.jpg`);
+        // }
 
-        function showAffected(el) {
-            // console.log(el.target.dataset)
-            // create array with #s
-            let total = [];
-            for (let i = 0; i < 100; i++) {
-                total.push(i)
-            }
-            shuffleArray(total);
-            // console.log(total)
+        let cards;
+        let displays = [32, 36]
 
-            // add each group to page
-            displayGroup(total.splice(0, el.target.dataset.affected));
-            // document.querySelector(".yes").innerHTML = displayGroup(total);
-        }
-        // let test = randomInt(0, 100);
+        let displayCount = [36];
+        let group = 0;
+        let users = document.querySelector(".users");
 
-        function displayGroup(arr) {
-            document.querySelector(".no").innerHTML = "";
+        function displayGroup(e) {
+            // console.log(e.currentTarget);
+            console.log(e.currentTarget.dataset);
+            // console.log(e.currentTarget.dataset.percent);
+            // check and assign the group
+            if (!e.currentTarget.dataset.group || !e.currentTarget.dataset.percent) return;
+
+            if (group == e.currentTarget.dataset.group) return;
+            group = e.currentTarget.dataset.group
+
+            let percent = e.currentTarget.dataset.percent;
+
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].classList.remove("active");
+    }
+    
+e.currentTarget.classList.add("active");
+
+            let arr = returnUsersArr(displayCount);
+            // console.log("arr", arr);
+            let str = "";
+            let affected = Math.ceil(displayCount * percent / 100);
             for (let i = 0; i < arr.length; i++) {
-                document.querySelector(".no").innerHTML += `<div class="col-6 col-sm-4 col-md-3 col-lg-2 mt-3"><img src="assets/img/users/${arr[i]}.jpg" class="img-fluid graphic"></div>`;
+                let className = "";
+                if (i < affected) className = "affected"
+                str += `<span class="${className}"><img src="assets/img/users/${arr[i]}.jpg" class="img-fluid graphic"></span>`;
             }
+            users.innerHTML = str;
+            console.log("group", group, "percent", percent, "affected", affected + "/" + displayCount);
+
+            // e.stopPropagation();
+            // e.preventDefault();
         }
 
-        let btns = document.querySelectorAll(".showAffected")
-        for (let i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("mouseover", showAffected, false);
+        function returnUsersArr(count = 25) {
+            // create array with #s
+            let arr = [];
+            for (let i = 0; i < count; i++) {
+                arr.push(i)
+            }
+            shuffleArray(arr);
+            // console.log(total)
+            return arr;
         }
-        // trigger first button on load
-        btns[0].dispatchEvent(new Event("mouseover"));
 
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // document.addEventListener('mouseover', (e) => {
+            //     let target = e.currentTarget || e.target;
+
+            //     console.log("target:", target);
+            //     console.log("target:", event.target);
+            //     console.log("currentTarget:", event.currentTarget);
+            //     // console.log(target.className, target.className.includes("displayGroup"))
+            //     // if (target.className.includes("displayGroup")) {
+            //     //     displayGroup(target)
+            //     // }
+            // })
+
+
+             cards = document.querySelectorAll(".displayGroup");
+            // console.log(cards);
+            for (let i = 0; i < cards.length; i++) {
+                cards[i].addEventListener("mouseover", displayGroup, false);
+            }            
+
+            // trigger first button on load
+            cards[0].dispatchEvent(new Event("mouseover"));
+
+        }, false);
+
+        function getBreakpoint() {
+            return getComputedStyle(document.body).getPropertyValue('--bs-breakpoint-md');
+        }
 
     </script>
 </body>
