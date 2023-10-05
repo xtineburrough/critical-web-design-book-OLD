@@ -17,7 +17,7 @@ function randomInt(min = 0, max = 1) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 /**
- *  Return a random rgb
+ *  Return a random rgb color
  */
 function randomRgb() {
 	return {
@@ -25,6 +25,17 @@ function randomRgb() {
 		g: Math.floor(Math.random() * 255),
 		b: Math.floor(Math.random() * 255),
 	};
+}
+/**
+ *  Return a random hex color
+ */
+function randomHex() {
+	let chars = "0123456789abcdef";
+	let hex = "";
+	for (let i = 0; i <= 6; i++) {
+		hex += chars[Math.floor(Math.random() * chars.length)];
+	}
+	return hex;
 }
 /**
  *  Return a random index from the array

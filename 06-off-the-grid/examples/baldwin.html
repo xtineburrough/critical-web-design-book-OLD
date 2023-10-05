@@ -30,10 +30,10 @@
             gap: .5rem;
         }
 
-        .quote div {
+        /* .quote div {
             transition-property: color;
             transition-duration: 2s;
-        }
+        } */
 
         .left svg {
             transform: rotate(180deg);
@@ -42,6 +42,12 @@
         svg path {
             transition-property: fill;
             transition-duration: 2s;
+        }
+
+        .quote, .quote div {
+            transform-origin: center;
+            transition-property: transform, color;
+            transition-duration: 3s;
         }
 
         .sky {
@@ -173,7 +179,10 @@
         }
 
         function randomize() {
-            let elements = document.querySelectorAll(".quote, .quote div");
+            let quoteEle = document.querySelector(".quote");
+            quoteEle.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+            let elements = document.querySelectorAll(".quote div");
             elements.forEach(function (ele) {
                 ele.style.transform = `rotate(${Math.random() * 360}deg)`;
                 ele.style.fontSize = ele.style.fontSize * Math.random() + .7 + "rem"

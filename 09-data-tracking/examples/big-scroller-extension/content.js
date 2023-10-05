@@ -29,7 +29,7 @@ if (typeof browser === "undefined") {
 	// override
     let saved = await getData();
     if (saved) scrollStats = saved;
-	console.log(scrollStats);
+	// console.log(scrollStats);
 
     // for every gesture on track pad or scroll wheel
 	window.addEventListener("scroll", (event) => {
@@ -41,13 +41,13 @@ if (typeof browser === "undefined") {
 		scrollDistance++;
 		scrollStats.total++;
 
-		// turn off to save performance
-		console.log(
-			// window.scrollY, // distance in pixels from top, not cumulative
-			scrollDistance,
-			scrollStats.onePage,
-			scrollStats.total
-		);
+		// // turn off to save performance
+		// console.log(
+		// 	// window.scrollY, // distance in pixels from top, not cumulative
+		// 	scrollDistance,
+		// 	scrollStats.onePage,
+		// 	scrollStats.total
+		// );
 	});
 
 	// user has finished their gesture
@@ -70,13 +70,13 @@ if (typeof browser === "undefined") {
 
 function saveData(data) {
 	browser.storage.local.set({ scrollStats: data }).then(() => {
-		console.log("SET", data);
+		// console.log("SET", data);
 	}, onError);
 }
 
 async function getData() {
 	return browser.storage.local.get(["scrollStats"]).then((result) => {
-		console.log("GET", result.scrollStats);
+		// console.log("GET", result.scrollStats);
 		return result.scrollStats;
 	}, onError);
 }

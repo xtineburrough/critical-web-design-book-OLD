@@ -1,102 +1,82 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width" />
-    <title>alight</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@500&family=Rubik+Pixels&display=swap" rel="stylesheet">
+    <title>Off the Grid</title>
 
     <style>
-
         html {
             width: 100%;
             height: 100%;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background: url("assets/img/flames.gif") black no-repeat center center;
-            background-size: cover;
-        }
-
-        .flex-container {
-            display: flex;
-            column-count: 3;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin: 4rem 4rem 0 4rem;
-        }
-
-        .flex-container>div {
+            margin: 1rem;
+            background-color: black;
             color: whitesmoke;
-            opacity: .6;
-            text-align: center;
-            font-family: 'Chivo Mono', monospace;
-            line-height: 4.8rem;
-            font-size: 5.5rem;
-            width: 10%;
-            margin: 0 5rem 0 10rem;
+            font-size: 5rem;
+            /* background: url("examples/assets/img/flames.gif");
+            background-repeat: no-repeat;
+            background-size: cover; */
+            /* shorthand */
+            background: black url("assets/img/flames.gif") no-repeat center/cover;
         }
 
-        .line {
-            height: 1px;
-            margin: 0;
-            border: none;
-            background: orange;
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 15% 4rem 0 4rem;
         }
 
-        .rubik {
-            font-family: 'Rubik Pixels', cursive;
-            font-size: 7.5rem;
-            line-height: 5rem;
+        div {
+            transform-origin: center;
+            transition-property: transform;
+            transition-duration: 3s;
+        }
+
+        hr {
+            border: 1px solid rgb(220, 200, 180);
         }
     </style>
 </head>
 <body>
-    <div class="flex-container">
 
-        <div>
-            <p class="rubik">a radiant</p>
-        </div>
-        <div>
-            <i>young womyn</i>
-        </div>
-        <div>
-            to light </div>
-        <div>
-            the darkest</div>
-        <div>
-            <p class="rubik">corners</p>
-        </div>
-        <div>
-            of winter</div>
+    <div class="grid-container">
+        <div>A</div>
+        <div>radiant</div>
+        <div>young <hr> </div>
+
+        <div>woman</div>
+        <div>to</div>
+        <div>light</div>
+        <div>the</div>
+        <div>darkest <hr> </div>
+
+        <div>corners</div>
+        <div>of</div>
+        <div>winter <hr> </div>
     </div>
-    <div>
-        <hr class="line">
-    </div>
+
+
     <script>
-        function randomize() {
-            let elements = document.querySelectorAll("body *");
-            elements.forEach(function (ele) {
-                ele.style.transform = "rotate(" + Math.random() * 360 + "deg)";
-                let color = "#" + hexChar() + hexChar() + hexChar() + hexChar() + hexChar() + hexChar();
-                ele.style.color = color;
-            })
-
-        }
         document.addEventListener("click", randomize);
+        function randomize() {
+            let grid = document.querySelectorAll(".grid-container");
+            grid[0].style.transform = `rotate(${Math.random() * 360}deg)`;
 
-        let hexChars = "F08C";
-        function hexChar() {
-            return hexChars[Math.floor(Math.random() * hexChars.length)];
+            let elements = document.querySelectorAll(".grid-container div");
+            elements.forEach(function (ele) {
+                if (Math.random() > .5) {
+                    ele.style.transform = `translate(${Math.random() * 80}%,${Math.random() * 80}%) rotate(${Math.random() * 360}deg)`;
+                } else {
+                    let scale = Math.floor(Math.random() * (1.2 - .5 + 1)) + .5
+                    ele.style.transform = `scale(${scale}) translate(${Math.random() * 50}%,${Math.random() * 20}%) rotate(${Math.random() * 360}deg)`;
+                }
+            })
         }
+
     </script>
 
 </body>
