@@ -77,6 +77,13 @@
             })
         }
 
+        let rotation = 0;
+        setInterval(function () {
+            rotation += 3;
+            document.body.style.transform = `rotate(${rotation}deg)`;
+        }, 100);
+
+
     </script>
 
 </body>
