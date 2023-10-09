@@ -16,6 +16,7 @@
             background-color: black;
             color: whitesmoke;
             font-size: 5rem;
+            overflow: hidden;
             /* background: url("examples/assets/img/flames.gif");
             background-repeat: no-repeat;
             background-size: cover; */
@@ -30,14 +31,32 @@
             margin: 15% 4rem 0 4rem;
         }
 
+        .last {
+            padding-bottom: 2rem;
+            border-bottom: 2px solid rgb(220, 200, 180);
+        }
+
+        /* CSS Animation example */
+
+        /* @keyframes fadeOut {
+            0% { opacity: 1; } 
+            100% { opacity: 0; }
+        }
+        body {
+            animation-name: fadeOut;
+            animation-duration: 2s;
+        } */
+
+        /* CSS Transition example */
+
         div {
-            transform-origin: center;
             transition-property: transform;
             transition-duration: 3s;
         }
 
-        hr {
-            border: 1px solid rgb(220, 200, 180);
+        body {
+            transition-property: transform;
+            transition-duration: 3s;
         }
     </style>
 </head>
@@ -46,42 +65,91 @@
     <div class="grid-container">
         <div>A</div>
         <div>radiant</div>
-        <div>young <hr> </div>
+        <div class="last">young</div>
 
         <div>woman</div>
         <div>to</div>
         <div>light</div>
         <div>the</div>
-        <div>darkest <hr> </div>
+        <div class="last">darkest</div>
 
         <div>corners</div>
         <div>of</div>
-        <div>winter <hr> </div>
+        <div class="last">winter</div>
     </div>
 
 
     <script>
-        document.addEventListener("click", randomize);
-        function randomize() {
-            let grid = document.querySelectorAll(".grid-container");
-            grid[0].style.transform = `rotate(${Math.random() * 360}deg)`;
 
-            let elements = document.querySelectorAll(".grid-container div");
-            elements.forEach(function (ele) {
-                if (Math.random() > .5) {
-                    ele.style.transform = `translate(${Math.random() * 80}%,${Math.random() * 80}%) rotate(${Math.random() * 360}deg)`;
-                } else {
-                    let scale = Math.floor(Math.random() * (1.2 - .5 + 1)) + .5
-                    ele.style.transform = `scale(${scale}) translate(${Math.random() * 50}%,${Math.random() * 20}%) rotate(${Math.random() * 360}deg)`;
-                }
-            })
+
+        // Example 1 - JS 
+
+        // document.body.style.opacity = .5;
+        // document.body.style.transform = `rotate(${90}deg)`;
+
+        // Example 2 - JS 
+
+        // let rotation = 0;
+        // setInterval(function () {
+        //     rotation += 5;
+        //     document.body.style.transform = `rotate(${rotation}deg)`;
+        // }, 100);
+
+
+        // Example 3 - JS + CSS transition
+
+        // let rotation = 0;
+        // document.addEventListener("click", function () {
+        //     let min = 1;
+        //     let max = 20;
+        //     rotation += Math.random() * (max - min) + min;
+        //     document.body.style.transform = `rotate(${rotation}deg)`;
+        // });
+
+
+        // Example 4 - JS function
+
+        function randomNumber(min, max) {
+            return Math.random() * (max - min) + min;
         }
 
-        let rotation = 0;
-        setInterval(function () {
-            rotation += 3;
-            document.body.style.transform = `rotate(${rotation}deg)`;
-        }, 100);
+        // let rotation = 0;
+        // document.addEventListener("click", function () {
+        //     rotation += randomNumber(1, 200);
+        //     document.body.style.transform = `rotate(${rotation}deg)`;
+        // });
+
+
+
+
+        let grid = document.querySelectorAll(".grid-container");
+        let divs = document.querySelectorAll(".grid-container div");
+
+        function randomize() {
+            console.log(divs.length, "randomize!")
+
+            // affect the whole grid
+            grid[0].style.transform = `rotate(${Math.random() * 360}deg)`;
+
+            // just the grid divs
+            divs.forEach(function (div) {
+                let scale = randomNumber(.5, 1.2);
+                let translateX = randomNumber(0, 50);
+                let translateY = randomNumber(0, 20);
+                let rotate = randomNumber(0, 360);
+
+                // 50% of the time ...
+                if (Math.random() > .5) {
+                    scale = 1; // don't affect scale
+                    translateX = randomNumber(0, 80);
+                    translateY = randomNumber(0, 80);
+                }
+
+                div.style.transform = `scale(${scale}) translate(${translateX}%, ${translateY}%) rotate(${rotate}deg)`;
+            });
+        }
+        document.addEventListener("click", randomize);
+
 
 
     </script>

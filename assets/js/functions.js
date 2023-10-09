@@ -5,6 +5,12 @@
  */
 
 /**
+ *  Return a random number between min (inclusive) and max (exclusive)
+ */
+function randomNumber(min, max) {
+	return Math.random() * (max - min) + min;
+}
+/**
  *  Return a random floating point value between min (inclusive) and max (inclusive)
  */
 function randomFloat(min = 0, max = 1) {
