@@ -137,7 +137,6 @@
         .btn-text {
             margin-top: 1rem;
         }
-
     </style>
 </head>
 <body>
@@ -145,7 +144,7 @@
     <div class="container">
         <div class="row">
             <div class="col text-center">
-                <h1 class="mt-5 my-4">Who is affected by website accessibility?</h1>
+                <h1 class="mt-5 my-4">% of users affected by website accessibility</h1>
             </div>
         </div>
         <div class="row text-center">
@@ -215,128 +214,134 @@
     <script src="../../../assets/js/functions.js"></script>
     <script type="module">
 
-        // function preloadImage(url) {
-        //     var img = new Image();
-        //     img.src = url;
-        // }
-        // for (let i = 0; i <= 100; i++) {
-        //     preloadImage(`assets/img/users/${i}.jpg`);
-        // }
 
-        let viewportSize,
-            viewportUserCounts = { "xs": 8, "sm": 8, "md": 15, "lg": 18, "xl": 32, "xxl": 36 },
-            userCount = 36,
-            cardMenu,
-            groupId = 0,
-            usersEle = document.querySelector(".users"),
-            resetFlag = false;
+        (async () => {
 
-        function displayGroup(e) {
-            // console.log(e.currentTarget);
-            console.log(e.currentTarget.dataset);
-            // console.log(e.currentTarget.dataset.percent);
+            async function preloadImage(url) {
+                var img = new Image();
+                img.src = url;
+            }
+            for (let i = 0; i < 116; i++) {
+                await preloadImage(`assets/img/users/${i}.jpg`);
+            }
 
-            // check and assign the group
-            if (!e.currentTarget.dataset.group || !e.currentTarget.dataset.percent) return;
-
-            if (resetFlag == true) {
+            let viewportSize,
+                viewportUserCounts = { "xs": 8, "sm": 8, "md": 15, "lg": 18, "xl": 32, "xxl": 36 },
+                userCount = 36,
+                cardMenu,
+                groupId = 0,
+                usersEle = document.querySelector(".users"),
                 resetFlag = false;
-            } else {
-                // if not already shown
-                if (groupId == e.currentTarget.dataset.group) return;
-                // get group
-                groupId = e.currentTarget.dataset.group
+
+            function displayGroup(e) {
+                // console.log(e.currentTarget);
+                console.log(e.currentTarget.dataset);
+                // console.log(e.currentTarget.dataset.percent);
+
+                // check and assign the group
+                if (!e.currentTarget.dataset.group || !e.currentTarget.dataset.percent) return;
+
+                if (resetFlag == true) {
+                    resetFlag = false;
+                } else {
+                    // if not already shown
+                    if (groupId == e.currentTarget.dataset.group) return;
+                    // get group
+                    groupId = e.currentTarget.dataset.group
+                }
+
+                // replace hash in url
+                window.location.hash = '#' + groupId;
+
+                // remove active from others
+                for (let i = 0; i < cardMenu.length; i++) {
+                    cardMenu[i].classList.remove("active");
+                }
+                // show active
+                e.currentTarget.classList.add("active");
+
+                let arr = returnRandomIntsArr(0, 115, userCount);
+                // console.log("arr", arr);
+                let str = "";
+                let percent = e.currentTarget.dataset.percent;
+                let affected = Math.ceil(userCount * percent / 100);
+                for (let i = 0; i < arr.length; i++) {
+                    let className = "";
+                    if (i < affected) className = "affected"
+                    // str += `<span class="${className}" title="${className}"><img src="assets/img/users/${arr[i]}.jpg" class="img-fluid graphic"></span>`;
+                    str += `<span class="${className}" title="${className}"><img src="assets/img/users/${arr[i]}.jpg" class="img-fluid graphic"></span>`;
+                }
+                usersEle.innerHTML = str;
+                console.log("groupId", groupId, "percent", percent, "affected", affected + "/" + userCount);
             }
 
-            // replace hash in url
-            window.location.hash = '#' + groupId;
-
-            // remove active from others
-            for (let i = 0; i < cardMenu.length; i++) {
-                cardMenu[i].classList.remove("active");
+            /**
+             *  Return an array of intergers randomly chosen from min/max, of length 
+             */
+            function returnRandomIntsArr(min, max, length) {
+                // create array with #s
+                let arr = [];
+                // create array with all the numbers
+                for (let i = min; i < max; i++) {
+                    arr.push(i);
+                }
+                shuffleArray(arr);
+                // console.log(arr)
+                return arr.splice(0, length);
             }
-            // show active
-            e.currentTarget.classList.add("active");
 
-            let arr = returnRandomIntsArr(0, 115, userCount);
-            // console.log("arr", arr);
-            let str = "";
-            let percent = e.currentTarget.dataset.percent;
-            let affected = Math.ceil(userCount * percent / 100);
-            for (let i = 0; i < arr.length; i++) {
-                let className = "";
-                if (i < affected) className = "affected"
-                // str += `<span class="${className}" title="${className}"><img src="assets/img/users/${arr[i]}.jpg" class="img-fluid graphic"></span>`;
-                str += `<span class="${className}" title="${className}"><img src="assets/img/users/${arr[i]}.jpg" class="img-fluid graphic"></span>`;
-            }
-            usersEle.innerHTML = str;
-            console.log("groupId", groupId, "percent", percent, "affected", affected + "/" + userCount);
-        }
+            /**
+             *  Listener to detect resizing / update layout 
+             */
+            window.addEventListener('resize', function (event) {
+                // get viewport size
+                viewportSize = getViewport();
+                let newCount = viewportUserCounts[viewportSize]
+                // update number of persons in display
+                if (newCount != userCount) {
+                    userCount = newCount;
+                    console.log("viewportSize", viewportSize, "userCount", userCount);
+                    // change groupId to override reset
+                    resetFlag = true;
+                    cardMenu[groupId].dispatchEvent(new Event("mouseover"));
+                }
+            }, true);
 
-        /**
-         *  Return an array of intergers randomly chosen from min/max, of length 
-         */
-        function returnRandomIntsArr(min, max, length) {
-            // create array with #s
-            let arr = [];
-            // create array with all the numbers
-            for (let i = min; i < max; i++) {
-                arr.push(i);
-            }
-            shuffleArray(arr);
-            // console.log(arr)
-            return arr.splice(0, length);
-        }
-
-        /**
-         *  Listener to detect resizing / update layout 
-         */
-        window.addEventListener('resize', function (event) {
-            // get viewport size
-            viewportSize = getViewport();
-            let newCount = viewportUserCounts[viewportSize]
-            // update number of persons in display
-            if (newCount != userCount) {
-                userCount = newCount;
-                console.log("viewportSize", viewportSize, "userCount", userCount);
-                // change groupId to override reset
-                resetFlag = true;
+            // once page has loaded
+            document.addEventListener('DOMContentLoaded', function () {
+                // console.log("DOMContentLoaded");
+                // select the cardMenu, add event listenr to each
+                cardMenu = document.querySelectorAll(".displayGroup");
+                // console.log(cardMenu);
+                for (let i = 0; i < cardMenu.length; i++) {
+                    cardMenu[i].addEventListener("mouseover", displayGroup, false);
+                }
+                // get groupId number or default to zero
+                let groupId = window.location.href.split("#")[1] || 0;
+                // console.log(groupId, window.location.href)
+                // trigger resize event
+                window.dispatchEvent(new Event("resize"));
+                // trigger first button on load
                 cardMenu[groupId].dispatchEvent(new Event("mouseover"));
+            }, false);
+
+
+            // https://stackoverflow.com/a/55368012/441878
+            function getViewport() {
+                // https://stackoverflow.com/a/8876069
+                const width = Math.max(
+                    document.documentElement.clientWidth,
+                    window.innerWidth || 0
+                )
+                if (width <= 576) return 'xs'
+                if (width <= 768) return 'sm'
+                if (width <= 992) return 'md'
+                if (width <= 1200) return 'lg'
+                if (width <= 1400) return 'xl'
+                return 'xxl'
             }
-        }, true);
 
-        // once page has loaded
-        document.addEventListener('DOMContentLoaded', function () {
-            // select the cardMenu, add event listenr to each
-            cardMenu = document.querySelectorAll(".displayGroup");
-            // console.log(cardMenu);
-            for (let i = 0; i < cardMenu.length; i++) {
-                cardMenu[i].addEventListener("mouseover", displayGroup, false);
-            }
-            // get groupId number or default to zero
-            let groupId = window.location.href.split("#")[1] || 0;
-            // console.log(groupId, window.location.href)
-            // trigger resize event
-            window.dispatchEvent(new Event("resize"));
-            // trigger first button on load
-            cardMenu[groupId].dispatchEvent(new Event("mouseover"));
-        }, false);
-
-
-        // https://stackoverflow.com/a/55368012/441878
-        function getViewport() {
-            // https://stackoverflow.com/a/8876069
-            const width = Math.max(
-                document.documentElement.clientWidth,
-                window.innerWidth || 0
-            )
-            if (width <= 576) return 'xs'
-            if (width <= 768) return 'sm'
-            if (width <= 992) return 'md'
-            if (width <= 1200) return 'lg'
-            if (width <= 1400) return 'xl'
-            return 'xxl'
-        }
+        })();
 
     </script>
 </body>
