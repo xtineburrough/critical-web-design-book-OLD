@@ -21,13 +21,13 @@
             text-decoration: none !important;
         }
 
-        .displayGroup {
+        .cardMenu {
             cursor: default;
             width: 100%;
             height: 100%;
         }
 
-        .displayGroup:hover {
+        .cardMenu:hover {
             cursor: pointer;
         }
 
@@ -88,7 +88,6 @@
         .card-text {
             font-size: smaller;
         }
-
 
         .grid-container {
             display: grid;
@@ -156,7 +155,7 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-6 col-sm-4 col-lg-2 my-2">
-                <div class="card text-center displayGroup red" data-group="0" data-percent="15">
+                <div class="card text-center cardMenu red" data-option="0" data-percent="15">
                     <div class="card-body h-100 px-2">
                         <div class="value">15%</div>
                         <p class="card-text mt-2">% of world population with some sort of disability</p>
@@ -164,7 +163,7 @@
                 </div>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 my-2">
-                <div class="card text-center displayGroup yellow" data-group="1" data-percent="26">
+                <div class="card text-center cardMenu yellow" data-option="1" data-percent="26">
                     <div class="card-body h-100 px-2">
                         <div class="value">26%</div>
                         <p class="card-text mt-2">Adults in the United States who have a disability</p>
@@ -172,7 +171,7 @@
                 </div>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 my-2">
-                <div class="card text-center displayGroup green" data-group="2" data-percent="23">
+                <div class="card text-center cardMenu green" data-option="2" data-percent="23">
                     <div class="card-body h-100 px-2">
                         <div class="value">23%</div>
                         <p class="card-text mt-2">Images with missing alternative text</p>
@@ -181,7 +180,7 @@
                 </div>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 my-2">
-                <div class="card text-center displayGroup teal" data-group="3" data-percent="51">
+                <div class="card text-center cardMenu teal" data-option="3" data-percent="51">
                     <div class="card-body h-100 px-2">
                         <div class="value">50.8%</div>
                         <p class="card-text mt-2">Average detectable accessibility errors per web page</p>
@@ -190,7 +189,7 @@
                 </div>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 my-2">
-                <div class="card text-center displayGroup blue" data-group="4" data-percent="74">
+                <div class="card text-center cardMenu blue" data-option="4" data-percent="74">
                     <div class="card-body h-100 px-2">
                         <div class="value">74%</div>
                         <p class="card-text mt-2">Disabled Americans with no high-speed internet, smartphone, or computer</p>
@@ -199,7 +198,7 @@
                 </div>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 my-2">
-                <div class="card text-center displayGroup purple" data-group="5" data-percent="97">
+                <div class="card text-center cardMenu purple" data-option="5" data-percent="97">
                     <div class="card-body h-100 px-2">
                         <div class="value">96.8%</div>
                         <p class="card-text mt-2">Web pages with detectable WCAG 2 failures</p>
@@ -233,56 +232,137 @@
 
         let viewportSize,
             viewportUserCounts = { "xs": 8, "sm": 8, "md": 15, "lg": 18, "xl": 32, "xxl": 36 },
-            userCount = 36,
-            cardMenu,
-            groupId = 0,
+            userCount = 0,
+            currentOption = 0,
+            currentPercent = 0,
+            cardMenu = document.querySelectorAll(".cardMenu"),
             usersEle = document.querySelector(".users"),
             resetFlag = false;
 
-        function displayGroup(e) {
+
+        // 1. when the page finishes loading
+        document.addEventListener('DOMContentLoaded', function () {
+            // console.log("DOMContentLoaded");
+
+            // add event listener to each button in menu
+            for (let i = 0; i < cardMenu.length; i++) {
+                cardMenu[i].addEventListener("mouseover", menuOptionHandler, false);
+            }
+            // check if previous option stored in url, if not default to zero
+            let optionFromUrl = Number(window.location.href.split("#")[1]) || 0;
+            // console.log(optionFromUrl, window.location.href);
+
+            // show option
+            selectOption(optionFromUrl)
+
+        }, false);
+
+        // when a menu option is selected
+        function menuOptionHandler(e) {
             // console.log(e.currentTarget);
-            console.log(e.currentTarget.dataset);
+            // console.log(e.currentTarget.dataset);
             // console.log(e.currentTarget.dataset.percent);
 
-            // check and assign the group
-            if (!e.currentTarget.dataset.group || !e.currentTarget.dataset.percent) return;
+            // confirm there is a value
+            if (!e.currentTarget.dataset.option || !e.currentTarget.dataset.percent) return;
 
-            if (resetFlag == true) {
-                resetFlag = false;
-            } else {
-                // if not already shown
-                if (groupId == e.currentTarget.dataset.group) return;
-                // get group
-                groupId = e.currentTarget.dataset.group
+            // exit if the option already shown
+            if (currentOption == e.currentTarget.dataset.option) return;
+
+            // show selected
+            selectOption(e.currentTarget.dataset.option);
+        }
+
+
+        // every time viewport is been resized  
+        window.addEventListener('resize', function (event) {
+            // save previous user count
+            let previousUserCount = userCount;
+            // update # of users to show
+            userCount = updateUserCount();
+
+            console.log("viewportSize", viewportSize, "userCount", userCount, "previousUserCount", previousUserCount);
+            // number of users has changed
+            if (userCount != previousUserCount) {
+                // update layout
+                selectOption(currentOption);
             }
+        }, true);
+
+
+        function updateUserCount() {
+            // update viewport size
+            viewportSize = getViewportSize();
+            // update number of persons in display
+            return viewportUserCounts[viewportSize];
+        }
+
+        // show it as selected, display users
+        function selectOption(option) {
+            console.log("selectOption()", option);
+
+            // update # of users to show
+            userCount = updateUserCount();
+
+            // save data
+            currentOption = cardMenu[option].dataset.option
+            currentPercent = cardMenu[option].dataset.percent;
+            // console.log(currentOption, currentPercent)
 
             // replace hash in url
-            window.location.hash = '#' + groupId;
+            window.location.hash = '#' + option;
 
-            // remove active from others
+            // remove active from all
             for (let i = 0; i < cardMenu.length; i++) {
                 cardMenu[i].classList.remove("active");
             }
-            // show active
-            e.currentTarget.classList.add("active");
+            // add active to just the target
+            cardMenu[option].classList.add("active");
+            displayUsers();
+        }
 
+
+        // show users on the page
+        function displayUsers() {
+            console.log("displayUsers()", "userCount", userCount);
+
+            // get the random user ids
             let arr = returnRandomIntsArr(0, 115, userCount);
-            // console.log("arr", arr);
+            // number of affected users
+            let affected = Math.ceil(userCount * currentPercent / 100);
+            // string to store html data
             let str = "";
-            let percent = e.currentTarget.dataset.percent;
-            let affected = Math.ceil(userCount * percent / 100);
+            // loop through array, save 
             for (let i = 0; i < arr.length; i++) {
-                let className = "";
-                if (i < affected) className = "affected"
-                // str += `<span class="${className}" title="${className}"><img src="assets/img/users-200w/${arr[i]}.jpg" class="img-fluid graphic"></span>`;
-                str += `<span class="${className}" title="${className}"><img src="assets/img/users-200w/${arr[i]}.jpg" class="img-fluid graphic" alt="this person does not exist ${i}"></span>`;
+                let showAffectedClass = "";
+                if (i < affected) {
+                    showAffectedClass = "affected";
+                }
+                str += `
+                    <span class="${showAffectedClass}" title="${showAffectedClass}">
+                        <img src="assets/img/users-200w/${arr[i]}.jpg" class="img-fluid graphic" alt="this person does not exist ${i}">
+                    </span>`;
             }
             usersEle.innerHTML = str;
-            console.log("groupId", groupId, "percent", percent, "affected", affected + "/" + userCount);
+            console.log("currentOption", currentOption, "currentPercent", currentPercent, "affected", affected + "/" + userCount);
+        }
+
+
+        /**
+         *  Return current Bootstrap breakpoint size https://stackoverflow.com/a/55368012/441878
+         */
+        function getViewportSize() {
+            const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+            if (width <= 576) return 'xs'
+            if (width <= 768) return 'sm'
+            if (width <= 992) return 'md'
+            if (width <= 1200) return 'lg'
+            if (width <= 1400) return 'xl'
+            return 'xxl'
         }
 
         /**
-         *  Return an array of intergers randomly chosen from min/max, of length 
+         *  Return an array of unique integers between min/max, of length 
          */
         function returnRandomIntsArr(min, max, length) {
             // create array with #s
@@ -294,57 +374,6 @@
             shuffleArray(arr);
             // console.log(arr)
             return arr.splice(0, length);
-        }
-
-        /**
-         *  Listener to detect resizing / update layout 
-         */
-        window.addEventListener('resize', function (event) {
-            // get viewport size
-            viewportSize = getViewport();
-            let newCount = viewportUserCounts[viewportSize]
-            // update number of persons in display
-            if (newCount != userCount) {
-                userCount = newCount;
-                console.log("viewportSize", viewportSize, "userCount", userCount);
-                // change groupId to override reset
-                resetFlag = true;
-                cardMenu[groupId].dispatchEvent(new Event("mouseover"));
-            }
-        }, true);
-
-        // once page has loaded
-        document.addEventListener('DOMContentLoaded', function () {
-            // console.log("DOMContentLoaded");
-            // select the cardMenu, add event listenr to each
-            cardMenu = document.querySelectorAll(".displayGroup");
-            // console.log(cardMenu);
-            for (let i = 0; i < cardMenu.length; i++) {
-                cardMenu[i].addEventListener("mouseover", displayGroup, false);
-            }
-            // get groupId number or default to zero
-            let groupId = window.location.href.split("#")[1] || 0;
-            // console.log(groupId, window.location.href)
-            // trigger resize event
-            window.dispatchEvent(new Event("resize"));
-            // trigger first button on load
-            cardMenu[groupId].dispatchEvent(new Event("mouseover"));
-        }, false);
-
-
-        // https://stackoverflow.com/a/55368012/441878
-        function getViewport() {
-            // https://stackoverflow.com/a/8876069
-            const width = Math.max(
-                document.documentElement.clientWidth,
-                window.innerWidth || 0
-            )
-            if (width <= 576) return 'xs'
-            if (width <= 768) return 'sm'
-            if (width <= 992) return 'md'
-            if (width <= 1200) return 'lg'
-            if (width <= 1400) return 'xl'
-            return 'xxl'
         }
 
 
