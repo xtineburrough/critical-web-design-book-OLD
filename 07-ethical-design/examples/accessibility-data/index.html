@@ -1,146 +1,10 @@
-<!-- reduce the # to 10 -->
-<!-- leave @ 100 and overlay black -->
-<!-- make smaller -->
-
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <title>Accessibility Data | Critical Web Design</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-
-    <style>
-        body {
-            width: 100%;
-            height: 100%;
-            background-color: rgb(228, 219, 219);
-            color: rgb(50, 60, 68);
-        }
-
-        a {
-            text-decoration: none !important;
-        }
-
-        .cardMenu {
-            cursor: default;
-            width: 100%;
-            height: 100%;
-        }
-
-        .cardMenu:hover {
-            cursor: pointer;
-        }
-
-        .red {
-            background-color: rgba(255, 0, 0, .05);
-        }
-
-        .red:hover,
-        .active.red {
-            background-color: rgba(255, 0, 0, .2);
-        }
-
-        .yellow {
-            background-color: rgba(255, 255, 0, .05);
-        }
-
-        .yellow:hover,
-        .active.yellow {
-            background-color: rgba(255, 255, 0, .2);
-        }
-
-        .green {
-            background-color: rgba(0, 255, 0, .05);
-        }
-
-        .green:hover,
-        .active.green {
-            background-color: rgba(0, 255, 0, .2);
-        }
-
-        .teal {
-            background-color: rgba(0, 255, 255, .05);
-        }
-
-        .teal:hover,
-        .active.teal {
-            background-color: rgba(0, 255, 255, .2);
-        }
-
-        .blue {
-            background-color: rgba(0, 0, 255, .05);
-        }
-
-        .blue:hover,
-        .active.blue {
-            background-color: rgba(0, 0, 255, .2);
-        }
-
-        .purple {
-            background-color: rgba(255, 0, 255, .05);
-        }
-
-        .purple:hover,
-        .active.purple {
-            background-color: rgba(255, 0, 255, .2);
-        }
-
-        .card-text {
-            font-size: smaller;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: .5rem;
-        }
-
-        @media (min-width: 767.98px) {
-            .grid-container {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-                gap: .5rem;
-            }
-        }
-
-        .graphic {
-            border-radius: 50%;
-            width: 100%;
-            height: 100%;
-        }
-
-        .affected {
-            filter: brightness(.35)
-        }
-
-        .btn,
-        .value {
-            border-radius: 50%;
-            width: 5rem;
-            height: 5rem;
-            text-align: center;
-            background-color: #212529;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-        }
-
-        .active {
-            transition-property: transform;
-            transition-duration: .15s;
-            transform: scale(1.1);
-        }
-
-        .btn-text {
-            margin-top: 1rem;
-        }
-
-        footer a {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 
@@ -152,10 +16,10 @@
         </div>
     </header>
 
-    <div class="container">
+    <nav class="container">
         <div class="row text-center">
             <div class="col-6 col-sm-4 col-lg-2 my-2">
-                <div class="card text-center cardMenu red" data-option="0" data-percent="15">
+                <div class="card text-center cardMenu red focus-ring focus-ring-secondary" data-option="0" data-percent="15" tabindex="0">
                     <div class="card-body h-100 px-2">
                         <div class="value">15%</div>
                         <p class="card-text mt-2">% of world population with some sort of disability</p>
@@ -163,7 +27,7 @@
                 </div>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 my-2">
-                <div class="card text-center cardMenu yellow" data-option="1" data-percent="26">
+                <div class="card text-center cardMenu yellow focus-ring focus-ring-secondary" data-option="1" data-percent="26" tabindex="0">
                     <div class="card-body h-100 px-2">
                         <div class="value">26%</div>
                         <p class="card-text mt-2">Adults in the United States who have a disability</p>
@@ -171,7 +35,7 @@
                 </div>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 my-2">
-                <div class="card text-center cardMenu green" data-option="2" data-percent="23">
+                <div class="card text-center cardMenu green focus-ring focus-ring-secondary" data-option="2" data-percent="23" tabindex="0">
                     <div class="card-body h-100 px-2">
                         <div class="value">23%</div>
                         <p class="card-text mt-2">Images with missing alternative text</p>
@@ -180,7 +44,7 @@
                 </div>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 my-2">
-                <div class="card text-center cardMenu teal" data-option="3" data-percent="51">
+                <div class="card text-center cardMenu cyan focus-ring focus-ring-secondary" data-option="3" data-percent="51" tabindex="0">
                     <div class="card-body h-100 px-2">
                         <div class="value">50.8%</div>
                         <p class="card-text mt-2">Average detectable accessibility errors per web page</p>
@@ -189,7 +53,7 @@
                 </div>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 my-2">
-                <div class="card text-center cardMenu blue" data-option="4" data-percent="74">
+                <div class="card text-center cardMenu blue focus-ring focus-ring-secondary" data-option="4" data-percent="74" tabindex="0">
                     <div class="card-body h-100 px-2">
                         <div class="value">74%</div>
                         <p class="card-text mt-2">Disabled Americans with no high-speed internet, smartphone, or computer</p>
@@ -198,7 +62,7 @@
                 </div>
             </div>
             <div class="col-6 col-sm-4 col-lg-2 my-2">
-                <div class="card text-center cardMenu purple" data-option="5" data-percent="97">
+                <div class="card text-center cardMenu purple focus-ring focus-ring-secondary" data-option="5" data-percent="97" tabindex="0">
                     <div class="card-body h-100 px-2">
                         <div class="value">96.8%</div>
                         <p class="card-text mt-2">Web pages with detectable WCAG 2 failures</p>
@@ -206,177 +70,23 @@
                 </div>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <div class="container mt-4 mb-5">
+    <section class="container mt-4 mb-5">
+        <div class="alert alert-dark report text-center" role="alert"></div>
+    </section>
+
+    <section class="container mt-4 mb-5">
         <div class="users grid-container"></div>
-    </div>
+    </section>
 
     <footer class="container text-center">
-        Source: Geoff Cudd, <a href="https://ddiy.co/web-accessibility-statistics/" target="_blank">Web Accessibility Statistics</a>, 2023
+        Source: Geoff Cudd, <a href="https://ddiy.co/web-accessibility-statistics/" target="_blank" class="link-body-emphasis" title="Source">Web Accessibility Statistics</a>, 2023
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="../../../assets/js/functions.js"></script>
-    <script type="module">
+    <script src="assets/js/main.js"></script>
 
-
-
-        function preloadImage(url) {
-            var img = new Image();
-            img.src = url;
-        }
-        for (let i = 0; i < 116; i++) {
-            preloadImage(`assets/img/users-200w/${i}.jpg`);
-        }
-
-        let viewportSize,
-            viewportUserCounts = { "xs": 8, "sm": 8, "md": 15, "lg": 18, "xl": 32, "xxl": 36 },
-            userCount = 0,
-            currentOption = 0,
-            currentPercent = 0,
-            cardMenu = document.querySelectorAll(".cardMenu"),
-            usersEle = document.querySelector(".users"),
-            resetFlag = false;
-
-
-        // 1. when the page finishes loading
-        document.addEventListener('DOMContentLoaded', function () {
-            // console.log("DOMContentLoaded");
-
-            // add event listener to each button in menu
-            for (let i = 0; i < cardMenu.length; i++) {
-                cardMenu[i].addEventListener("mouseover", menuOptionHandler, false);
-            }
-            // check if previous option stored in url, if not default to zero
-            let optionFromUrl = Number(window.location.href.split("#")[1]) || 0;
-            // console.log(optionFromUrl, window.location.href);
-
-            // show option
-            selectOption(optionFromUrl)
-
-        }, false);
-
-        // when a menu option is selected
-        function menuOptionHandler(e) {
-            // console.log(e.currentTarget);
-            // console.log(e.currentTarget.dataset);
-            // console.log(e.currentTarget.dataset.percent);
-
-            // confirm there is a value
-            if (!e.currentTarget.dataset.option || !e.currentTarget.dataset.percent) return;
-
-            // exit if the option already shown
-            if (currentOption == e.currentTarget.dataset.option) return;
-
-            // show selected
-            selectOption(e.currentTarget.dataset.option);
-        }
-
-
-        // every time viewport is been resized  
-        window.addEventListener('resize', function (event) {
-            // save previous user count
-            let previousUserCount = userCount;
-            // update # of users to show
-            userCount = updateUserCount();
-
-            console.log("viewportSize", viewportSize, "userCount", userCount, "previousUserCount", previousUserCount);
-            // number of users has changed
-            if (userCount != previousUserCount) {
-                // update layout
-                selectOption(currentOption);
-            }
-        }, true);
-
-
-        function updateUserCount() {
-            // update viewport size
-            viewportSize = getViewportSize();
-            // update number of persons in display
-            return viewportUserCounts[viewportSize];
-        }
-
-        // show it as selected, display users
-        function selectOption(option) {
-            console.log("selectOption()", option);
-
-            // update # of users to show
-            userCount = updateUserCount();
-
-            // save data
-            currentOption = cardMenu[option].dataset.option
-            currentPercent = cardMenu[option].dataset.percent;
-            // console.log(currentOption, currentPercent)
-
-            // replace hash in url
-            window.location.hash = '#' + option;
-
-            // remove active from all
-            for (let i = 0; i < cardMenu.length; i++) {
-                cardMenu[i].classList.remove("active");
-            }
-            // add active to just the target
-            cardMenu[option].classList.add("active");
-            displayUsers();
-        }
-
-
-        // show users on the page
-        function displayUsers() {
-            console.log("displayUsers()", "userCount", userCount);
-
-            // get the random user ids
-            let arr = returnRandomIntsArr(0, 115, userCount);
-            // number of affected users
-            let affected = Math.ceil(userCount * currentPercent / 100);
-            // string to store html data
-            let str = "";
-            // loop through array, save 
-            for (let i = 0; i < arr.length; i++) {
-                let showAffectedClass = "";
-                if (i < affected) {
-                    showAffectedClass = "affected";
-                }
-                str += `
-                    <span class="${showAffectedClass}" title="${showAffectedClass}">
-                        <img src="assets/img/users-200w/${arr[i]}.jpg" class="img-fluid graphic" alt="this person does not exist ${i}">
-                    </span>`;
-            }
-            usersEle.innerHTML = str;
-            console.log("currentOption", currentOption, "currentPercent", currentPercent, "affected", affected + "/" + userCount);
-        }
-
-
-        /**
-         *  Return current Bootstrap breakpoint size https://stackoverflow.com/a/55368012/441878
-         */
-        function getViewportSize() {
-            const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
-            if (width <= 576) return 'xs'
-            if (width <= 768) return 'sm'
-            if (width <= 992) return 'md'
-            if (width <= 1200) return 'lg'
-            if (width <= 1400) return 'xl'
-            return 'xxl'
-        }
-
-        /**
-         *  Return an array of unique integers between min/max, of length 
-         */
-        function returnRandomIntsArr(min, max, length) {
-            // create array with #s
-            let arr = [];
-            // create array with all the numbers
-            for (let i = min; i < max; i++) {
-                arr.push(i);
-            }
-            shuffleArray(arr);
-            // console.log(arr)
-            return arr.splice(0, length);
-        }
-
-
-    </script>
 </body>
 </html>
