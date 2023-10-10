@@ -112,7 +112,10 @@ function selectOption(option) {
 		cardMenu[i].classList.remove("active");
 	}
 	// add active to just the target
-	cardMenu[option].classList.add("active");
+    cardMenu[option].classList.add("active");
+    // set focus as well
+    cardMenu[option].focus();
+
 	displayUsers();
 }
 
