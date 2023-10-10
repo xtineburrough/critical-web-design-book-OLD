@@ -269,7 +269,7 @@
                     let className = "";
                     if (i < affected) className = "affected"
                     // str += `<span class="${className}" title="${className}"><img src="assets/img/users/${arr[i]}.jpg" class="img-fluid graphic"></span>`;
-                    str += `<span class="${className}" title="${className}"><img src="assets/img/users/${arr[i]}.jpg" class="img-fluid graphic"></span>`;
+                    str += `<span class="${className}" title="${className}"><img src="assets/img/users/${arr[i]}.jpg" class="img-fluid graphic" alt="this person does not exist ${i}"></span>`;
                 }
                 usersEle.innerHTML = str;
                 console.log("groupId", groupId, "percent", percent, "affected", affected + "/" + userCount);
