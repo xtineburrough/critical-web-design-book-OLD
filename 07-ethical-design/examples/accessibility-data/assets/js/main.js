@@ -9,12 +9,14 @@ for (let i = 0; i < 116; i++) {
 }
 
 let viewportSize,
-	viewportUserCounts = { xs: 8, sm: 8, md: 15, lg: 18, xl: 32, xxl: 36 },
+    columnsCounts = { xs: 4, sm: 4, md: 6, lg: 6, xl: 8, xxl: 9 },
+	viewportUserCounts = { xs: 8, sm: 12, md: 18, lg: 18, xl: 32, xxl: 36 },
 	userCount = 0,
 	currentOption = 0,
 	currentPercent = 0,
 	cardMenu = document.querySelectorAll(".cardMenu"),
 	usersEle = document.querySelector(".users"),
+	descriptionEle = document.querySelector(".description"),
 	reportEle = document.querySelector(".report"),
 	resetFlag = false;
 
@@ -136,11 +138,22 @@ function displayUsers() {
 			showAffectedClass = "affected";
 		}
 		str += `
-            <span class="${showAffectedClass}" title="${showAffectedClass}">
-                <img src="assets/img/users-200w/${arr[i]}.jpg" class="img-fluid graphic" alt="this person does not exist ${i}">
+            <span class="${showAffectedClass}">
+                <img src="assets/img/users-200w/${arr[i]}.jpg" class="graphic" alt="this person does not exist ${i}">
             </span>`;
 	}
-	usersEle.innerHTML = str;
+    // update images
+    usersEle.innerHTML = str;
+    
+    // change the number of columns in the grid based on viewport size
+    usersEle.style.gridTemplateColumns = `repeat(${columnsCounts[viewportSize]},1fr)`;
+    
+    if (viewportSize == "xs" ||  viewportSize == "sm"){
+        descriptionEle.innerHTML = `${cardMenu[currentOption].textContent}`;
+    } else {
+        descriptionEle.innerHTML = ``;
+    }
+
 	console.log(
 		"currentOption",
 		currentOption,

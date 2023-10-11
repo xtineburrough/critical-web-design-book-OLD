@@ -87,16 +87,8 @@ a {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: .5rem;
-}
-
-@media (min-width: 767.98px) {
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-        gap: .5rem;
-    }
+    grid-template-columns: repeat(4, minmax(80px, 1fr));
 }
 
 .report-value {
@@ -122,8 +114,11 @@ a {
 .btn,
 .value {
     border-radius: 50%;
-    width: 5rem;
-    height: 5rem;
+    width: 100%;
+    max-width: 6rem;
+    height: auto;
+    aspect-ratio: 1/1;
+    padding: .4rem;
     text-align: center;
     background-color: #212529;
     color: white;

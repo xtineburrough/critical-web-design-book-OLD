@@ -12,72 +12,76 @@
     <header class="container-fluid">
         <div class="row">
             <div class="col-12 text-center">
-                <h1 class="mt-5 my-4">% of users affected by website accessibility</h1>
+                <h1 class="my-2 mt-md-5 my-md-4">% of users affected by website accessibility</h1>
             </div>
         </div>
     </header>
 
-    <nav class="container">
+    <nav class="container-lg">
         <div class="row text-center">
-            <div class="col-4 col-sm-4 col-lg-2 my-2">
+            <div class="col-4 col-sm-2 col-lg-2 my-2">
                 <div class="card text-center cardMenu red focus-ring focus-ring-secondary" data-option="0" data-percent="15" tabindex="0">
                     <div class="card-body h-100 px-2">
                         <div class="value">15%</div>
-                        <p class="card-text mt-2">% of world population with some sort of disability</p>
+                        <p class="card-text mt-2 d-none d-md-block">% of world population with some sort of disability</p>
                     </div>
                 </div>
             </div>
-            <div class="col-4 col-sm-4 col-lg-2 my-2">
+            <div class="col-4 col-sm-2 col-lg-2 my-2">
                 <div class="card text-center cardMenu yellow focus-ring focus-ring-secondary" data-option="1" data-percent="26" tabindex="0">
                     <div class="card-body h-100 px-2">
                         <div class="value">26%</div>
-                        <p class="card-text mt-2">Adults in the United States who have a disability</p>
+                        <p class="card-text mt-2 d-none d-md-block">Adults in the United States who have a disability</p>
                     </div>
                 </div>
             </div>
-            <div class="col-4 col-sm-4 col-lg-2 my-2">
+            <div class="col-4 col-sm-2 col-lg-2 my-2">
                 <div class="card text-center cardMenu green focus-ring focus-ring-secondary" data-option="2" data-percent="23" tabindex="0">
                     <div class="card-body h-100 px-2">
                         <div class="value">23%</div>
-                        <p class="card-text mt-2">Images with missing alternative text</p>
+                        <p class="card-text mt-2 d-none d-md-block">Images with missing alternative text</p>
                         <!-- and over one-third of all images analyzed had detectable accessibility issues -->
                     </div>
                 </div>
             </div>
-            <div class="col-4 col-sm-4 col-lg-2 my-2">
+            <div class="col-4 col-sm-2 col-lg-2 my-2">
                 <div class="card text-center cardMenu cyan focus-ring focus-ring-secondary" data-option="3" data-percent="51" tabindex="0">
                     <div class="card-body h-100 px-2">
                         <div class="value">50.8%</div>
-                        <p class="card-text mt-2">Average detectable accessibility errors per web page</p>
+                        <p class="card-text mt-2 d-none d-md-block">Average detectable accessibility errors per web page</p>
                         <!-- According to the Web AIM Million Report researching one million websites,  -->
                     </div>
                 </div>
             </div>
-            <div class="col-4 col-sm-4 col-lg-2 my-2">
+            <div class="col-4 col-sm-2 col-lg-2 my-2">
                 <div class="card text-center cardMenu blue focus-ring focus-ring-secondary" data-option="4" data-percent="74" tabindex="0">
                     <div class="card-body h-100 px-2">
                         <div class="value">74%</div>
-                        <p class="card-text mt-2">Disabled Americans with no high-speed internet, smartphone, or computer</p>
+                        <p class="card-text mt-2 d-none d-md-block">Disabled Americans with no high-speed internet, smartphone, or computer</p>
                         <!-- Roughly a quarter of Americans with disabilities (26%) say they have high-speed internet at home, a smartphone, a desktop or laptop computer, and a tablet compared with 44% of those who report not having a disability.  -->
                     </div>
                 </div>
             </div>
-            <div class="col-4 col-sm-4 col-lg-2 my-2">
+            <div class="col-4 col-sm-2 col-lg-2 my-2">
                 <div class="card text-center cardMenu purple focus-ring focus-ring-secondary" data-option="5" data-percent="97" tabindex="0">
                     <div class="card-body h-100 px-2">
                         <div class="value">96.8%</div>
-                        <p class="card-text mt-2">Web pages with detectable WCAG 2 failures</p>
+                        <p class="card-text mt-2 d-none d-md-block">Web pages with detectable WCAG 2 failures</p>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
 
+    <section class="container-md mt-4 mb-5">
+        <div class="description text-center alert alert-dark d-md-none"></div>
+    </section>
+
     <section class="container mt-4 mb-5 d-none">
         <div class="alert alert-dark report text-center" role="alert"></div>
     </section>
 
-    <section class="container mt-4 mb-5">
+    <section class="container-md mt-4 mb-5">
         <div class="users grid-container"></div>
     </section>
 
