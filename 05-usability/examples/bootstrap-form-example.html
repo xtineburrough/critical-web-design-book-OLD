@@ -22,35 +22,39 @@
 
         <div class="row">
             <div class="mb-3 col">
-                <label for="clicks1">1</label>
-                <input type="text" class="clicks1 form-control">
+                <label for="clicks1">clicks<sup>1</sup></label>
+                <input type="text" id="clicks1" class="form-control">
             </div>
             <div class="mb-3 col">
-                <label for="clicks2">2</label>
-                <input type="text" class="clicks2 form-control">
+                <label for="clicks2">clicks<sup>2</sup></label>
+                <input type="text" id="clicks2" class="form-control">
             </div>
             <div class="mb-3 col">
-                <label for="clicks3">3</label>
-                <input type="text" class="clicks3 form-control">
+                <label for="clicks3">clicks<sup>3</sup></label>
+                <input type="text" id="clicks3" class="form-control">
             </div>
             <div class="mb-3 col">
-                <label for="clicks4">4</label>
-                <input type="text" class="clicks4 form-control">
+                <label for="clicks4">clicks<sup>4</sup></label>
+                <input type="text" id="clicks4" class="form-control">
             </div>
             <div class="mb-3 col">
-                <label for="clicks5">5</label>
-                <input type="text" class="clicks5 form-control">
+                <label for="clicks5">clicks<sup>5</sup></label>
+                <input type="text" id="clicks5" class="form-control">
             </div>
             <div class="mb-3 col">
-                <label for="clicks6">6</label>
-                <input type="text" class="clicks6 form-control">
+                <label for="clicks6">clicks<sup>6</sup></label>
+                <input type="text" id="clicks6" class="form-control">
             </div>
             <div class="mb-3 col">
-                <label for="clicks7">7</label>
-                <input type="text" class="clicks7 form-control">
+                <label for="clicks7">clicks<sup>7</sup></label>
+                <input type="text" id="clicks7" class="form-control">
             </div>
             <div class="mb-3 col">
-                <button class="mt-4 clickme btn btn-danger">Click Me!</button>
+                <label for="clicks8">clicks<sup>8</sup></label>
+                <input type="text" id="clicks8" class="form-control">
+            </div>
+            <div class="mb-3 col">
+                <button class="mt-4 clickme btn btn-danger">Click!</button>
             </div>
         </div>
 
@@ -69,7 +73,7 @@
             </div>
             <div class="row">
                 <div class="mb-3 col-12">
-                    <div class="output"></div>
+                    <div class="message"></div>
                 </div>
             </div>
         </form>
@@ -78,7 +82,7 @@
             <div class="mb-3 col">
 
                 A form example using <a href="https://getbootstrap.com/">Bootstrap</a> and
-                <a href="https://www.w3schools.com/jquery/">jQuery</a>
+                <strike><a href="https://www.w3schools.com/jquery/">jQuery</a></strike> Javascript
 
             </div>
         </div>
@@ -92,61 +96,104 @@
 
     <script>
 
-        /* javascript */
-
-        // hide the h1
-        // $("h1").hide();
-
+        // global scoped variables
         let clicks = 0;
-
-        // global scoped variable
         let passcode = "";
         let requiredPasscode = "secret";
 
 
-        $(".clickme").click(function () {
-            clicks++;
-            console.log(`You have clicked ${clicks} times!`);
-            $(".clicks1").val(clicks);
-            $(".clicks2").val(clicks * clicks);
-            $(".clicks3").val(clicks * clicks * clicks);
-            $(".clicks4").val(clicks * clicks * clicks * clicks);
-            $(".clicks5").val(clicks * clicks * clicks * clicks * clicks);
-            $(".clicks6").val(clicks * clicks * clicks * clicks * clicks * clicks);
-            $(".clicks7").val(clicks * clicks * clicks * clicks * clicks * clicks * clicks);
-        });
 
+        // Vanilla JS example
+        // -------------------------------------------------------------------------
 
         // select the form, listen for click
-        $("form").submit(function (e) {
+        document.querySelector(".clickme").addEventListener("click", function () {
+            clicks++;
+            console.log(`You have clicked ${clicks} times!`);
+            document.querySelector("#clicks1").value = clicks;
+            document.querySelector("#clicks2").value = clicks * clicks;
+            document.querySelector("#clicks3").value = clicks * clicks * clicks;
+            document.querySelector("#clicks4").value = clicks * clicks * clicks * clicks;
+            document.querySelector("#clicks5").value = clicks * clicks * clicks * clicks * clicks;
+            document.querySelector("#clicks6").value = clicks * clicks * clicks * clicks * clicks * clicks;
+            document.querySelector("#clicks7").value = clicks * clicks * clicks * clicks * clicks * clicks * clicks;
+            document.querySelector("#clicks8").value = clicks * clicks * clicks * clicks * clicks * clicks * clicks * clicks;
+        });
 
-            // the click is coming from a form, so we need to prevent
-            // it from refreshing or going to a new page (its default)
+        // select the form, listen for submit
+        document.querySelector("form").addEventListener("submit", function (e) {
+
+            // prevent the form from refreshing or going to a new page (default)
             e.preventDefault();
 
-            // view the eventObject - https://api.jquery.com/submit/
+            // view the eventObject
             // console.log(e);
 
-            // *get* the value of the input.passcode store in variable
-            passcode = $(".passcode").val();
+            // get the value of the input.passcode store in variable
+            passcode = document.querySelector(".passcode").value;
 
             // log the value of passcode
             console.log("passcode is " + passcode);
 
-            if (passcode == requiredPasscode) {
-                $(".output").html(`
-                    <div class="alert alert-success" role="alert">
-                    Welcome, member
-                    </div>`);
-            } else {
-                $(".output").html(`
-                    <div class="alert alert-danger" role="alert">
-                    Sorry that is not the right answer
-                    </div>`);
-            }
+            let message = "";
 
+            if (passcode == requiredPasscode) {
+                message = ` <div class="alert alert-success" role="alert">Welcome, member</div>`;
+            } else {
+                message = `<div class="alert alert-danger" role="alert">Sorry that is not the right answer</div>`;
+            }
+            document.querySelector(".message").innerHTML = message;
 
         });
+
+
+
+
+
+        // // jQuery Example...
+        // // -------------------------------------------------------------------------
+
+        // // hide the h1
+        // // $("h1").hide();
+
+        // $(".clickme").click(function () {
+        //     clicks++;
+        //     console.log(`You have clicked ${clicks} times!`);
+        //     $(".clicks1").val(clicks);
+        //     $(".clicks2").val(clicks * clicks);
+        //     $(".clicks3").val(clicks * clicks * clicks);
+        //     $(".clicks4").val(clicks * clicks * clicks * clicks);
+        //     $(".clicks5").val(clicks * clicks * clicks * clicks * clicks);
+        //     $(".clicks6").val(clicks * clicks * clicks * clicks * clicks * clicks);
+        //     $(".clicks7").val(clicks * clicks * clicks * clicks * clicks * clicks * clicks);
+        //     $(".clicks8").val(clicks * clicks * clicks * clicks * clicks * clicks * clicks * clicks);
+        // });
+
+        // // select the form, listen for click
+        // $("form").submit(function (e) {
+
+        //     // prevent the form from refreshing or going to a new page (default)
+        //     e.preventDefault();
+
+        //     // view the eventObject - https://api.jquery.com/submit/
+        //     // console.log(e);
+
+        //     // get the value of the input.passcode store in variable
+        //     passcode = $(".passcode").val();
+
+        //     // log the value of passcode
+        //     console.log("passcode is " + passcode);
+
+        //     let message = "";
+
+        //     if (passcode == requiredPasscode) {
+        //         message = ` <div class="alert alert-success" role="alert">Welcome, member</div>`;
+        //     } else {
+        //         message = `<div class="alert alert-danger" role="alert">Sorry that is not the right answer</div>`;
+        //     }
+
+        //     $(".message").html(message);
+        // });
 
     </script>
 
