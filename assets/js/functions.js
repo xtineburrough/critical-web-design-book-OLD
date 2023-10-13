@@ -111,3 +111,13 @@ function sortArray(arr) {
 		return a - b;
 	});
 }
+
+function getUrlHash() {
+	// check if previous option stored in url
+	return Number(window.location.href.split("#")[1]) || 0;
+}
+
+function setUrlHash(str) {
+	// replace hash in url
+	window.location.hash = "#" + str;
+}

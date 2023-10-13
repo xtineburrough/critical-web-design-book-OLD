@@ -1,5 +1,13 @@
 /* styles.css */
 
+:root {
+    /* --menu: .05;
+    --menuActive: .2; */
+
+    --menu: .2;
+    --menuActive: .4;
+}
+
 body {
     width: 100%;
     height: 100%;
@@ -22,63 +30,63 @@ a {
 }
 
 .red {
-    background-color: rgba(255, 0, 0, .05);
+    background-color: rgba(255, 0, 0, var(--menu));
 }
 
 .red:hover,
 .red:focus,
 .active.red {
-    background-color: rgba(255, 0, 0, .2);
+    background-color: rgba(255, 0, 0, var(--menuActive));
 }
 
 .yellow {
-    background-color: rgba(255, 255, 0, .05);
+    background-color: rgba(255, 255, 0, var(--menu));
 }
 
 .yellow:hover,
 .yellow:focus,
 .active.yellow {
-    background-color: rgba(255, 255, 0, .2);
+    background-color: rgba(255, 255, 0, var(--menuActive));
 }
 
 .green {
-    background-color: rgba(0, 255, 0, .05);
+    background-color: rgba(0, 255, 0, var(--menu));
 }
 
 .green:hover,
 .green:focus,
 .active.green {
-    background-color: rgba(0, 255, 0, .2);
+    background-color: rgba(0, 255, 0, var(--menuActive));
 }
 
 .cyan {
-    background-color: rgba(0, 255, 255, .05);
+    background-color: rgba(0, 255, 255, var(--menu));
 }
 
 .cyan:hover,
 .cyan:focus,
 .active.cyan {
-    background-color: rgba(0, 255, 255, .2);
+    background-color: rgba(0, 255, 255, var(--menuActive));
 }
 
 .blue {
-    background-color: rgba(0, 0, 255, .05);
+    background-color: rgba(0, 0, 255, var(--menu));
 }
 
 .blue:hover,
 .blue:focus,
 .active.blue {
-    background-color: rgba(0, 0, 255, .2);
+    background-color: rgba(0, 0, 255, var(--menuActive));
 }
 
 .purple {
-    background-color: rgba(255, 0, 255, .05);
+    background-color: rgba(255, 0, 255, var(--menu));
 }
 
 .purple:hover,
 .purple:focus,
 .active.purple {
-    background-color: rgba(255, 0, 255, .2);
+    background-color: rgba(255, 0, 255, var(--menuActive));
 }
 
 .card-text {
@@ -107,8 +115,14 @@ a {
     height: 100%;
 }
 
-.affected {
-    filter: brightness(.35)
+.affected .graphic {
+    transition-property: filter;
+    transition-duration: 1s;
+    /* filter: brightness(.35); */
+    filter: opacity(.2);
+}
+.affected .graphic:hover {
+    filter: opacity(.4);
 }
 
 .btn,
@@ -136,4 +150,12 @@ a {
 
 .btn-text {
     margin-top: 1rem;
+}
+
+
+
+/* new */
+
+.card {
+    border: none;
 }
