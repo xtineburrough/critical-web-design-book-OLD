@@ -77,9 +77,9 @@ function convertTZ(date, tzString) {
 }
 
 /**
- *  Populate an array with a value
+ *  Populate an array with a value => [1,1,1]
  */
-function populateArr(val, count) {
+function populateArray(val, count) {
 	var sizedArray = Array.apply(null, Array(count));
 	return sizedArray.map(function (o) {
 		return val;
@@ -87,13 +87,28 @@ function populateArr(val, count) {
 }
 
 /**
- *  Populate an array with random numbers
+ *  Populate an array with random numbers => [3,5,2]
  */
-function populateArrRandomInt(min, max, count) {
+function populateArrayRandomInt(min, max, count) {
 	var sizedArray = Array.apply(null, Array(count));
 	return sizedArray.map(function (o) {
 		return randomInt(min, max);
 	});
+}
+
+/**
+ *  Return an array of unique integers between min/max, of length
+ */
+function populateArrayRandomIntUnique(min, max, length) {
+	// create array with #s
+	let arr = [];
+	// create array with all the numbers
+	for (let i = min; i < max; i++) {
+		arr.push(i);
+	}
+	shuffleArray(arr);
+	// console.log(arr)
+	return arr.splice(0, length);
 }
 
 /**
@@ -106,18 +121,53 @@ function shuffleArray(array) {
 	}
 }
 
+/**
+ *  Sort an array
+ */
 function sortArray(arr) {
 	return arr.sort((a, b) => {
 		return a - b;
 	});
 }
 
+/**
+ *  Get the hash from the current URL (minus the hash)
+ */
 function getUrlHash() {
-	// check if previous option stored in url
-	return Number(window.location.href.split("#")[1]) || 0;
+	return Number(window.location.href.split("#")[1]) || null;
 }
-
+/**
+ *  Set a value as the hash in the current URL
+ */
 function setUrlHash(str) {
 	// replace hash in url
 	window.location.hash = "#" + str;
 }
+
+/**
+ *  Return current Bootstrap breakpoint size - credit https://stackoverflow.com/a/55368012/441878
+ */
+function getViewportSize() {
+	const width = Math.max(
+		document.documentElement.clientWidth,
+		window.innerWidth || 0
+	);
+	if (width <= 576) return "xs";
+	if (width <= 768) return "sm";
+	if (width <= 992) return "md";
+	if (width <= 1200) return "lg";
+	if (width <= 1400) return "xl";
+	return "xxl";
+}
+
+/**
+ * Preload images
+ */
+function preloadImage(url) {
+	var img = new Image();
+	img.src = url;
+}
+// usage
+// for (let i = 0; i < 116; i++) {
+// 	preloadImage(`assets/img/users-200w/${i}.jpg`);
+// }
