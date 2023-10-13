@@ -1,17 +1,42 @@
 /* styles.css */
 
 :root {
-    /* --menu: .05;
-    --menuActive: .2; */
+    --background: 228, 219, 219;
+    --menuBackground: 0;
+    --menuBackgroundActive: .2;
+    --menuBorderSize: 6px;
+    --menuBorder: .3;
+    --menuBorderActive: .5;
+    --valueBackground: .9;
+    --valueBackgroundActive: 1;
+    --valueBorder: .4;
 
-    --menu: .2;
-    --menuActive: .4;
+
+    /* --rose: #ED5B66;
+    --gold: #E5B459;
+    --cyan: #38B3C2;
+    --green: #87C35C;
+    --purple: #BE56DD;
+    --magenta: #F05BBD; */
+    /* 
+    Using an RGB triplet allows you to create color variants later with the prop and  rgba()
+    https://stackoverflow.com/a/41265350/441878 
+    */
+    --rose: 237, 91, 102;
+    --gold: 229, 180, 89;
+    /* --gold: 202, 135, 12; */
+    --cyan: 56, 179, 194;
+    --green: 135, 195, 92;
+    --purple: 190, 86, 221;
+    --magenta: 240, 91, 189;
 }
 
 body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
     width: 100%;
     height: 100%;
-    background-color: rgb(228, 219, 219);
+    background-color: rgb(var(--background));
     color: rgb(50, 60, 68);
 }
 
@@ -25,68 +50,266 @@ a {
     height: 100%;
 }
 
+.card {
+    border: none;
+    border-radius: 2rem;
+}
+
+
+/* accessibility */
 .cardMenu:hover {
     cursor: pointer;
 }
 
-.red {
-    background-color: rgba(255, 0, 0, var(--menu));
+/* accessibility */
+.card:hover,
+.card:focus {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    outline: none;
+    /* replace focus outline with something nicer */
+    /* outline: -webkit-focus-ring-color rgba(var(--rose), var(--menuBackgroundActive)) 5px; */
+    /* added in individual color classes */
 }
 
-.red:hover,
-.red:focus,
-.active.red {
-    background-color: rgba(255, 0, 0, var(--menuActive));
+/* accessibility */
+.description {
+    padding: 1rem;
+    border-radius: 2rem;
 }
 
-.yellow {
-    background-color: rgba(255, 255, 0, var(--menu));
+
+
+
+
+.rose,
+.rose .value {
+    background-color: rgba(var(--rose), var(--menuBackground));
+    border: var(--menuBorderSize) solid rgba(var(--rose), var(--menuBorder)) !important;
 }
 
-.yellow:hover,
-.yellow:focus,
-.active.yellow {
-    background-color: rgba(255, 255, 0, var(--menuActive));
+.rose .value {
+    color: rgba(var(--rose), var(--valueBackground));
+    border: var(--menuBorderSize) solid rgba(var(--rose), var(--valueBorder)) !important;
 }
 
-.green {
-    background-color: rgba(0, 255, 0, var(--menu));
+.active.rose .value {
+    background-color: rgba(var(--rose), var(--valueBackgroundActive));
 }
 
+
+/* accessibility */
+.rose:hover,
+.rose:focus,
+.active.rose {
+    background-color: rgba(var(--rose), var(--menuBackgroundActive));
+    border: var(--menuBorderSize) solid rgba(var(--rose), var(--menuBorderActive));
+    outline: -webkit-focus-ring-color rgba(var(--rose), var(--menuBackgroundActive)) 5px;
+}
+
+/* accessibility */
+.description-rose {
+    background-color: rgba(var(--rose), var(--menuBorder));
+    border: var(--menuBorderSize) solid rgba(var(--rose), var(--menuBorderActive));
+}
+
+
+
+
+
+.gold,
+.gold .value {
+    background-color: rgba(var(--gold), var(--menuBackground));
+    border: var(--menuBorderSize) solid rgba(var(--gold), var(--menuBorder)) !important;
+}
+
+.gold .value {
+    color: rgba(var(--gold), var(--valueBackground));
+    border: var(--menuBorderSize) solid rgba(var(--gold), var(--valueBorder)) !important;
+}
+
+.active.gold .value {
+    background-color: rgba(var(--gold), var(--valueBackgroundActive));
+}
+
+
+/* accessibility */
+.gold:hover,
+.gold:focus,
+.active.gold {
+    background-color: rgba(var(--gold), var(--menuBackgroundActive));
+    border: var(--menuBorderSize) solid rgba(var(--gold), var(--menuBorderActive));
+    outline: -webkit-focus-ring-color rgba(var(--gold), var(--menuBackgroundActive)) 5px;
+}
+
+/* accessibility */
+.description-gold {
+    background-color: rgba(var(--gold), var(--menuBorder));
+    border: var(--menuBorderSize) solid rgba(var(--gold), var(--menuBorderActive));
+}
+
+
+
+
+.green,
+.green .value {
+    background-color: rgba(var(--green), var(--menuBackground));
+    border: var(--menuBorderSize) solid rgba(var(--green), var(--menuBorder)) !important;
+}
+
+.green .value {
+    color: rgba(var(--green), var(--valueBackground));
+    border: var(--menuBorderSize) solid rgba(var(--green), var(--valueBorder)) !important;
+}
+
+.active.green .value {
+    background-color: rgba(var(--green), var(--valueBackgroundActive));
+}
+
+
+/* accessibility */
 .green:hover,
 .green:focus,
 .active.green {
-    background-color: rgba(0, 255, 0, var(--menuActive));
+    background-color: rgba(var(--green), var(--menuBackgroundActive));
+    border: var(--menuBorderSize) solid rgba(var(--green), var(--menuBorderActive));
+    outline: -webkit-focus-ring-color rgba(var(--green), var(--menuBackgroundActive)) 5px;
 }
 
-.cyan {
-    background-color: rgba(0, 255, 255, var(--menu));
+/* accessibility */
+.description-green {
+    background-color: rgba(var(--green), var(--menuBorder));
+    border: var(--menuBorderSize) solid rgba(var(--green), var(--menuBorderActive));
 }
 
+
+
+
+
+
+.cyan,
+.cyan .value {
+    background-color: rgba(var(--cyan), var(--menuBackground));
+    border: var(--menuBorderSize) solid rgba(var(--cyan), var(--menuBorder)) !important;
+}
+
+.cyan .value {
+    color: rgba(var(--cyan), var(--valueBackground));
+    border: var(--menuBorderSize) solid rgba(var(--cyan), var(--valueBorder)) !important;
+}
+
+.active.cyan .value {
+    background-color: rgba(var(--cyan), var(--valueBackgroundActive));
+}
+
+
+/* accessibility */
 .cyan:hover,
 .cyan:focus,
 .active.cyan {
-    background-color: rgba(0, 255, 255, var(--menuActive));
+    background-color: rgba(var(--cyan), var(--menuBackgroundActive));
+    border: var(--menuBorderSize) solid rgba(var(--cyan), var(--menuBorderActive));
+    outline: -webkit-focus-ring-color rgba(var(--cyan), var(--menuBackgroundActive)) 5px;
 }
 
-.blue {
-    background-color: rgba(0, 0, 255, var(--menu));
+/* accessibility */
+.description-cyan {
+    background-color: rgba(var(--cyan), var(--menuBorder));
+    border: var(--menuBorderSize) solid rgba(var(--cyan), var(--menuBorderActive));
 }
 
-.blue:hover,
-.blue:focus,
-.active.blue {
-    background-color: rgba(0, 0, 255, var(--menuActive));
+
+
+
+
+
+
+
+.purple,
+.purple .value {
+    background-color: rgba(var(--purple), var(--menuBackground));
+    border: var(--menuBorderSize) solid rgba(var(--purple), var(--menuBorder)) !important;
 }
 
-.purple {
-    background-color: rgba(255, 0, 255, var(--menu));
+.purple .value {
+    color: rgba(var(--purple), var(--valueBackground));
+    border: var(--menuBorderSize) solid rgba(var(--purple), var(--valueBorder)) !important;
 }
 
+.active.purple .value {
+    background-color: rgba(var(--purple), var(--valueBackgroundActive));
+}
+
+
+/* accessibility */
 .purple:hover,
 .purple:focus,
 .active.purple {
-    background-color: rgba(255, 0, 255, var(--menuActive));
+    background-color: rgba(var(--purple), var(--menuBackgroundActive));
+    border: var(--menuBorderSize) solid rgba(var(--purple), var(--menuBorderActive));
+    outline: -webkit-focus-ring-color rgba(var(--purple), var(--menuBackgroundActive)) 5px;
+}
+
+/* accessibility */
+.description-purple {
+    background-color: rgba(var(--purple), var(--menuBorder));
+    border: var(--menuBorderSize) solid rgba(var(--purple), var(--menuBorderActive));
+}
+
+
+
+
+
+.magenta,
+.magenta .value {
+    background-color: rgba(var(--magenta), var(--menuBackground));
+    border: var(--menuBorderSize) solid rgba(var(--magenta), var(--menuBorder)) !important;
+}
+
+.magenta .value {
+    color: rgba(var(--magenta), var(--valueBackground));
+    border: var(--menuBorderSize) solid rgba(var(--magenta), var(--valueBorder)) !important;
+}
+
+.active.magenta .value {
+    background-color: rgba(var(--magenta), var(--valueBackgroundActive));
+}
+
+/* accessibility */
+.magenta:hover,
+.magenta:focus,
+.active.magenta {
+    background-color: rgba(var(--magenta), var(--menuBackgroundActive));
+    border: var(--menuBorderSize) solid rgba(var(--magenta), var(--menuBorderActive));
+    outline: -webkit-focus-ring-color rgba(var(--rose), var(--menuBackgroundActive)) 5px;
+}
+
+/* accessibility */
+.description-magenta {
+    background-color: rgba(var(--magenta), var(--menuBorder));
+    border: var(--menuBorderSize) solid rgba(var(--magenta), var(--menuBorderActive));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* accessibility */
+@media (max-width: 991.98px) {
+    .card {
+        border: none !important;
+    }
+}
+
+.active .value {
+    color: white;
 }
 
 .card-text {
@@ -118,15 +341,17 @@ a {
 .affected .graphic {
     transition-property: filter;
     transition-duration: 1s;
-    /* filter: brightness(.35); */
     filter: opacity(.2);
 }
+
 .affected .graphic:hover {
     filter: opacity(.4);
 }
 
 .btn,
 .value {
+    transition-property: background-color;
+    transition-duration: .15s;
     border-radius: 50%;
     width: 100%;
     max-width: 6rem;
@@ -134,6 +359,10 @@ a {
     aspect-ratio: 1/1;
     padding: .4rem;
     text-align: center;
+    /* accessibility */
+    font-weight: 500;
+    /* accessibility */
+    font-size: 1.2rem;
     background-color: #212529;
     color: white;
     display: flex;
@@ -145,17 +374,10 @@ a {
 .active {
     transition-property: transform;
     transition-duration: .15s;
+    /* accessibility */
     transform: scale(1.1);
 }
 
 .btn-text {
     margin-top: 1rem;
-}
-
-
-
-/* new */
-
-.card {
-    border: none;
 }
