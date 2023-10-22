@@ -34,7 +34,7 @@
                 <div class="card text-center cardMenu gold focus-ring-gold" data-option="1" data-percent="23" tabindex="0">
                     <div class="card-body h-100 px-2">
                         <div class="value">23%</div>
-                        <p class="card-text mt-2 d-none d-md-block">Images with missing alternative text</p>
+                        <p class="card-text mt-2 d-none d-md-block">Website images with missing alternative text</p>
                         <!-- and over one-third of all images analyzed had detectable accessibility issues -->
                     </div>
                 </div>
@@ -76,15 +76,15 @@
         </div>
     </nav>
 
-    <section class="container-md mt-4 mb-5 d-md-none">
-        <div class="mobileDescription text-center">Select an option above</div>
+    <section class="container-fluid my-1 d-md-none">
+        <div class="description text-center">Select an option above</div>
     </section>
 
     <section class="container mt-4 mb-5 d-none">
         <div class="report text-center" role="alert"></div>
     </section>
 
-    <section class="container-md mt-4 mb-5">
+    <section class="container-xl mt-4 mb-5">
         <div class="users grid-container"></div>
     </section>
 
@@ -105,9 +105,12 @@
             currentPercent = 0,
             cardMenu = document.querySelectorAll(".cardMenu"),
             usersEle = document.querySelector(".users"),
-            mobileDescriptionEle = document.querySelector(".mobileDescription"),
+            descriptionEle = document.querySelector(".description"),
             reportEle = document.querySelector(".report");
 
+        let colors = [
+            'rose', 'gold', 'green', 'cyan', 'purple', 'magenta'
+        ]
 
         // 1. when the page finishes loading
         document.addEventListener(
@@ -150,6 +153,8 @@
 
         // 3. save options needed to display users
         function saveOptions(option) {
+            console.log("3 - saveOptions()", option);
+
             // update # of users to show
             userCount = updateUserCount();
             if (option === 0) {
@@ -206,13 +211,11 @@
             // set focus as well
             cardMenu[currentOption].focus();
             // update condensed description for mobile 
-            mobileDescriptionEle.innerHTML = `<div class="description description-${colors[currentOption]}">${cardMenu[currentOption].textContent}</div>`;
+            descriptionEle.innerHTML = `<div class="description description-${colors[currentOption]}">${cardMenu[currentOption].textContent}</div>`;
         }
 
 
-        let colors = [
-            'rose', 'gold', 'green', 'cyan', 'purple', 'magenta'
-        ]
+
 
 
         // ******************* MOVE *************************************************************************************************************
@@ -239,15 +242,21 @@
         window.addEventListener(
             "resize",
             function (event) {
+                console.log("resize event");
+
                 // save previous user count
                 let previousUserCount = userCount;
+                let previousViewportSize = viewportSize;
+
                 // update # of users to show
                 userCount = updateUserCount();
 
-                // console.log(viewportSize, userCount, previousUserCount);
+
+
+                console.log(viewportSize, userCount, previousUserCount);
 
                 // number of users has changed
-                if (userCount != previousUserCount) {
+                if (userCount != previousUserCount || viewportSize != previousViewportSize) {
                     // update layout
                     displayUsers();
                 }
