@@ -46,7 +46,9 @@ Examples: [Haiku (xtine)](https://omundy.github.io/critical-web-design-book/06-o
 
 ## Chapter 7 - Ethical Design
 
-<img height="190" src="figures/ch7/ch7-outcome-venue-xxl-2.png"> <img height="190" src="figures/ch7/ch7-outcome-venue-xl-1.png"> <img height="190" src="figures/ch7/ch7-outcome-venue-md-1.png"> <img height="190" src="figures/ch7/ch7-outcome-venue-sm-1.png"> <img height="190" src="figures/ch7/ch7-outcome-venue-xs-1.png">
+<img height="190" src="figures/ch7/ch7-outcome-accessibility-option1-xl.png"> <img height="190" src="figures/ch7/ch7-outcome-accessibility-option4-lg.png"> <img height="190" src="figures/ch7/ch7-outcome-accessibility-option5-md.png"> 
+
+<img height="190" src="figures/ch7/ch7-outcome-venue-xl-1.png"> <img height="190" src="figures/ch7/ch7-outcome-venue-md-1.png"> <img height="190" src="figures/ch7/ch7-outcome-venue-sm-1.png"> 
 
 ## Chapter 8 - Generative Design
 
