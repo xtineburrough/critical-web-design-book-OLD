@@ -152,11 +152,11 @@ function getViewportSize() {
 		document.documentElement.clientWidth,
 		window.innerWidth || 0
 	);
-	if (width <= 576) return "xs";
-	if (width <= 768) return "sm";
-	if (width <= 992) return "md";
-	if (width <= 1200) return "lg";
-	if (width <= 1400) return "xl";
+	if (width <= 575.98) return "xs";
+	if (width <= 767.98) return "sm";
+	if (width <= 991.98) return "md";
+	if (width <= 1199.98) return "lg";
+	if (width <= 1399.98) return "xl";
 	return "xxl";
 }
 

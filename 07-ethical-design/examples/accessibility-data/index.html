@@ -223,7 +223,8 @@
 
 
         let viewportSize,
-            columnsCounts = { xs: 4, sm: 4, md: 6, lg: 6, xl: 8, xxl: 9 },
+            rowCounts = { xs: 2, sm: 3, md: 3, lg: 3, xl: 4, xxl: 4 },
+            // columnsCounts = { xs: 4, sm: 4, md: 6, lg: 6, xl: 8, xxl: 9 },
             viewportUserCounts = { xs: 8, sm: 12, md: 18, lg: 18, xl: 32, xxl: 36 };
 
         function updateUserCount() {
@@ -235,14 +236,14 @@
 
         function updateGridColumns() {
             // change the number of columns in the grid based on viewport size
-            usersEle.style.gridTemplateColumns = `repeat(${columnsCounts[viewportSize]},1fr)`;
+            usersEle.style.gridTemplateRows = `repeat(${rowCounts[viewportSize]},minmax(80px, 1fr))`;
         }
 
         // every time viewport is resized
         window.addEventListener(
             "resize",
             function (event) {
-                console.log("resize event");
+                // console.log("resize event");
 
                 // save previous user count
                 let previousUserCount = userCount;
