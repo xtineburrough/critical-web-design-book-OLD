@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Self-Portrait</title>
+
+    <!-- 
+    Title: The New York Felines
+    Author: Owen Mundy
+    Date: 2023
+    License: MIT
+    -->
+
+    <style>
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: black;
+            background-image: url('assets/img/wallpaper.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center center;
+        }
+
+        .pollen {
+            position: fixed;
+            background-color: #ece004;
+            z-index: 99;
+            border-radius: 50%;
+            filter: blur(3px);
+        }
+
+        .controls {
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="controls">
+        <span class="snow"></span> /
+        <span class="count"></span>
+    </div>
+
+
+
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>
