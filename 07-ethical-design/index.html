@@ -2,11 +2,100 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Ethical Design</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Accessibility Data | Critical Web Design</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <style>
+        :root {
+            --menuBorder: 6px;
+        }
+
+        .grid-container {
+            display: grid;
+            gap: .5rem;
+            grid-template-rows: repeat(4, minmax(80px, 1fr));
+            grid-auto-flow: column;
+        }
+
+        .value {
+            border-radius: 50%;
+            border: var(--menuBorder) solid #212529;
+            /* sizing */
+            width: 100%;
+            max-width: 6rem;
+            height: auto;
+            aspect-ratio: 1/1;
+            padding: .4rem;
+            /* vertical align */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .graphic {
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+        }
+
+        .affected .graphic {
+            transition-property: opacity;
+            transition-duration: 1s;
+            opacity: .2;
+        }
+    </style>
+
 </head>
 <body>
 
-    <h1>Ethical Design</h1>
+    <div class="container-fluid text-center my-5">
+        <h1>Users affected by website accessibility</h1>
+    </div>
+
+    <div class="container-xl text-center my-5">
+        <div class="row">
+            <div class="col-2">
+                <div class="value">15%</div>
+            </div>
+            <div class="col-2">
+                <div class="value">23%</div>
+            </div>
+            <div class="col-2">
+                <div class="value">26%</div>
+            </div>
+            <div class="col-2">
+                <div class="value">50.8%</div>
+            </div>
+            <div class="col-2">
+                <div class="value">74%</div>
+            </div>
+            <div class="col-2">
+                <div class="value">96.8%</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="blurb my-5"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="users grid-container"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <script>
+
+
+
+    </script>
+
 
 </body>
 </html>
