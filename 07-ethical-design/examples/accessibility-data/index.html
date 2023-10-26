@@ -5,8 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Accessibility Data | Critical Web Design</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --background: 228, 219, 219;
+            --color: 33, 37, 41;
+            --borderSize: .4rem;
+            --optionOpacity: .8;
+            --optionOpacityActive: 1;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: rgb(var(--color));
+            background-color: rgb(var(--background));
+        }
+
         .grid-container {
             display: grid;
             gap: .5rem;
@@ -14,10 +32,51 @@
             grid-auto-flow: column;
         }
 
+        .option {
+            border-radius: 50%;
+            background-color: rgb(var(--background));
+            border: var(--borderSize) solid rgb(var(--color));
+            cursor: pointer;
+            font-size: 2rem;
+            font-weight: 500;
+            opacity: var(--optionOpacity);
+            /* sizing */
+            width: 100%;
+            max-width: 10rem;
+            height: auto;
+            aspect-ratio: 1/1;
+            padding: .4rem;
+            /* vertical align */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .option.active {
+            opacity: var(--optionOpacityActive);
+            background-color: rgb(var(--color));
+            color: white;
+        }
+
+        .active {
+            transition-property: transform;
+            transition-duration: .5s;
+            /* accessibility */
+            transform: scale(1.1);
+        }
+
+        .blurb {
+            min-height: 2rem;
+        }
+
         .graphic {
             border-radius: 50%;
             width: 100%;
-            height: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
+            max-width: 200px;
+            max-height: 200px;
         }
 
         .affected .graphic {
@@ -25,8 +84,88 @@
             transition-duration: 1s;
             opacity: .2;
         }
-    </style>
 
+        .affected .graphic:hover {
+            opacity: .4;
+        }
+    </style>
+    <!-- 
+    <style>
+        :root {
+            --rose: 237, 91, 102;
+            --gold: 229, 180, 89;
+            --cyan: 56, 179, 194;
+            --green: 135, 195, 92;
+            --purple: 190, 86, 221;
+            --magenta: 240, 91, 189;
+        }
+
+        .blurb .rose {
+            color: rgb(var(--rose)) !important;
+        }
+        .option.rose {
+            border: var(--borderSize) solid rgba(var(--rose), var(--optionOpacity)) !important;
+        }
+
+        .option.rose.active {
+            background-color: rgba(var(--rose), var(--optionOpacityActive));
+        }
+        .blurb .gold {
+            color: rgb(var(--gold)) !important;
+        }
+        .option.gold {
+            border: var(--borderSize) solid rgba(var(--gold), var(--optionOpacity)) !important;
+        }
+
+        .option.gold.active {
+            background-color: rgba(var(--gold), var(--optionOpacityActive));
+        }
+
+        .blurb .green {
+            color: rgb(var(--green)) !important;
+        }
+        .option.green {
+            border: var(--borderSize) solid rgba(var(--green), var(--optionOpacity)) !important;
+        }
+
+        .option.green.active {
+            background-color: rgba(var(--green), var(--optionOpacityActive));
+        }
+
+        .blurb .cyan {
+            color: rgb(var(--cyan)) !important;
+        }
+        .option.cyan {
+            border: var(--borderSize) solid rgba(var(--cyan), var(--optionOpacity)) !important;
+        }
+
+        .option.cyan.active {
+            background-color: rgba(var(--cyan), var(--optionOpacityActive));
+        }
+
+        .blurb .purple {
+            color: rgb(var(--purple)) !important;
+        }
+        .option.purple {
+            border: var(--borderSize) solid rgba(var(--purple), var(--optionOpacity)) !important;
+        }
+
+        .option.purple.active {
+            background-color: rgba(var(--purple), var(--optionOpacityActive));
+        }
+
+        .blurb .magenta {
+            color: rgb(var(--magenta)) !important;
+        }
+        .option.magenta {
+            border: var(--borderSize) solid rgba(var(--magenta), var(--optionOpacity)) !important;
+        }
+
+        .option.magenta.active {
+            background-color: rgba(var(--magenta), var(--optionOpacityActive));
+        }
+    </style>
+ -->
 </head>
 <body>
 
@@ -37,57 +176,113 @@
     <div class="container-xl text-center my-5">
         <div class="row">
             <div class="col-2">
-                <div class="value">15%</div>
+                <div class="option rose" data-percentage="15">15%</div>
             </div>
             <div class="col-2">
-                <div class="value">23%</div>
+                <div class="option gold" data-percentage="23">23%</div>
             </div>
             <div class="col-2">
-                <div class="value">26%</div>
+                <div class="option green" data-percentage="26">26%</div>
             </div>
             <div class="col-2">
-                <div class="value">50.8%</div>
+                <div class="option cyan" data-percentage="50.8">50.8%</div>
             </div>
             <div class="col-2">
-                <div class="value">74%</div>
+                <div class="option purple" data-percentage="74">74%</div>
             </div>
             <div class="col-2">
-                <div class="value">96.8%</div>
+                <div class="option magenta" data-percentage="96.8">96.8%</div>
             </div>
         </div>
     </div>
 
     <div class="container-xl text-center my-5">
-        <div class="users grid-container"></div>
+        <div class="row">
+            <div class="col">
+                <h4 class="blurb"></h4>
+            </div>
+        </div>
     </div>
 
+    <div class="container-xl text-center my-5">
+        <div class="row">
+            <div class="col">
+                <div class="users grid-container"></div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="../../../assets/js/functions.js"></script>
 
     <script>
 
-        // references to elements in the DOM
-        let usersEle = document.querySelector(".users");
-        // number of users to display
-        let userCount = 36;
-        // current percentage of users to show affected
-        let currentPercent = 25;
+        let text = [
+            "World population with some sort of disability",
+            "Website images with missing alternative text",
+            "Adults in the United States who have a disability",
+            "Average detectable accessibility errors per web page",
+            "Disabled Americans with no high-speed internet, smartphone, or computer",
+            "Web pages with detectable WCAG 2 failures",
+        ];
 
-        function displayUsers() {
-            // get affect number of users            
-            let affected = Math.round((userCount * currentPercent) / 100);
+        let colors = [
+            'rose', 'gold', 'green', 'cyan', 'purple', 'magenta'
+        ]
+
+        // add code below...
+
+        // references to elements
+        let blurb = document.querySelector(".blurb");
+        let options = document.querySelectorAll(".option");
+
+        // loop through options
+        options.forEach(function (element, index) {
+            // add an event listener to each
+            element.addEventListener("mouseover", function (event) {
+                console.log(index, element.textContent);
+                setActive(index);
+                displayUsers(36, index)
+            })
+        })
+
+        function setActive(index) {
+            //  populate blurb element using array index
+            blurb.innerHTML = `<div class="${colors[index]}">${text[index]}</div>`;
+            options.forEach(function (element, index) {
+                element.classList.remove("active");
+            });
+            options[index].classList.add("active");
+        }
+
+
+        let userArr = populateArrayRandomIntUnique(0, 115, 36);
+
+        function displayUsers(count, index) {
+                console.log(options[index].dataset.percentage);
+            // remove symbol and convert percentage to a number
+            // let percentage = Number(element.textContent.replace("%", ""));
+            let percentage = options[index].dataset.percentage;
+
+            // get affected number of users
+            let affected = Math.round((count * percentage) / 100);
             // testing
-            console.log(`${currentPercent}% of ${userCount} = ${affected}`);
+            console.log(`${percentage}% of ${count} = ${affected}`);
             // for the html output
             let str = "";
             // loop through the users
-            for (let i = 0; i < userCount; i++) {
+            for (let i = 0; i < count; i++) {
+                let showAffectedClass = "";
+
                 // add the user
-                str += `<span>${i}</span>`
+                // str += `<span>${i}</span>`
+                str += `<span class="${showAffectedClass}">
+                            <img src="../accessibility-data/assets/img/users-200w/${userArr[i]}.jpg" class="graphic" alt="this person does not exist ${i}">
+                        </span>`;
             }
-            usersEle.innerHTML = str;
+            document.querySelector(".users").innerHTML = str;
         }
-        displayUsers()
+        displayUsers(36, -1)
 
     </script>
 

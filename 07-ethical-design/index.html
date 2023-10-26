@@ -21,6 +21,7 @@
         .value {
             border-radius: 50%;
             border: var(--menuBorder) solid #212529;
+            cursor: pointer;
             /* sizing */
             width: 100%;
             max-width: 6rem;
@@ -32,6 +33,10 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto;
+        }
+
+        .blurb {
+            min-height: 2rem;
         }
 
         .graphic {
@@ -75,11 +80,17 @@
                 <div class="value">96.8%</div>
             </div>
         </div>
+    </div>
+
+    <div class="container-xl text-center my-5">
         <div class="row">
             <div class="col">
-                <div class="blurb my-5"></div>
+                <h4 class="blurb"></h4>
             </div>
         </div>
+    </div>
+
+    <div class="container-xl text-center my-5">
         <div class="row">
             <div class="col">
                 <div class="users grid-container"></div>
@@ -92,7 +103,16 @@
 
     <script>
 
+        let blurbs = [
+            "World population with some sort of disability",
+            "Website images with missing alternative text",
+            "Adults in the United States who have a disability",
+            "Average detectable accessibility errors per web page",
+            "Disabled Americans with no high-speed internet, smartphone, or computer",
+            "Web pages with detectable WCAG 2 failures",
+        ];
 
+        // add code below...
 
     </script>
 
