@@ -1,5 +1,5 @@
 /**
- *  Helper functions to accompany Critical Web Design (the book)
+ *  Helper functions for Critical Web Design Book (2025)
  *  2023 Owen Mundy
  *  See license in repository
  */
