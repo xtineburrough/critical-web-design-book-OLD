@@ -5,10 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Accessibility Data | Critical Web Design</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --menuBorder: 6px;
+            --background: 228, 219, 219;
+            --color: 33, 37, 41;
+            --borderSize: .4rem;
+            --optionOpacity: .8;
+            --optionOpacityActive: 1;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: rgb(var(--color));
+            background-color: rgb(var(--background));
         }
 
         .grid-container {
@@ -18,13 +32,17 @@
             grid-auto-flow: column;
         }
 
-        .value {
+        .option {
             border-radius: 50%;
-            border: var(--menuBorder) solid #212529;
+            background-color: rgb(var(--background));
+            border: var(--borderSize) solid rgb(var(--color));
             cursor: pointer;
+            font-size: 2rem;
+            font-weight: 500;
+            opacity: var(--optionOpacity);
             /* sizing */
             width: 100%;
-            max-width: 6rem;
+            max-width: 10rem;
             height: auto;
             aspect-ratio: 1/1;
             padding: .4rem;
@@ -35,23 +53,21 @@
             margin: 0 auto;
         }
 
-        .blurb {
-            min-height: 2rem;
+        .option.active {
+            opacity: var(--optionOpacityActive);
+            background-color: rgb(var(--color));
+            color: white;
         }
 
-        .graphic {
-            border-radius: 50%;
-            width: 100%;
-            height: 100%;
+        .active {
+            transition-property: transform;
+            transition-duration: .5s;
+            /* accessibility */
+            transform: scale(1.1);
         }
 
-        .affected .graphic {
-            transition-property: opacity;
-            transition-duration: 1s;
-            opacity: .2;
-        }
+
     </style>
-
 </head>
 <body>
 
@@ -62,22 +78,22 @@
     <div class="container-xl text-center my-5">
         <div class="row">
             <div class="col-2">
-                <div class="value">15%</div>
+                <div class="option rose" data-percentage="15">15%</div>
             </div>
             <div class="col-2">
-                <div class="value">23%</div>
+                <div class="option gold" data-percentage="23">23%</div>
             </div>
             <div class="col-2">
-                <div class="value">26%</div>
+                <div class="option green" data-percentage="26">26%</div>
             </div>
             <div class="col-2">
-                <div class="value">50.8%</div>
+                <div class="option cyan" data-percentage="50.8">50.8</div>
             </div>
             <div class="col-2">
-                <div class="value">74%</div>
+                <div class="option purple" data-percentage="74">74%</div>
             </div>
             <div class="col-2">
-                <div class="value">96.8%</div>
+                <div class="option magenta" data-percentage="96.8">96.8%</div>
             </div>
         </div>
     </div>
@@ -112,6 +128,10 @@
             "Web pages with detectable WCAG 2 failures",
         ];
 
+        let colors = [
+            'rose', 'gold', 'green', 'cyan', 'purple', 'magenta'
+        ]
+        
         // add code below...
 
     </script>
