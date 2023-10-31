@@ -11,8 +11,12 @@
     --magenta: 240, 91, 189;
 }
 
+.blurb {
+    min-height: 2rem;
+}
 .blurb span {
     padding-bottom: .8rem;
+    display: inline-block !important;
 }
 
 .blurb .rose {
