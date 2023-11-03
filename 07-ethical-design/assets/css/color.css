@@ -98,7 +98,7 @@
 
 /* USERS */
 
-.face {
+.portrait {
     border-radius: 50%;
     width: 100%;
     height: auto;
@@ -107,12 +107,12 @@
     max-height: 200px;
 }
 
-.showAffected .face {
+.showAffected .portrait {
     transition-property: opacity;
     transition-duration: 1s;
     opacity: .2;
 }
 
-.showAffected .face:hover {
+.showAffected .portrait:hover {
     opacity: .5;
 }

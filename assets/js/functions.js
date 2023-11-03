@@ -100,6 +100,7 @@ function populateArrayRandomInt(min, max, count) {
  *  Return an array of unique integers between min/max, of length
  */
 function populateArrayRandomIntUnique(min, max, length) {
+    if (!length) length = max;
 	// create array with #s
 	let arr = [];
 	// create array with all the numbers
