@@ -1,6 +1,8 @@
-/* ACCESSIBILITY */
+/* Adds accessibility improvements */
 
 @media (max-width: 575.98px) {
+
+    /*  update font size to fit */
     .blurb {
         font-size: 5vw;
     }
@@ -9,6 +11,7 @@
 
 @media (max-width: 767.98px) {
 
+    /* make padding relative to viewport size */
     .container-fluid,
     .container-xl {
         margin-top: 4vw !important;
@@ -19,6 +22,7 @@
         padding: 1vw !important;
     }
 
+    /*  update font size to fit */
     .option {
         font-size: 3.5vw;
     }
@@ -29,12 +33,31 @@
 }
 
 @media (max-width: 991.98px) {
+
+    /* so portraits don't shift for long blurbs */
     .blurb {
         min-height: 4.7rem;
     }
 }
 
 .active {
-    /* accessibility */
+    /* increase size to show it is selected */
     transform: scale(1.1);
+}
+
+
+/* show feedback on hober */
+.option:hover {
+    cursor: pointer;
+}
+
+/* allow styled options to improve feedback on hover */
+.option:hover,
+.option:focus {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    outline: none;
+    /* replace focus outline with something nicer */
+    /* outline: -webkit-focus-ring-color rgba(var(--rose), var(--optionOpacityActive)) 5px; */
+    /* added in individual color classes */
 }

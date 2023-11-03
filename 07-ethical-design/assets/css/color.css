@@ -12,15 +12,18 @@
 }
 
 
-/* COLORS */
+/* BLURBS */
 
 .blurb {
     min-height: 2rem;
 }
+
 .blurb span {
     padding-bottom: .8rem;
     display: inline-block !important;
 }
+
+/* ROSE */
 
 .blurb .rose {
     border-bottom: var(--borderSize) solid rgb(var(--rose)) !important;
@@ -34,6 +37,9 @@
     background-color: rgba(var(--rose), var(--optionOpacityActive));
 }
 
+
+/* GOLD */
+
 .blurb .gold {
     border-bottom: var(--borderSize) solid rgb(var(--gold)) !important;
 }
@@ -45,6 +51,8 @@
 .option.gold.active {
     background-color: rgba(var(--gold), var(--optionOpacityActive));
 }
+
+/* GREEN */
 
 .blurb .green {
     border-bottom: var(--borderSize) solid rgb(var(--green)) !important;
@@ -58,6 +66,8 @@
     background-color: rgba(var(--green), var(--optionOpacityActive));
 }
 
+/* CYAN */
+
 .blurb .cyan {
     border-bottom: var(--borderSize) solid rgb(var(--cyan)) !important;
 }
@@ -70,6 +80,8 @@
     background-color: rgba(var(--cyan), var(--optionOpacityActive));
 }
 
+/* PURPLE */
+
 .blurb .purple {
     border-bottom: var(--borderSize) solid rgb(var(--purple)) !important;
 }
@@ -81,6 +93,8 @@
 .option.purple.active {
     background-color: rgba(var(--purple), var(--optionOpacityActive));
 }
+
+/* MAGENTA */
 
 .blurb .magenta {
     border-bottom: var(--borderSize) solid rgb(var(--magenta)) !important;

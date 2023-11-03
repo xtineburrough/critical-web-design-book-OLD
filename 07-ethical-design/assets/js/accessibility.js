@@ -16,7 +16,7 @@ function updateGridColumns() {
 	// change the number of columns in the grid based on viewport size
 	document.querySelector(
 		".users"
-	).style.gridTemplateRows = `repeat(${rowCounts[viewportSize]},minmax(80px, 1fr))`;
+	).style.gridTemplateRows = `repeat(${rowCounts[viewportSize]},minmax(5rem, 1fr))`;
 }
 
 // every time viewport is resized
