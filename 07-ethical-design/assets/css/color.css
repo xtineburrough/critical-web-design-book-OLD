@@ -16,6 +16,9 @@
 
 .blurb {
     min-height: 2rem;
+    font-size: calc(1.275rem + .3vw);
+    font-weight: 500;
+    line-height: 1.2;
 }
 
 .blurb span {
