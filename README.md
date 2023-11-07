@@ -8,7 +8,7 @@ A collection of examples and exercises to accompany _Critical Web Design_ by xti
 
 Publish your first web page: By the end of the modules in this chapter you will create and publish your first web page. Starting with the next exercise, you will create your Sites folder in your home directory and use the command line to navigate your hard drive in Terminal or Git Bash.
 
-<img height="170" src="figures/ch1/1.0-network-types.png"> <img height="170" src="figures/ch1/1.2-git-branches.png">
+<img height="170" src="figures/ch1/01-01-network-types.png"> <img height="170" src="figures/ch1/01-11-git-branches.png">
 
 ## Chapter 2 - View Source
 
@@ -46,12 +46,14 @@ Examples: [Haiku (xtine)](https://omundy.github.io/critical-web-design-book/06-o
 
 ## Chapter 7 - Ethical Design
 
-<img height="190" src="figures/ch7/ch7-outcome-accessibility-option1-xl.png"> <img height="190" src="figures/ch7/ch7-outcome-accessibility-option4-lg.png"> <img height="190" src="figures/ch7/ch7-outcome-accessibility-option5-md.png"> 
+<img height="190" src="figures/ch7/ch7-outcome-accessibility-xl.png"> <img height="190" src="figures/ch7/ch7-outcome-accessibility-md.png"> <img height="190" src="figures/ch7/ch7-outcome-accessibility-sm.png"> 
 
-<img height="190" src="figures/ch7/ch7-outcome-venue-xl-1.png"> <img height="190" src="figures/ch7/ch7-outcome-venue-md-1.png"> <img height="190" src="figures/ch7/ch7-outcome-venue-sm-1.png"> 
+
 
 ## Chapter 8 - Generative Design
 
 This chapter prompt leads you to continue the work in chapter 7 by designing and coding an interactive album generator application. These exercises model the generative design prompt that follows at the end of the chapter: to create a web page that can generate new iterations of itself based on some changeable data source, like user input, time, location, etc.
 
 <img height="190" src="figures/ch8/ch8-album-stretch-goodness.png">
+
+<img height="190" src="figures/ch8/ch7-outcome-venue-xl-1.png"> <img height="190" src="figures/ch8/ch7-outcome-venue-md-1.png"> <img height="190" src="figures/ch8/ch7-outcome-venue-sm-1.png"> 
