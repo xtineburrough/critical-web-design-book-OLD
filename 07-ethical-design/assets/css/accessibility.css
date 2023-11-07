@@ -46,7 +46,7 @@
 }
 
 
-/* show feedback on hober */
+/* show feedback on hover */
 .option:hover {
     cursor: pointer;
 }
