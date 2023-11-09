@@ -108,19 +108,11 @@
     </div>
 
     <div class="container-xl text-center my-5">
-      <div class="row">
-        <div class="col">
           <h4 class="blurb"></h4>
-        </div>
-      </div>
     </div>
 
     <div class="container-xl text-center my-5">
-      <div class="row">
-        <div class="col">
           <div class="users grid-container"></div>
-        </div>
-      </div>
     </div>
     <script src="https://omundy.github.io/critical-web-design-book/assets/js/functions.js"></script>
     <script
@@ -130,7 +122,7 @@
     ></script>
 
     <script>
-      let blurbs = [
+      let text = [
         "World population with some sort of disability",
         "Website images with missing alternative text",
         "Adults in the United States who have a disability",
@@ -144,16 +136,17 @@
       // add code below...
       let blurb = document.querySelector(".blurb");
       let options = document.querySelectorAll(".option");
+      let userCount = 36;
 
       options.forEach(function (element, index) {
         element.addEventListener("mouseover", function (event) {
           console.log(index, element.textContent);
           setActive(index);
-          displayUsers(36, index);
+          displayUsers(userCount, index);
         });
       });
       function setActive(index) {
-        blurb.innerHTML = blurbs[index];
+        blurb.innerHTML = `<span class="${colors[index]}">${text[index]}</span>`;
         options.forEach(function (element) {
           element.classList.remove("active");
         });
@@ -161,7 +154,6 @@
       }
       let userArr = populateArrayRandomIntUnique(0, 115, 36);
       console.log(userArr);
-
       function displayUsers(count, index) {
         let percentage = options[index].dataset.percentage;
         let affected = Math.round((count * percentage) / 100);
@@ -172,15 +164,16 @@
           if (i < affected) {
             showAffectedClass = "showAffected";
           }
-
           str += `<span class="${showAffectedClass}">
-<img src="assets/img/users/${userArr[i]}.jpg" class="face">
+<img src="assets/img/users/${userArr[i]}.jpg" class="portrait">
 </span>`;
         }
         document.querySelector(".users").innerHTML = str;
       }
       setActive(0);
-      displayUsers(36, 0);
+      displayUsers(userCount, 0);
     </script>
   </body>
 </html>
+
+
