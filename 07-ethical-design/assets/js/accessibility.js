@@ -25,30 +25,36 @@ window.addEventListener(
 	function (event) {
 		// console.log("resize event");
 
-		// save previous user count
-		let previousUserCount = userCount;
-		let previousViewportSize = viewportSize;
+		try {
+			if (!userCount) return;
 
-		// get the current selected option
-		for (let i = 0; i < options.length; i++) {
-			if (options[i].classList.contains("active")) {
-				// console.log(options[i], i);
-				selectedOption = i;
-				break;
+			// save previous user count
+			let previousUserCount = userCount;
+			let previousViewportSize = viewportSize;
+
+			// get the current selected option
+			for (let i = 0; i < options.length; i++) {
+				if (options[i].classList.contains("active")) {
+					// console.log(options[i], i);
+					selectedOption = i;
+					break;
+				}
 			}
-		}
 
-		// update # of users to show
-		userCount = updateUserCount();
-		// console.log(viewportSize, userCount, previousUserCount);
+			// update # of users to show
+			userCount = updateUserCount();
+			// console.log(viewportSize, userCount, previousUserCount);
 
-		// has the number of users changed?
-		if (
-			userCount != previousUserCount ||
-			viewportSize != previousViewportSize
-		) {
-			// update layout
-			displayUsers(userCount, selectedOption);
+			// has the number of users changed?
+			if (
+				userCount != previousUserCount ||
+				viewportSize != previousViewportSize
+			) {
+				// update layout
+				displayUsers(userCount, selectedOption);
+			}
+		} catch (err) {
+			// console.error(err);
 		}
 	},
 	true
