@@ -16,61 +16,8 @@
     <!-- base styles for CH7 -->
     <link rel="stylesheet" href="https://omundy.github.io/critical-web-design-book/07-ethical-design/assets/css/color.css">
 
-    <style>
-        :root {
-            --background: 228, 219, 219;
-            --color: 33, 37, 41;
-            --borderSize: .4rem;
-            --optionOpacity: .8;
-            --optionOpacityActive: 1;
-        }
+    <!-- add new CSS links here -->
 
-        body {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            color: rgb(var(--color));
-            background-color: rgb(var(--background));
-        }
-
-        .grid-container {
-            display: grid;
-            gap: .5rem;
-            grid-template-rows: repeat(4, minmax(5rem, 1fr));
-            grid-auto-flow: column;
-        }
-
-        .option {
-            border-radius: 50%;
-            background-color: rgb(var(--background));
-            border: var(--borderSize) solid rgb(var(--color));
-            cursor: pointer;
-            font-size: 2rem;
-            font-weight: 500;
-            opacity: var(--optionOpacity);
-            /* sizing */
-            width: 100%;
-            max-width: 10rem;
-            height: auto;
-            aspect-ratio: 1/1;
-            padding: .4rem;
-            /* vertical align */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-        }
-
-        .option.active {
-            opacity: var(--optionOpacityActive);
-            background-color: rgb(var(--color));
-            color: white;
-        }
-
-        .active {
-            transition-property: transform;
-            transition-duration: .5s;
-        }
-    </style>
 </head>
 <body>
 
