@@ -1,44 +1,4 @@
-/* Adds accessibility improvements */
-
-@media (max-width: 575.98px) {
-
-    /*  update font size to fit */
-    .blurb {
-        font-size: 5vw;
-    }
-
-}
-
-@media (max-width: 767.98px) {
-
-    /* make padding relative to viewport size */
-    .container-fluid,
-    .container-xl {
-        margin-top: 4vw !important;
-        margin-bottom: 4vw !important;
-    }
-
-    .col-2 {
-        padding: 1vw !important;
-    }
-
-    /*  update font size to fit */
-    .option {
-        font-size: 3.5vw;
-    }
-
-    .blurb {
-        font-size: 3vw;
-    }
-}
-
-@media (max-width: 991.98px) {
-
-    /* so portraits don't shift for long blurbs */
-    .blurb {
-        min-height: 4.7rem;
-    }
-}
+/* Chapter 7 asset - Adds accessibility improvements to example */
 
 .active {
     /* increase size to show it is selected */
