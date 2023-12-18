@@ -100,7 +100,9 @@
         options.forEach(function (element, index) {
             // add an event listener to each
             element.addEventListener("mouseover", function (event) {
-                console.log(index, element.textContent);
+                // console.log(index, element.textContent);
+                setActive(index);
+                displayUsers(userCount, index);
             });
         });
 
