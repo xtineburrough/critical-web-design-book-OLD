@@ -29,6 +29,12 @@ Design a responsive multi-column web page layout for a fictional newspaper. Use 
 
 <img height="240" src="figures/ch4/_examples/ch4-outcome-lg.png"> <img height="240" src="figures/ch4/_examples/ch4-outcome-md.png">  <img height="240" src="figures/ch4/_examples/ch4-outcome-sm.png"> <img height="240" src="figures/ch4/_examples/ch4-outcome-xs.png">
 
+
+<img height="240" src="figures/ch4/_examples/ch4-outcome-thymes-desktop.png">  <img height="240" src="figures/ch4/_examples/ch4-outcome-thymes-tablet.png"> <img height="240" src="figures/ch4/_examples/ch4-outcome-thymes-mobile.png">
+
+
+
+
 ## Chapter 5 - Usability & Forms
 
 Create and implement a usability test, then design a responsive web page to reflect on findings. Evaluate your design using the "less is more" critique. Code the design using bootstrap, including a working web form to output the score from the System Usability Scale (SUS) survey. Examples: [AIGA usability test](https://omundy.github.io/critical-web-design-book/05-usability/examples/usability-aiga/)
