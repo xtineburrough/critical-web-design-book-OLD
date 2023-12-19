@@ -1,0 +1,1 @@
+"The New York Thymes" by Will Cox, Davidson College '24

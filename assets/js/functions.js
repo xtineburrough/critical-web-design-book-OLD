@@ -25,11 +25,11 @@ function randomInt(min = 0, max = 1) {
 /**
  *  Return a random rgb color
  */
-function randomRgb() {
+function randomRgb(r = [0, 255], g = [0, 255], b = [0, 255]) {
 	return {
-		r: Math.floor(Math.random() * 255),
-		g: Math.floor(Math.random() * 255),
-		b: Math.floor(Math.random() * 255),
+		r: randomFloat(r[0],r[1]),
+		g: randomFloat(g[0],g[1]),
+		b: randomFloat(b[0],b[1]),
 	};
 }
 /**
@@ -100,7 +100,7 @@ function populateArrayRandomInt(min, max, count) {
  *  Return an array of unique integers between min/max, of length
  */
 function populateArrayRandomIntUnique(min, max, length) {
-    if (!length) length = max;
+	if (!length) length = max;
 	// create array with #s
 	let arr = [];
 	// create array with all the numbers

@@ -25,8 +25,8 @@
             background-color: white;
             font-family: 'Roboto Slab', serif;
             color: white;
-            font-size: 3vw;
-            text-shadow: 2px 2px 3px rgba(250, 186, 197, .5);
+            font-size: 4vw;
+            text-shadow: 3px 3px 3px rgba(242, 129, 212, 0.8);
         }
 
         .container {
@@ -37,7 +37,8 @@
             height: 100%;
             background-color: white;
         }
-        .svg{
+
+        .svg {
             width: 100%;
             height: 100%;
         }
@@ -50,6 +51,7 @@
 
         .text {
             position: absolute;
+            text-align: center;
             z-index: 10;
         }
     </style>
@@ -65,7 +67,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/3.2.0/svg.min.js"></script>
     <script>
 
-        // Mierle Laderman Ukeles, Manifesto for Maintenance Art (1969)
+        // Manifesto for Maintenance Art (1969)
+        // Mierle Laderman Ukeles
         // https://queensmuseum.org/wp-content/uploads/2016/04/Ukeles-Manifesto-for-Maintenance-Art-1969.pdf
         // Maintenance is a drag; it takes all the fucking time
         // let words = `
@@ -100,6 +103,7 @@
         //     stay young.
         // `.split(/[,.;]+/);
 
+        // Maintenance is a drag (after Mierle Laderman Ukeles)
         let words = `
             wake up,
             get caffeine,
@@ -116,20 +120,25 @@
             grade the papers,
             do your taxes,
             unsubscribe from list, 
-            hiring committee,
+            meet with hiring committee,
             read the notice,
             write the grant,
             annual report,
             go to the doctor,
             click confirm on Moodle,
             learn student names,
-            recommendation letter,
+            write recommendation letters,
+            upload the documents,
+            commit the code,
             get a vaccination,
             hang the decorations,
             encourage class attendance,
             enter your password,
             write learning objectives,
             attend faculty meeting,
+            push the branch,
+            update the GA4 code,
+            add your real name,
             file the syllabus,
             clean the desk, 
             book the flights,
@@ -150,25 +159,35 @@
             feed the dog,
             wash your clothes, 
             go to the opening,
-            flush the toilet, 
+            jiggle the handle,
+            charge the phone, 
             do the dishes, 
             wind down,
             go to sleep,
             be happy
         `.split(/[,.;]+/);
 
-        let word = 0;
+        let word = 0,
+            pause = 0,
+            wordInterval = 500,
+            pauseInterval = wordInterval * .03
 
         SVG.on(document, 'DOMContentLoaded', function () {
-            let w = 1000, h = w;
+            let w = 1200, h = w;
             var draw = SVG().addTo('.container')
-            // .size('100%', '100%')
-            .size(w,h)
+                // .size('100%', '100%')
+                .size(w, h)
             const text = document.querySelector(".text");
             setInterval(function () {
-                drawSVG()
-                drawText()
-            }, 400)
+                if (word < words.length) {
+                    drawSVG();
+                    drawText();
+                    word++;
+                } else if (++pause > pauseInterval) {
+                    word = 0;
+                    pause = 0;
+                }
+            }, wordInterval)
 
             function drawSVG() {
                 // var rect = draw.rect(100, 100).attr({ fill: '#f06' })
@@ -192,7 +211,7 @@
                     plot2.push([x += Math.random() * 25, y += Math.random() * 25])
                 }
                 // console.log(plot1)
-                let { r, g, b } = randomRgb()
+                let { r, g, b } = randomRgb([100, 255], [100, 255], [100, 255])
                 let rotatation = Math.random() * 360;
                 // console.log(`rgb(${r},${g},${b})`)
                 polygon
@@ -200,11 +219,11 @@
                     .transform({ rotate: rotatation, origin: 'center' }, true)
                     .animate(2000).plot(plot2).opacity(1)
 
-                rotatation = Math.random() * -5;
+                rotatation = Math.random() * -15;
                 if (Math.random() > .5) rotatation = Math.abs(rotatation);
                 polygon
-                    .animate(2500).opacity(0)
-                    .transform({ rotate: rotatation, origin: 'center' }, true)
+                    .animate((wordInterval * 1.4) * Math.abs(rotatation)).opacity(0)
+                    .transform({ rotate: rotatation, origin: 'center' }, true).ease('easeInOutCubic')
                     .after(function () {
                         this.element().remove()
                     })
@@ -212,8 +231,8 @@
 
             function drawText() {
                 for (let i = 0; i < 5; i++) {
-                    // console.log(words[word].trim())
-                    text.innerHTML = words[word++].trim();
+                    console.log(words[word].trim())
+                    text.innerHTML = words[word].trim();
                     if (word > words.length - 1) word = 0;
                     break;
                 }

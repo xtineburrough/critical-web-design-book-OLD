@@ -1,17 +1,20 @@
 /* Chapter 7 asset - Adds accessibility improvements to example */
 
+/* increase link size to show it is selected */
 .active {
-    /* increase size to show it is selected */
     transform: scale(1.1);
 }
 
+.option.active  {
+    /* text-shadow: 1px 1px 2px rgb(0, 0, 0); */
+}
 
 /* show feedback on hover */
 .option:hover {
     cursor: pointer;
 }
 
-/* allow styled options to improve feedback on hover */
+/* allow styled options to improve feedback on hover and hide the unattractive blue outline that Bootstrap implements */
 .option:hover,
 .option:focus {
     box-shadow: none;
