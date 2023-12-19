@@ -12,20 +12,15 @@
     --valueBorder: .4;
 
 
-    /* --rose: #ED5B66;
-    --gold: #E5B459;
-    --cyan: #38B3C2;
-    --green: #87C35C;
-    --purple: #BE56DD;
-    --magenta: #F05BBD; */
+
     /* 
     Using an RGB triplet allows you to create color variants later with the prop and  rgba()
     https://stackoverflow.com/a/41265350/441878 
     */
     --rose: 237, 91, 102;
-    --gold: 229, 180, 89;
     --cyan: 56, 179, 194;
     --green: 135, 195, 92;
+    --blue: 53, 135, 203;
     --purple: 190, 86, 221;
     --magenta: 240, 91, 189;
 }
@@ -119,41 +114,6 @@ a {
 
 
 
-
-.gold,
-.gold .value {
-    background-color: rgba(var(--gold), var(--menuBackground));
-    border: var(--menuBorderSize) solid rgba(var(--gold), var(--menuBorder)) !important;
-}
-
-.gold .value {
-    color: rgba(var(--gold), var(--valueBackground));
-    border: var(--menuBorderSize) solid rgba(var(--gold), var(--valueBorder)) !important;
-}
-
-.active.gold .value {
-    background-color: rgba(var(--gold), var(--valueBackgroundActive));
-}
-
-
-/* accessibility */
-.gold:hover,
-.gold:focus,
-.active.gold {
-    background-color: rgba(var(--gold), var(--menuBackgroundActive));
-    border: var(--menuBorderSize) solid rgba(var(--gold), var(--menuBorderActive));
-    outline: -webkit-focus-ring-color rgba(var(--gold), var(--menuBackgroundActive)) 5px;
-}
-
-/* accessibility */
-.description-gold {
-    background-color: rgba(var(--gold), var(--menuBorder));
-    border: var(--menuBorderSize) solid rgba(var(--gold), var(--menuBorderActive));
-}
-
-
-
-
 .green,
 .green .value {
     background-color: rgba(var(--green), var(--menuBackground));
@@ -219,6 +179,41 @@ a {
 .description-cyan {
     background-color: rgba(var(--cyan), var(--menuBorder));
     border: var(--menuBorderSize) solid rgba(var(--cyan), var(--menuBorderActive));
+}
+
+
+
+
+
+.blue,
+.blue .value {
+    background-color: rgba(var(--blue), var(--menuBackground));
+    border: var(--menuBorderSize) solid rgba(var(--blue), var(--menuBorder)) !important;
+}
+
+.blue .value {
+    color: rgba(var(--blue), var(--valueBackground));
+    border: var(--menuBorderSize) solid rgba(var(--blue), var(--valueBorder)) !important;
+}
+
+.active.blue .value {
+    background-color: rgba(var(--blue), var(--valueBackgroundActive));
+}
+
+
+/* accessibility */
+.blue:hover,
+.blue:focus,
+.active.blue {
+    background-color: rgba(var(--blue), var(--menuBackgroundActive));
+    border: var(--menuBorderSize) solid rgba(var(--blue), var(--menuBorderActive));
+    outline: -webkit-focus-ring-color rgba(var(--blue), var(--menuBackgroundActive)) 5px;
+}
+
+/* accessibility */
+.description-blue {
+    background-color: rgba(var(--blue), var(--menuBorder));
+    border: var(--menuBorderSize) solid rgba(var(--blue), var(--menuBorderActive));
 }
 
 
