@@ -94,9 +94,7 @@
         let options = document.querySelectorAll(".option");
         let userArr = populateArrayRandomIntUnique(0, 115);
         // console.log(userArr);
-
-        // let userCount = 36;  // accessibility
-        let userCount = updateUserCount();
+        let userCount = 36;
 
         // loop through options
         options.forEach(function (element, index) {
@@ -123,11 +121,12 @@
             options[index].classList.add("active");
             // accessibility - unify mouse / keyboard focus
             options[index].focus();
+            // accessibility
+            userCount = updateUserCount();
         }
 
         // display all the portraits
         function displayUsers(count, index) {
-
             // get percentage of option
             let percentage = options[index].dataset.percentage;
             // get affected number of users
