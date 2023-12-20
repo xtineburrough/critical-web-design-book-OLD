@@ -121,6 +121,8 @@
                 element.classList.remove("active");
             });
             options[index].classList.add("active");
+            // accessibility - unify mouse / keyboard focus
+            options[index].focus();
         }
 
         // display all the portraits

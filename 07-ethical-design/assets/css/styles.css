@@ -26,7 +26,6 @@ body {
     border-radius: 50%;
     background-color: rgb(var(--background));
     border: var(--borderSize) solid rgb(var(--color));
-    cursor: pointer;
     font-size: 2rem;
     font-weight: 500;
     opacity: var(--optionOpacity);
