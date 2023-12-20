@@ -40,6 +40,8 @@ body {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+    min-width: 30px;
+    min-height: 30px;
 }
 
 .option.active {
@@ -61,8 +63,10 @@ body {
     width: 100%;
     height: auto;
     aspect-ratio: 1/1;
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 160px;
+    max-height: 160px;
+    min-width: 30px;
+    min-height: 30px;
 }
 
 .showAffected .portrait {
