@@ -54,6 +54,42 @@ body {
 }
 
 
+/* USERS */
+
+.portrait {
+    border-radius: 50%;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.showAffected .portrait {
+    transition-property: opacity;
+    transition-duration: 1s;
+    opacity: .2;
+}
+
+.showAffected .portrait:hover {
+    opacity: .5;
+}
+
+
+/* BLURBS */
+
+.blurb {
+    min-height: 2rem;
+    font-size: calc(1.275rem + .3vw);
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.blurb span {
+    padding-bottom: .8rem;
+    display: inline-block !important;
+}
+
 
 /* Adds accessibility improvements - mainly condenses whitespace, decrease font size, etc. */
 
