@@ -79,35 +79,65 @@ body {
 /* BLURBS */
 
 .blurb {
-    min-height: 2rem;
+    min-height: 1rem;
     font-size: calc(1.275rem + .3vw);
     font-weight: 500;
-    line-height: 1.2;
+    height: 100%;
+    /* line-height: 1.2; */
 }
 
 .blurb span {
-    padding-bottom: .8rem;
     display: inline-block !important;
+    padding-bottom: .8rem;
+}
+
+/* SECTIONS */
+
+.container-xl {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
 }
 
 
-/* Adds accessibility improvements - mainly condenses whitespace, decrease font size, etc. */
+/* Adds accessibility improvements across viewports
+- condenses whitespace
+- decrease font size, etc. */
 
-@media (max-width: 575.98px) {
+/* Uses Bootstrap's max-width
+https://getbootstrap.com/docs/5.3/layout/breakpoints/#max-width
+Note: Add these xs -> xxl or the override small sizes */
 
-    /*  update font size to fit */
+
+/* MD, SM, XS */
+@media (max-width: 991.98px) {
+    .container-xl {
+        margin-top: calc(1rem + 2vw);
+        margin-bottom: calc(1rem + 2vw);
+    }
+
+    .container-xl:has(> .blurb) {
+        margin-top: calc(.5rem + 1vw);
+        margin-bottom: calc(.5rem + 1vw);
+    }
+
+    /* so portraits don't shift for long blurbs */
     .blurb {
-        font-size: 5vw;
+        min-height: 4.7rem;
     }
 }
 
+/* SM, XS */
 @media (max-width: 767.98px) {
 
     /* make padding relative to viewport size */
-    .container-fluid,
     .container-xl {
-        margin-top: 4vw !important;
-        margin-bottom: 4vw !important;
+        margin-top: calc(.5rem + 1vw);
+        margin-bottom: calc(.5rem + 1vw);
+    }
+
+    .container-xl:has(> .users) {
+        margin-top: calc(.5rem + 1vw);
+        margin-bottom: calc(.5rem + 1vw);
     }
 
     .col-2 {
@@ -124,10 +154,20 @@ body {
     }
 }
 
-@media (max-width: 991.98px) {
+/* XS */
+@media (max-width: 575.98px) {
 
-    /* so portraits don't shift for long blurbs */
+    :root {
+        font-size: calc(12px + 1vw);
+    }
+
+    h1 {
+        font-size: calc(14px + 1.5vw);
+    }
+
+    /*  update font size to fit */
     .blurb {
-        min-height: 4.7rem;
+        font-size: calc(12px + 1.5vw);
+        /* font-size: 5vw; */
     }
 }
