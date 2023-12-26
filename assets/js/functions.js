@@ -35,13 +35,20 @@ function randomRgb(r = [0, 255], g = [0, 255], b = [0, 255]) {
 /**
  *  Return a random hex color
  */
-function randomHex() {
+function randomHexFromString() {
 	let chars = "0123456789abcdef";
 	let hex = "";
 	for (let i = 0; i <= 6; i++) {
 		hex += chars[Math.floor(Math.random() * chars.length)];
 	}
 	return hex;
+}
+/**
+ *  Return a random hex color using (256 * 256 * 256)
+ *  https://gomakethings.com/a-better-way-to-generate-a-random-color-with-vanilla-js/
+ */
+function randomHex() {
+    return "#" + Math.floor(Math.random() * 16777215).toString(16);
 }
 /**
  *  Return a random index from the array
@@ -107,7 +114,7 @@ function populateArrayRandomIntUnique(min, max, length) {
 	for (let i = min; i < max; i++) {
 		arr.push(i);
 	}
-	shuffleArray(arr);
+	arr = shuffleArray(arr);
 	// console.log(arr)
 	return arr.splice(0, length);
 }
@@ -115,11 +122,12 @@ function populateArrayRandomIntUnique(min, max, length) {
 /**
  *  Shuffle an array - credit https://stackoverflow.com/a/12646864/441878
  */
-function shuffleArray(array) {
-	for (let i = array.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1));
-		[array[i], array[j]] = [array[j], array[i]];
-	}
+function shuffleArray(_arr) {
+    for (let i = _arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [_arr[i], _arr[j]] = [_arr[j], _arr[i]];
+    }
+    return _arr;
 }
 
 /**
