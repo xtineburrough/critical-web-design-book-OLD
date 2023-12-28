@@ -16,8 +16,16 @@ License: MIT
 		fmin = 1,
 		fmax = 25;
 
+	// credit: https://stackoverflow.com/a/71619350/441878
+	const splitEmoji = (string) =>
+		[...new Intl.Segmenter().segment(string)].map((x) => x.segment);
+
 	function generate() {
-		arr = F.shuffleArray(str.split(""));
+		// arr = F.shuffleArray(str.split(""));
+
+		// this method works with emoji *and* text
+		arr = F.shuffleArray(splitEmoji(str));
+
 		if (arr.length > 0) title = "";
 		// console.log("generate()", arr);
 	}
@@ -31,11 +39,13 @@ License: MIT
 		"The quick brown fox jumps over the lazy dog",
 		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
 		"You have brains in your head. You have feet in your shoes. You can steer yourself any direction you choose.",
+		"🌶️🥬🥒🥑🧅🥕🥖🧀🫛🧄🍋🥭🥚🫑🥙🥗🌱🥦🥄🍴" +
+			"🌶️🥬🥒🥑🧅🥕🥖🧀🫛🧄🍋🥭🥚🫑🥙🥗🌱🥦🥄🍴",
 	];
 	const addSample = () => {
 		let newstr = `${str}`;
 		let safety = 0;
-        // loop until the chosen string is different (prevents repeated phrases)
+		// loop until the chosen string is different (prevents repeated phrases)
 		while (++safety < 10 && newstr == str) {
 			newstr = samples[Math.floor(Math.random() * samples.length)];
 			console.log(safety, newstr);
