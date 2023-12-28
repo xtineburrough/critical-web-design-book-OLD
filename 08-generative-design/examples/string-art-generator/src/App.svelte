@@ -6,31 +6,22 @@ License: MIT
 -->
 
 <script>
+	import * as F from "./lib/functions.js";
 	let title = "String Art Generator",
 		str = "",
 		arr;
 
 	let w = 70,
-		h = 50;
-
-	function shuffleArray(_arr) {
-		for (let i = _arr.length - 1; i > 0; i--) {
-			const j = Math.floor(Math.random() * (i + 1));
-			[_arr[i], _arr[j]] = [_arr[j], _arr[i]];
-		}
-		return _arr;
-	}
-	const randomHex = () =>
-		"#" + Math.floor(Math.random() * 16777215).toString(16);
-
-	const randomInt = (min = 0, max = 1) =>
-		Math.floor(Math.random() * (max - min + 1)) + min;
+		h = 50,
+		fmin = 1,
+		fmax = 25;
 
 	function generate() {
-		arr = shuffleArray(str.split(""));
+		arr = F.shuffleArray(str.split(""));
 		if (arr.length > 0) title = "";
-		// console.log("generate()", arr);
+		// console.log("generate()", arr); 
 	}
+
 	const samples = [
 		"The quick brown fox jumps over the lazy dog",
 		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -64,11 +55,11 @@ License: MIT
                 https://svelte.dev/docs/element-directives#style-property -->
 				<div
 					class="char"
-					style:color={randomHex()}
-					style:left="{randomInt(45 - w / 2, 40 + w / 2)}%"
-					style:top="{randomInt(50 - h / 2, 40 + h / 2)}%"
-					style:transform="rotate({randomInt(0, 360)}deg)"
-					style:font-size="{randomInt(1, 25)}rem"
+					style:color={F.randomHex()}
+					style:left="{F.randomInt(45 - w / 2, 40 + w / 2)}%"
+					style:top="{F.randomInt(50 - h / 2, 40 + h / 2)}%"
+					style:transform="rotate({F.randomInt(0, 360)}deg)"
+					style:font-size="{F.randomInt(fmin, fmax)}rem"
 				>
 					{letter}
 				</div>
@@ -76,30 +67,56 @@ License: MIT
 		{/key}
 	</div>
 
-	<div class="grid-container sticky-footer">
-		<div class="note">
-			Type or <button class="sm" on:click={addSample}>add</button>
-			sample text. Tweak parameters and
-			<button class="sm" on:click={generate}>regenerate</button>
-			 the visualization.
-		</div>
+	<div class="sticky-footer">
+		<div class="grid-container">
+			<div class="note">
+				Type or <button class="sm" on:click={addSample}>add</button>
+				sample text. Tweak parameters and
+				<button class="sm" on:click={generate}>regenerate</button>
+				the visualization.
+			</div>
 
-		<div>
-			<textarea id="str" bind:value={str}></textarea>
-			<label class="note" for="str" style="visibility: hidden;">
-				Enter text for transformation
-			</label>
-		</div>
+			<div>
+				<textarea id="str" bind:value={str}></textarea>
+				<label class="note" for="str" style="visibility: hidden;">
+					Enter text for transformation
+				</label>
+			</div>
 
-		<div>
-			<label class="note" for="w">width</label>
-			<input id="w" type="range" min="0" max="100" bind:value={w} />
-			<span class="digit">{w}</span>
-			<br />
+			<!-- tutorial -->
+			<div>
+				<label class="note" for="fmin">font--</label>
+				<input
+					id="fmin"
+					type="range"
+					min=".5"
+					max="100"
+					bind:value={fmin}
+				/>
+				<span class="digit">{fmin}</span>
+				<br />
 
-			<label class="note" for="w">height</label>
-			<input id="h" type="range" min="0" max="100" bind:value={h} />
-			<span class="digit">{h}</span>
+				<label class="note" for="fmax">font++</label>
+				<input
+					id="fmax"
+					type="range"
+					min=".5"
+					max="100"
+					bind:value={fmax}
+				/>
+				<span class="digit">{fmax}</span>
+			</div>
+
+			<div>
+				<label class="note" for="w">width</label>
+				<input id="w" type="range" min="0" max="100" bind:value={w} />
+				<span class="digit">{w}</span>
+				<br />
+
+				<label class="note" for="w">height</label>
+				<input id="h" type="range" min="0" max="100" bind:value={h} />
+				<span class="digit">{h}</span>
+			</div>
 		</div>
 	</div>
 </main>
@@ -120,11 +137,21 @@ License: MIT
 	}
 	.grid-container {
 		display: grid;
-		gap: 0.5rem;
-		grid-template-columns: 2fr 3fr 2fr;
-		grid-auto-flow: column;
 		align-items: center;
+		gap: 0.5rem;
+		grid-template-columns: 2fr 2fr 2fr 2fr;
+		grid-template-rows: 1fr;
+
+		/* grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); */
+		grid-auto-flow: column;
 	}
+	@media (max-width: 991.98px) {
+		.grid-container {
+			grid-template-columns: 2fr 2fr;
+			grid-template-rows: 2fr 2fr;
+		}
+	}
+
 	.grid-container > div {
 		height: 100px;
 		/* border: 1px solid red; */
@@ -132,7 +159,7 @@ License: MIT
 	.sticky-footer {
 		box-sizing: border-box;
 		width: 100%;
-		height: 100px;
+		/* height: 200px; */
 		position: fixed;
 		bottom: 0;
 		left: 0;
@@ -141,7 +168,16 @@ License: MIT
 	}
 	textarea {
 		width: 100%;
-		height: 70px;
+		height: 50px;
+		/* box */
+		background-color: var(--button-bg);
+		border: none;
+		/* underline */
+		/* background-color: var(--body-bg);
+		border: none;
+        border-bottom: 2px solid #333; */
+		/* padding-bottom: 12px;
+        margin-bottom: 20px; */
 	}
 	.digit {
 		display: inline-block;
