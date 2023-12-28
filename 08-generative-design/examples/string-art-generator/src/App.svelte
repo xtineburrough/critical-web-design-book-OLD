@@ -19,8 +19,13 @@ License: MIT
 	function generate() {
 		arr = F.shuffleArray(str.split(""));
 		if (arr.length > 0) title = "";
-		// console.log("generate()", arr); 
+		// console.log("generate()", arr);
 	}
+
+	const clickTitle = () => {
+		str = title;
+		title = "";
+	};
 
 	const samples = [
 		"The quick brown fox jumps over the lazy dog",
@@ -28,7 +33,14 @@ License: MIT
 		"You have brains in your head. You have feet in your shoes. You can steer yourself any direction you choose.",
 	];
 	const addSample = () => {
-		str = samples[Math.floor(Math.random() * samples.length)];
+		let newstr = `${str}`;
+		let safety = 0;
+        // loop until the chosen string is different (prevents repeated phrases)
+		while (++safety < 10 && newstr == str) {
+			newstr = samples[Math.floor(Math.random() * samples.length)];
+			console.log(safety, newstr);
+		}
+		str = newstr;
 	};
 	// Svelte reactive statements
 	// https://svelte.dev/docs/svelte-components#script-3-$-marks-a-statement-as-reactive
@@ -37,14 +49,22 @@ License: MIT
 
 <main>
 	<div>
-		<a href="./">
-			<!-- Svelte @html expression to inject HTML
+		{#if title}
+			<button class="showviz interactive" on:click={clickTitle}>
+				<!-- Svelte @html expression to inject HTML
             https://svelte.dev/docs/special-tags#html -->
-			<h1 class="logo">{@html title}</h1>
-		</a>
+				<h1 class="logo">{@html title}</h1>
+			</button>
+		{/if}
 	</div>
 
-	<div>
+	<div
+		class="interactive"
+		on:click={generate}
+		on:keyup={generate}
+		role="button"
+		tabindex="0"
+	>
 		<!-- Svelte #key causes the element (or component) to completely update when the prop changes 
         https://svelte.dev/docs/logic-blocks#key -->
 		{#key arr}
@@ -126,14 +146,33 @@ License: MIT
 		width: 100%;
 		height: 100%;
 	}
+	.showviz {
+		background-color: transparent;
+		border: none;
+		width: 100%;
+	}
+	/* remove halo */
+	.showviz:focus {
+		outline: 0 !important;
+		-webkit-box-shadow: none !important;
+		box-shadow: none !important;
+	}
+
+	.interactive {
+		cursor: pointer;
+	}
+
+	.showviz h1 {
+		color: var(--purple);
+		margin-bottom: 12rem;
+	}
 	.logo {
-		height: 6em;
 		padding: 1.5em;
 		will-change: filter;
 		transition: filter 300ms;
 	}
 	.logo:hover {
-		filter: drop-shadow(0 0 2em #646cffaa);
+		filter: drop-shadow(0 0 2em var(--purple-50a));
 	}
 	.grid-container {
 		display: grid;
@@ -169,6 +208,7 @@ License: MIT
 	textarea {
 		width: 100%;
 		height: 50px;
+		padding: 0.5rem;
 		/* box */
 		background-color: var(--button-bg);
 		border: none;
@@ -183,9 +223,10 @@ License: MIT
 		display: inline-block;
 		width: 3rem;
 		margin: 3px 3px;
+		padding: 2px 0;
 
 		background-color: var(--button-bg);
-		border-radius: 20%;
+		border-radius: 8px;
 	}
 	.note {
 		text-align: left !important;
