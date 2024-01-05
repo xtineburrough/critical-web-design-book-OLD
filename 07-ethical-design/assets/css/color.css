@@ -6,27 +6,17 @@
     https://stackoverflow.com/a/41265350/441878 
     */
     --rose: 237, 91, 102;
-    --gold: 229, 180, 89;
-    --cyan: 56, 179, 194;
-    --green: 135, 195, 92;
+    --green: 79, 167, 17;
+    --cyan: 0, 162, 184;
+    --blue: 35, 138, 223;
     --purple: 190, 86, 221;
     --magenta: 240, 91, 189;
+    /* these colors are darker variations:display:
+      green, cyan, blue, */
 }
 
 
-/* BLURBS */
 
-.blurb {
-    min-height: 2rem;
-    font-size: calc(1.275rem + .3vw);
-    font-weight: 500;
-    line-height: 1.2;
-}
-
-.blurb span {
-    padding-bottom: .8rem;
-    display: inline-block !important;
-}
 
 /* ROSE */
 
@@ -40,21 +30,6 @@
 
 .option.rose.active {
     background-color: rgba(var(--rose), var(--optionOpacityActive));
-}
-
-
-/* GOLD */
-
-.blurb .gold {
-    border-bottom: var(--borderSize) solid rgb(var(--gold)) !important;
-}
-
-.option.gold {
-    border: var(--borderSize) solid rgba(var(--gold), var(--optionOpacity)) !important;
-}
-
-.option.gold.active {
-    background-color: rgba(var(--gold), var(--optionOpacityActive));
 }
 
 /* GREEN */
@@ -83,6 +58,20 @@
 
 .option.cyan.active {
     background-color: rgba(var(--cyan), var(--optionOpacityActive));
+}
+
+/* BLUE */
+
+.blurb .blue {
+    border-bottom: var(--borderSize) solid rgb(var(--blue)) !important;
+}
+
+.option.blue {
+    border: var(--borderSize) solid rgba(var(--blue), var(--optionOpacity)) !important;
+}
+
+.option.blue.active {
+    background-color: rgba(var(--blue), var(--optionOpacityActive));
 }
 
 /* PURPLE */
@@ -115,23 +104,3 @@
 
 
 
-/* USERS */
-
-.portrait {
-    border-radius: 50%;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1/1;
-    max-width: 200px;
-    max-height: 200px;
-}
-
-.showAffected .portrait {
-    transition-property: opacity;
-    transition-duration: 1s;
-    opacity: .2;
-}
-
-.showAffected .portrait:hover {
-    opacity: .5;
-}

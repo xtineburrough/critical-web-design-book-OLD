@@ -2,8 +2,8 @@
 
 let selectedOption = 0,
 	viewportSize,
-	rowCounts = { xs: 2, sm: 3, md: 3, lg: 3, xl: 4, xxl: 4 },
-	viewportUserCounts = { xs: 8, sm: 12, md: 18, lg: 18, xl: 32, xxl: 36 };
+	rowCounts = { xs: 3, sm: 3, md: 3, lg: 3, xl: 4, xxl: 4 },
+	viewportUserCounts = { xs: 9, sm: 12, md: 18, lg: 18, xl: 32, xxl: 36 };
 
 function updateUserCount() {
 	// update viewport size

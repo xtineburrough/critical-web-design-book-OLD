@@ -1,17 +1,13 @@
 /* Chapter 7 asset - Adds accessibility improvements to example */
 
-/* increase link size to show it is selected */
-.active {
-    transform: scale(1.1);
-}
-
-.option.active  {
-    /* text-shadow: 1px 1px 2px rgb(0, 0, 0); */
-}
-
 /* show feedback on hover */
 .option:hover {
     cursor: pointer;
+}
+
+/* increase link size to show it is selected */
+.active {
+    transform: scale(1.1);
 }
 
 /* allow styled options to improve feedback on hover and hide the unattractive blue outline that Bootstrap implements */
@@ -20,7 +16,4 @@
     box-shadow: none;
     -webkit-box-shadow: none;
     outline: none;
-    /* replace focus outline with something nicer */
-    /* outline: -webkit-focus-ring-color rgba(var(--rose), var(--optionOpacityActive)) 5px; */
-    /* added in individual color classes */
 }
