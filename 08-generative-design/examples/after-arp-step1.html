@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>After Jean Arp</title>
+
+    <!-- 
+    Title: After Jean Arp
+    References: https://www.moma.org/collection/works/37013
+    Author: Owen Mundy
+    Date: 2023
+    License: MIT
+    -->
+
+    <style>
+        html,
+        body {
+            background-color: #c9c9c8;
+        }
+
+        main * {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <main></main>
+
+    <script src="../../assets/js/functions.js"></script>
+    <script>
+        let main = document.querySelector("main")
+
+        // create colors
+        let colors = [], colorsCount = randomInt(8, 12);
+        for (let i = 0; i < colorsCount; i++) {
+            colors.push(randomHex())
+        }
+        // create squares
+        let squaresCount = randomInt(6, 12);
+        for (let i = 0; i < squaresCount; i++) {
+            let style = [
+                `width:${randomInt(100, 300)}px`,
+                `height:${randomInt(100, 300)}px`,
+                `left:${randomInt(0, window.innerWidth-250)}px`,
+                `top:${randomInt(0, window.innerHeight-250)}px`,
+                `background-color:${colors.random()}`,
+            ]
+            // display
+            main.insertAdjacentHTML('beforeend', `<div style="${style.join(";")}"></div>`);
+        }
+
+    </script>
+
+</body>
+</html>

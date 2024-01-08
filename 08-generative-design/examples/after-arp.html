@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>After Jean Arp</title>
+
+    <!-- 
+    Title: After Jean Arp
+    References: https://www.moma.org/collection/works/37013
+    Author: Owen Mundy
+    Date: 2023
+    License: MIT
+    -->
+
+    <style>
+        html,
+        body {
+            background-color: #c9c9c8;
+        }
+
+        main * {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <svg width="90%" height="90%" viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg" version="1.1">
+    </svg>
+
+
+    <script src="../../assets/js/functions.js"></script>
+    <script>
+        let svg = document.querySelector("svg")
+
+        // create colors
+        let colors = [], colorsCount = randomInt(6, 10);
+        for (let i = 0; i < colorsCount; i++) {
+            colors.push(randomHex())
+        }
+        // create squares
+        let squaresCount = randomInt(6, 12);
+        for (let i = 0; i < squaresCount; i++) {
+            let w = randomInt(80, 150),
+                h = randomInt(80, 150),
+                x = randomInt(100, window.innerWidth - 150),
+                y = randomInt(100, window.innerHeight - 150),
+                min = .85,
+                max = 1.15;
+            let points = [
+                `${x - randomInt(w * min, w * max)},${y - randomInt(h * min, h * max)}`,
+                `${x + randomInt(w * min, w * max)},${y - randomInt(h * min, h * max)}`,
+                `${x + randomInt(w * min, w * max)},${y + randomInt(h * min, h * max)}`,
+                `${x - randomInt(w * min, w * max)},${y + randomInt(h * min, h * max)}`,
+            ]
+            // display
+            svg.insertAdjacentHTML('beforeend',
+                ` <polygon fill="${colors.random()}" stroke="none" points="${points.join(" ")}" />`);
+        }
+
+    </script>
+
+</body>
+</html>

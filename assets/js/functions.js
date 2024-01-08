@@ -56,6 +56,12 @@ function randomHex() {
 function randomFromArray(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
 }
+/**
+ *  A variation of randomFromArray(), stored in Array.prototype
+ */
+Array.prototype.random = function () {
+	return this[Math.floor(Math.random() * this.length)];
+};
 
 /**
  *  Capitalize first letter of string. Credit: https://stackoverflow.com/a/1026087/441878
