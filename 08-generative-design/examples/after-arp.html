@@ -41,18 +41,20 @@
     <script>
         let svg = document.querySelector("svg")
 
-        function reset() {
+        function reset(c) {
             svg.innerHTML = "";
-            document.body.style.backgroundColor = PALETTE_ARR.random();
+            document.body.style.backgroundColor = c;
         }
 
         function generate() {
-            reset();
             // create colors
             let colors = [], colorsCount = randomInt(6, 10);
             for (let i = 0; i < colorsCount; i++) {
-                colors.push(randomHex())
+                colors.push(PALETTE_ARR.random())
             }
+            // remove one color for the background
+            let bgColor = colors.splice(0,1);
+            reset(bgColor);
             // number of squares
             let squaresCount = randomInt(6, 10);
             // create squares
@@ -74,7 +76,7 @@
                 console.log(points)
                 // display
                 svg.insertAdjacentHTML('beforeend',
-                    ` <polygon fill="${PALETTE_ARR.random()}" stroke="none" 
+                    ` <polygon fill="${colors.random()}" stroke="none" 
                         points="${points.join(" ")}" 
                         transform ="rotate(${randomInt(-3, 3)})" />`);
             }
