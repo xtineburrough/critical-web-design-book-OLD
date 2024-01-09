@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>After Jean Arp</title>
+
+    <!-- 
+    Title: After Jean Arp
+    References: https://www.moma.org/collection/works/37013
+    Author: Owen Mundy
+    Date: 2023
+    License: MIT
+    -->
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #22252C;
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        svg {
+            width: 100%;
+        }
+
+        svg polygon {
+            transform-box: fill-box;
+            transform-origin: center;
+        }
+
+        .controls {
+            position: absolute;
+            z-index: 999;
+            background-color: rgba(255, 255, 255, .4);
+            padding: 5px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        .controls h5 {
+            margin: 0;
+            margin-top:6px
+        }
+
+        .controls label {
+            display: inline-block;
+            width: 1.6rem;
+            text-align: right;
+            padding-right: 3px;
+        }
+
+        .controls .val {
+            border: 0;
+            border-radius: 10%;
+            background-color: #22252C;
+            color: aliceblue;
+            padding: 3px;
+            max-width: 2rem;
+            text-align: right;
+            margin-bottom: 4px;
+        }
+
+
+
+        /********** Range Input Styles **********/
+        /*Range Reset*/
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+            width: 6rem;
+        }
+
+        /* Removes default focus */
+        input[type="range"]:focus {
+            outline: none;
+        }
+
+        /***** Chrome, Safari, Opera and Edge Chromium styles *****/
+        /* slider track */
+        input[type="range"]::-webkit-slider-runnable-track {
+            background-color: #656565;
+            border-radius: 0.25rem;
+            height: 0.5rem;
+        }
+
+        input[type="range"]::-moz-range-track {
+            background-color: #656565;
+            border-radius: 0.5rem;
+            height: 0.5rem;
+        }
+
+
+
+        /* slider thumb */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            /* Override default look */
+            appearance: none;
+            margin-top: -4px;
+            /* Centers thumb on the track */
+
+            /*custom styles*/
+            background-color: #454545;
+            height: 1rem;
+            width: .5rem;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            border: none;
+            /*Removes extra border that FF applies*/
+            border-radius: 0;
+            /*Removes default border-radius that FF applies*/
+
+            /*custom styles*/
+            background-color: #454545;
+            height: 1rem;
+            width: .5rem;
+        }
+
+
+        input[type="range"]:focus::-webkit-slider-thumb {
+            border: 1px solid #aaa;
+            outline: 2px solid #aaa;
+        }
+
+        input[type="range"]:focus::-moz-range-thumb {
+            border: 1px solid #aaa;
+            outline: 2px solid #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="controls"></section>
+
+    <svg height="100%" xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>
+
+    <script src="../../../assets/js/palette.js"></script>
+    <script src="../../../assets/js/functions.js"></script>
+    <script type="module">
+        let svg = document.querySelector("svg")
+
+
+        // https://www.arrow-js.com/
+        // https://marketplace.visualstudio.com/items?itemName=bierner.lit-html
+        import { reactive, watch, html } from 'https://esm.sh/@arrow-js/core';
+        // Start your app here!
+
+
+        // add form elements to tweak
+        // add text option
+        // add objects (to reuse settings)
+        // clamp width
+        let params = reactive({
+            obj: {
+                count: {
+                    min: 6,
+                    max: 10
+                },
+                colors: {
+                    min: 6,
+                    max: 10
+                },
+                scale: {
+                    min: .9,
+                    max: 1.1
+                },
+                points: {
+                    min: 4,
+                    max: 4
+                }
+            },
+            cx: window.innerWidth / 2,
+            cy: window.innerHeight / 2,
+            spread: {
+                x: .8,
+                y: .8
+            },
+            debug: true
+        })
+
+        const appElement = document.querySelector('.controls');
+
+        const template = html`
+
+            <h5>Count</h5>
+            <div>
+                <label for="minCount">min</label>
+                <input type="range" id="minCount" min="1" max="30" step="1" 
+                    @input="${e => { params.obj.count.min = e.target.value }}" value="${params.obj.count.min}">
+                <input type="text" id="minCountDisplay" value="${() => params.obj.count.min}" class="val">
+            </div>
+            <div>
+                <label for="maxCount">max</label>
+                <input type="range" id="maxCount" min="1" max="30" step="1"  
+                    @input="${e => { params.obj.count.max = e.target.value }}" value="${params.obj.count.max}">
+                <input type="text" id="maxCountDisplay" value="${() => params.obj.count.max}" class="val">
+            </div>
+
+            <h5>Colors</h5>
+            <div>
+                <label for="minColors">min</label>
+                <input type="range" id="minColors" min="1" max="${PALETTE_ARR.length}" step="1" 
+                    @input="${e => { params.obj.colors.min = e.target.value }}" value="${params.obj.colors.min}">
+                <input type="text" id="minColorsDisplay" value="${() => params.obj.colors.min}" class="val">
+            </div>
+            <div>
+                <label for="maxColors">max</label>
+                <input type="range" id="maxColors" min="1" max="${PALETTE_ARR.length}" step="1"  
+                    @input="${e => { params.obj.colors.max = e.target.value }}" value="${params.obj.colors.max}">
+                <input type="text" id="maxColorsDisplay" value="${() => params.obj.colors.max}" class="val">
+            </div>
+
+            <h5>Scale</h5>
+            <div>
+                <label for="minScale">min</label>
+                <input type="range" id="minScale" min=".1" max="5.0" step="0.1" 
+                    @input="${e => { params.obj.scale.min = e.target.value }}" value="${params.obj.scale.min}">
+                <input type="text" id="minScaleDisplay" value="${() => params.obj.scale.min}" class="val">
+            </div>
+            <div>
+                <label for="maxScale">max</label>
+                <input type="range" id="maxScale" min=".1" max="5.0" step="0.1" 
+                    @input="${e => { params.obj.scale.max = e.target.value }}" value="${params.obj.scale.max}">
+                <input type="text" id="maxScaleDisplay" value="${() => params.obj.scale.max}" class="val">            
+            </div>
+
+            <h5>Position</h5>
+            <div>
+                <label for="xSpread">x</label>
+                <input type="range" id="xSpread" min=".0" max="1.0" step="0.1" 
+                    @input="${e => { params.spread.x = e.target.value }}" value="${params.spread.x}">
+                <input type="text" id="xSpreadDisplay" value="${() => params.spread.x}" class="val">
+            </div>
+            <div>
+                <label for="ySpread">y</label>
+                <input type="range" id="ySpread" min=".0" max="1.0" step="0.1" 
+                    @input="${e => { params.spread.y = e.target.value }}" value="${params.spread.y}">
+                <input type="text" id="ySpreadDisplay" value="${() => params.spread.y}" class="val">
+            </div>
+        `
+        template(appElement)
+        // watch all vars
+        watch(generate)
+
+        function debug() {
+            if (params.debug) {
+                // console.log(`params: ${JSON.stringify(params)}`);
+            }
+        }
+        // turn on debugging
+        watch(debug)
+
+
+        // Arrow ^
+
+        function reset(c) {
+            svg.innerHTML = "";
+            document.body.style.backgroundColor = c;
+        }
+
+        function generate() {
+            console.log(`params: ${JSON.stringify(params)}`);
+            // create colors
+            let colors = [], colorsCount = randomInt(params.obj.colors.min, params.obj.colors.max);
+            for (let i = 0; i < colorsCount; i++) {
+                colors.push(PALETTE_ARR.random())
+            }
+            // console.log(params.obj.colors.min, params.obj.colors.max, colorsCount, colors)
+            // remove one color for the background
+            let bgColor = colors.splice(0, 1);
+            reset(bgColor);
+            // number of squares
+            let squaresCount = randomInt(params.obj.count.min, params.obj.count.max);
+            // create squares
+            for (let i = 0; i < squaresCount; i++) {
+                let w = randomInt(80, 130),
+                    h = randomInt(80, 130),
+                    x = randomInt(params.cx - (params.cx * params.spread.x) / 2, params.cx + (params.cx * params.spread.x) / 2),
+                    y = randomInt(params.cy - (params.cy * params.spread.y) / 2, params.cy + (params.cy * params.spread.y) / 2),
+                    // min/max scale
+                    min = params.obj.scale.min,
+                    max = params.obj.scale.max;
+
+                // create points to define polygon [x1,y1 x2,y2 x3,y3 x4,y4] offset from x,y
+                let points = [
+                    `${x - randomInt(w * min, w * max)},${y - randomInt(h * min, h * max)}`,
+                    `${x + randomInt(w * min, w * max)},${y - randomInt(h * min, h * max)}`,
+                    `${x + randomInt(w * min, w * max)},${y + randomInt(h * min, h * max)}`,
+                    `${x - randomInt(w * min, w * max)},${y + randomInt(h * min, h * max)}`,
+                ]
+                // console.log(points)
+                // display
+                svg.insertAdjacentHTML('beforeend',
+                    ` <polygon fill="${colors.random()}" stroke="none" 
+                        points="${points.join(" ")}" 
+                        transform="rotate(${randomInt(-3, 3)})" />`);
+            }
+        }
+        generate();
+
+        svg.addEventListener("click", generate);
+        // if resized
+        window.addEventListener("resize", generate);
+
+
+
+
+        /* `
+            <h5>Points</h5>
+            <div>
+                <label for="minPoints">min</label>
+                <input type="range" id="minPoints" min="1" max="50" step="1" 
+                    @input="${e => { params.obj.points.min = e.target.value }}" value="${params.obj.points.min}">
+                <label for="minPointsDisplay" hidden>min</label>
+                <input type="text" id="minPointsDisplay" value="${() => params.obj.points.min}" class="val">
+            </div>
+            <div>
+                <label for="maxPoints">max</label>
+                <input type="range" id="maxPoints" min="1" max="50" step="1"  
+                    @input="${e => { params.obj.points.max = e.target.value }}" value="${params.obj.points.max}">
+                <label for="maxPointsDisplay" hidden>max</label>
+                <input type="text" id="maxPointsDisplay" value="${() => params.obj.points.max}" class="val">
+            </div>
+            ` */
+
+
+    </script>
+
+
+
+</body>
+</html>

@@ -22,9 +22,13 @@
             background-color: #22252C;
         }
 
-        svg polygon {
+        svg {
             width: 100%;
-            height: 100%;
+            transform-box: fill-box;
+            transform-origin: 50% 50%;
+        }
+
+        svg polygon {
             transform-box: fill-box;
             transform-origin: center;
         }
@@ -32,12 +36,12 @@
 </head>
 <body>
 
-    <svg width="100%" height="100%" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <svg height="100%" xmlns="http://www.w3.org/2000/svg" version="1.1">
     </svg>
 
 
-    <script src="../../assets/js/palette.js"></script>
-    <script src="../../assets/js/functions.js"></script>
+    <script src="../../../assets/js/palette.js"></script>
+    <script src="../../../assets/js/functions.js"></script>
     <script>
         let svg = document.querySelector("svg")
 
@@ -53,7 +57,7 @@
                 colors.push(PALETTE_ARR.random())
             }
             // remove one color for the background
-            let bgColor = colors.splice(0,1);
+            let bgColor = colors.splice(0, 1);
             reset(bgColor);
             // number of squares
             let squaresCount = randomInt(6, 10);
@@ -66,6 +70,8 @@
                     // min/max scale
                     min = .9,
                     max = 1.1;
+
+                console.log(x, y)
                 // create points to define polygon [x1,y1 x2,y2 x3,y3 x4,y4] offset from x,y
                 let points = [
                     `${x - randomInt(w * min, w * max)},${y - randomInt(h * min, h * max)}`,
@@ -73,7 +79,7 @@
                     `${x + randomInt(w * min, w * max)},${y + randomInt(h * min, h * max)}`,
                     `${x - randomInt(w * min, w * max)},${y + randomInt(h * min, h * max)}`,
                 ]
-                console.log(points)
+                // console.log(points)
                 // display
                 svg.insertAdjacentHTML('beforeend',
                     ` <polygon fill="${colors.random()}" stroke="none" 
