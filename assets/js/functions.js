@@ -20,7 +20,7 @@ function randomFloat(min = 0, max = 1) {
  *  Return a random integer between min (inclusive) and max (inclusive)
  */
 function randomInt(min = 0, max = 1) {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
+	return parseInt(Math.floor(Math.random() * (max - min + 1)) + min);
 }
 /**
  *  Return a random rgb color
