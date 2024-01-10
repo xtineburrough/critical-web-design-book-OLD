@@ -27,10 +27,10 @@ Create a work of critical web design: Throughout the modules in this chapter you
 
 Design a responsive multi-column web page layout for a fictional newspaper. Use lorem ipsum placeholder text throughout your design. Code the page using the Bootstrap framework. Examples: [The New York Felines](https://omundy.github.io/critical-web-design-book/04-on-the-grid/examples/the-new-york-felines/)
 
-<img height="240" src="figures/ch4/_examples/ch4-outcome-lg.png"> <img height="240" src="figures/ch4/_examples/ch4-outcome-md.png">  <img height="240" src="figures/ch4/_examples/ch4-outcome-sm.png"> <img height="240" src="figures/ch4/_examples/ch4-outcome-xs.png">
+<img height="240" src="figures/ch4/_sourcefiles/_examples/ch4-outcome-lg.png"> <img height="240" src="figures/ch4/_sourcefiles/_examples/ch4-outcome-md.png">  <img height="240" src="figures/ch4/_sourcefiles/_examples/ch4-outcome-sm.png"> <img height="240" src="figures/ch4/_sourcefiles/_examples/ch4-outcome-xs.png">
 
 
-<img height="240" src="figures/ch4/_examples/ch4-outcome-thymes-desktop.png">  <img height="240" src="figures/ch4/_examples/ch4-outcome-thymes-tablet.png"> <img height="240" src="figures/ch4/_examples/ch4-outcome-thymes-mobile.png">
+<img height="240" src="figures/ch4/_sourcefiles/_examples/ch4-outcome-thymes-desktop.png">  <img height="240" src="figures/ch4/_sourcefiles/_examples/ch4-outcome-thymes-tablet.png"> <img height="240" src="figures/ch4/_sourcefiles/_examples/ch4-outcome-thymes-mobile.png">
 
 
 
@@ -39,7 +39,7 @@ Design a responsive multi-column web page layout for a fictional newspaper. Use 
 
 Create and implement a usability test, then design a responsive web page to reflect on findings. Evaluate your design using the "less is more" critique. Code the design using bootstrap, including a working web form to output the score from the System Usability Scale (SUS) survey. Examples: [AIGA usability test](https://omundy.github.io/critical-web-design-book/05-usability/examples/usability-aiga/)
 
-<img height="220" src="figures/ch5/_examples/ch5-outcome-lg.png"> <img height="220" src="figures/ch5/_examples/ch5-outcome-md.png"> <img height="220" src="figures/ch5/_examples/ch5-outcome-sm.png"> <img height="220" src="figures/ch5/_examples/ch5-outcome-xs.png">
+<img height="220" src="figures/ch5/_sourcefiles/_examples/ch5-outcome-lg.png"> <img height="220" src="figures/ch5/_sourcefiles/_examples/ch5-outcome-md.png"> <img height="220" src="figures/ch5/_sourcefiles/_examples/ch5-outcome-sm.png"> <img height="220" src="figures/ch5/_sourcefiles/_examples/ch5-outcome-xs.png">
 
 ## Chapter 6 - Off the Grid
 
@@ -47,11 +47,11 @@ Create an experimental composition and then explode it!
 
 Examples: [Haiku (xtine)](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/haiku-xtine.html) | [Birds](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/birds.html) | [Baldwin](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/baldwin.html) | [Maintenance](https://omundy.github.io/critical-web-design-book/06-off-the-grid/examples/maintenance.html)
 
-<img height="220" src="figures/ch6/_examples/ch6-nyt-explode.png"> <img height="220" src="figures/ch6/_examples/ch6-haiku-xtine-1.gif"> <img height="220" src="figures/ch6/_examples/ch6-birds-1.gif"> <img height="220" src="figures/ch6/_examples/ch6-baldwin-1.gif">  <img height="220" src="figures/ch6/_examples/ch6-maintenance-3.gif"> 
+<img height="220" src="figures/ch6/_sourcefiles/_examples/ch6-nyt-explode.png"> <img height="220" src="figures/ch6/_sourcefiles/_examples/ch6-haiku-xtine-1.gif"> <img height="220" src="figures/ch6/_sourcefiles/_examples/ch6-birds-1.gif"> <img height="220" src="figures/ch6/_sourcefiles/_examples/ch6-baldwin-1.gif">  <img height="220" src="figures/ch6/_sourcefiles/_examples/ch6-maintenance-3.gif"> 
 
 ## Chapter 7 - Ethical Design
 
-<img height="220" src="figures/ch7/_examples/ch7-outcome-accessibility-xl.png"> <img height="220" src="figures/ch7/_examples/ch7-outcome-accessibility-md.png"> <img height="220" src="figures/ch7/_examples/ch7-outcome-accessibility-sm.png"> 
+<img height="220" src="figures/ch7/_sourcefiles/_examples/ch7-outcome-accessibility-xl.png"> <img height="220" src="figures/ch7/_sourcefiles/_examples/ch7-outcome-accessibility-md.png"> <img height="220" src="figures/ch7/_sourcefiles/_examples/ch7-outcome-accessibility-sm.png"> 
 
 
 
@@ -63,9 +63,9 @@ Examples: [AI Albers](https://omundy.github.io/critical-web-design-book/08-gener
 [After Jean Arp](https://omundy.github.io/critical-web-design-book/08-generative-design/examples/after-arp.html)
 
 
-<img height="220" src="figures/ch8/_examples/ch8-album-stretch-goodness.png">
+<img height="220" src="figures/ch8/_sourcefiles/_examples/ch8-album-stretch-goodness.png">
 
-<img height="220" src="figures/ch8/_examples/ch7-outcome-venue-xl-1.png"> <img height="220" src="figures/ch8/_examples/ch7-outcome-venue-md-1.png"> <img height="220" src="figures/ch8/_examples/ch7-outcome-venue-sm-1.png"> 
+<img height="220" src="figures/ch8/_sourcefiles/_examples/ch7-outcome-venue-xl-1.png"> <img height="220" src="figures/ch8/_sourcefiles/_examples/ch7-outcome-venue-md-1.png"> <img height="220" src="figures/ch8/_sourcefiles/_examples/ch7-outcome-venue-sm-1.png"> 
 
 
 
