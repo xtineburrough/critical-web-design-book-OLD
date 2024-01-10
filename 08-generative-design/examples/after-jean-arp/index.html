@@ -20,8 +20,7 @@
             width: 100%;
             height: 100%;
             background-color: #22252C;
-            font-size: 14px;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: system-ui;
         }
 
         svg {
@@ -36,15 +35,18 @@
         .controls {
             position: absolute;
             z-index: 999;
-            background-color: rgba(255, 255, 255, .4);
+            background-color: rgba(255, 255, 255, .1);
+            color: #ccc;
+            font-size: 14px;
             padding: 5px;
-            margin: 10px;
-            border-radius: 5px;
+            margin: 12px;
+            border-radius: 3px;
         }
 
         .controls h5 {
             margin: 0;
-            margin-top:6px
+            margin-top: 6px;
+            font-weight: normal;
         }
 
         .controls label {
@@ -57,82 +59,84 @@
         .controls .val {
             border: 0;
             border-radius: 10%;
-            background-color: #22252C;
-            color: aliceblue;
+            background-color: rgba(255, 255, 255, .1);
+            /* background-color: transparent; */
+            color: #ccc;
             padding: 3px;
-            max-width: 2rem;
-            text-align: right;
+            max-width: 1.5rem;
+            text-align: left;
             margin-bottom: 4px;
         }
 
 
 
-        /********** Range Input Styles **********/
-        /*Range Reset*/
+        :root {
+            --range-height: 14px;
+            --range-border-radius: 18px;
+            --range-background: #7f7f7f;
+            --range-foreground: #696969;
+            --range-shadow: #cacaca;
+            --range-border: 2px;
+        }
+
+        /* Source(s)
+        https://blog.logrocket.com/creating-custom-css-range-slider-javascript-upgrades/ 
+        https://range-input-css.netlify.app/
+        */
+
         input[type="range"] {
+            /* removing default appearance */
             -webkit-appearance: none;
             appearance: none;
             background: transparent;
             cursor: pointer;
-            width: 6rem;
-        }
-
-        /* Removes default focus */
-        input[type="range"]:focus {
             outline: none;
+            /* creating a custom design */
+            margin: 3px 6px;
+            width: 6rem;
+            /*  slider progress trick  */
+            overflow: hidden;
+            border-radius: var(--range-border-radius);
         }
 
-        /***** Chrome, Safari, Opera and Edge Chromium styles *****/
-        /* slider track */
+        /* Track: webkit browsers */
         input[type="range"]::-webkit-slider-runnable-track {
-            background-color: #656565;
-            border-radius: 0.25rem;
-            height: 0.5rem;
+            height: var(--range-height);
+            background: var(--range-background);
+            border-radius: var(--range-border-radius);
         }
 
+        /* Track: Mozilla Firefox */
         input[type="range"]::-moz-range-track {
-            background-color: #656565;
-            border-radius: 0.5rem;
-            height: 0.5rem;
+            height: var(--range-height);
+            background: var(--range-background);
+            border-radius: var(--range-border-radius);
         }
 
-
-
-        /* slider thumb */
+        /* Thumb: webkit */
         input[type="range"]::-webkit-slider-thumb {
+            /* removing default appearance */
             -webkit-appearance: none;
-            /* Override default look */
             appearance: none;
-            margin-top: -4px;
-            /* Centers thumb on the track */
-
-            /*custom styles*/
-            background-color: #454545;
-            height: 1rem;
-            width: .5rem;
+            /* creating a custom design */
+            height: var(--range-height);
+            width: var(--range-height);
+            background-color: var(--range-foreground);
+            border-radius: 50%;
+            border: 2px solid var(--range-shadow);
+            /*  slider progress trick  */
+            box-shadow: -407px 0 0 400px var(--range-shadow);
         }
 
+        /* Thumb: Firefox */
         input[type="range"]::-moz-range-thumb {
-            border: none;
-            /*Removes extra border that FF applies*/
-            border-radius: 0;
-            /*Removes default border-radius that FF applies*/
-
-            /*custom styles*/
-            background-color: #454545;
-            height: 1rem;
-            width: .5rem;
-        }
-
-
-        input[type="range"]:focus::-webkit-slider-thumb {
-            border: 1px solid #aaa;
-            outline: 2px solid #aaa;
-        }
-
-        input[type="range"]:focus::-moz-range-thumb {
-            border: 1px solid #aaa;
-            outline: 2px solid #aaa;
+            height: var(--range-height);
+            width: var(--range-height);
+            background-color: var(--range-foreground);
+            border-radius: 50%;
+            border: 1px solid var(--range-shadow);
+            /*  slider progress trick  */
+            box-shadow: -407px 0 0 400px var(--range-shadow);
         }
     </style>
 </head>
@@ -153,7 +157,8 @@
         import { reactive, watch, html } from 'https://esm.sh/@arrow-js/core';
         // Start your app here!
 
-
+        // color range
+        // rotation range
         // add form elements to tweak
         // add text option
         // add objects (to reuse settings)
@@ -184,23 +189,28 @@
                 y: .8
             },
             debug: true
-        })
+        });
+
+        function checkValues() {
+            params.obj.count.min = Math.min(params.obj.count.min, params.obj.count.max)
+            params.obj.count.max = Math.max(params.obj.count.min, params.obj.count.max)
+            // generate()
+        }
 
         const appElement = document.querySelector('.controls');
 
         const template = html`
-
             <h5>Count</h5>
             <div>
                 <label for="minCount">min</label>
                 <input type="range" id="minCount" min="1" max="30" step="1" 
-                    @input="${e => { params.obj.count.min = e.target.value }}" value="${params.obj.count.min}">
+                    @input="${e => { params.obj.count.min = e.target.value }}" value="${() => params.obj.count.min}">
                 <input type="text" id="minCountDisplay" value="${() => params.obj.count.min}" class="val">
             </div>
             <div>
                 <label for="maxCount">max</label>
                 <input type="range" id="maxCount" min="1" max="30" step="1"  
-                    @input="${e => { params.obj.count.max = e.target.value }}" value="${params.obj.count.max}">
+                    @input="${e => { params.obj.count.max = e.target.value }}" value="${() => params.obj.count.max}">
                 <input type="text" id="maxCountDisplay" value="${() => params.obj.count.max}" class="val">
             </div>
 
@@ -245,6 +255,7 @@
                     @input="${e => { params.spread.y = e.target.value }}" value="${params.spread.y}">
                 <input type="text" id="ySpreadDisplay" value="${() => params.spread.y}" class="val">
             </div>
+
         `
         template(appElement)
         // watch all vars
@@ -266,6 +277,8 @@
             document.body.style.backgroundColor = c;
         }
 
+
+
         function generate() {
             console.log(`params: ${JSON.stringify(params)}`);
             // create colors
@@ -276,7 +289,8 @@
             // console.log(params.obj.colors.min, params.obj.colors.max, colorsCount, colors)
             // remove one color for the background
             let bgColor = colors.splice(0, 1);
-            reset(bgColor);
+            // reset(bgColor);
+            reset("#212121")
             // number of squares
             let squaresCount = randomInt(params.obj.count.min, params.obj.count.max);
             // create squares
@@ -300,8 +314,12 @@
                 // display
                 svg.insertAdjacentHTML('beforeend',
                     ` <polygon fill="${colors.random()}" stroke="none" 
-                        points="${points.join(" ")}" 
-                        transform="rotate(${randomInt(-3, 3)})" />`);
+                        points="${points.join(" ")}" transform="rotate(${randomInt(-3, 3)})" />`
+                    // +
+                    // ` <text fill="${colors.random()}" stroke="none" 
+                    // x="${x}" y="${y}" style="font-size: ${randomInt(params.obj.scale.min*55, params.obj.scale.max*155)}" transform="rotate(${randomInt(-3, 3)})">Hi</text>`    
+
+                );
             }
         }
         generate();
